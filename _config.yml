@@ -7,9 +7,9 @@
 
 # Site Settings
 locale                   : "en"
-title                    : "Site Title"
+title                    : "Jingchao's Website"
 title_separator          : "-"
-name                     : "Your Name"
+name                     : "Jingchao Zhang"
 description              : "An amazing website."
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
@@ -77,11 +77,11 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Name"
+  name             : "Jingchao Zhang"
   avatar           : "bio-photo.jpg"
-  bio              : "I am an amazing person."
-  location         : "Somewhere"
-  email            :
+  bio              : "HPC Applications Specialist at Holland Computing Center."
+  location         : "Lincoln, NE"
+  email            : "zhang@unl.edu"
   uri              :
   bitbucket        :
   codepen          :
