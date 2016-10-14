@@ -12,7 +12,7 @@
 
   @include breakpoint($large) {
     @include span(2 of 12);
-    opacity: 0.75;
+    opacity: 0.85;
     -webkit-transition: opacity 0.2s ease-in-out;
     transition: opacity 0.2s ease-in-out;
 
@@ -68,6 +68,7 @@
 .author__avatar {
   display: table-cell;
   vertical-align: top;
+  horizontal-align: middle;
   width: 36px;
   height: 36px;
 
