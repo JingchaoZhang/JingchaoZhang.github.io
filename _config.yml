@@ -7,10 +7,10 @@
 
 # Site Settings
 locale                   : "en"
-#title                    : ""
-#title_separator          : "-"
+title                    : "Jingchao's Website"
+title_separator          : "-"
 name                     : "Jingchao Zhang"
-description              : "Jingchao's website"
+description              : "Jingchao's Website"
 url                      : "https://jingchaozhang.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
