@@ -5,7 +5,7 @@ author_profile: true
 ---
 
 - J Zhang, Y Hong, M Liu, Y Yue, Q Xiong, G Lorenzini, "_Molecular dynamics simulation of the interfacial thermal resistance between phosphorene and silicon substrate_", International Journal of Heat and Mass Transfer 104, 87-877, 2017 [pdf](https://drive.google.com/file/d/0B3Yj4QkZpI-deGVXQ0pybURsRjA/view?usp=sharing)
-- Y Hong, J Zhang, X Zeng, "_Thermal Conductivity of Monolayer MoSe2 and MoS2_", The Journal of Physical Chemistry C, DOI: 10.1021/acs.jpcc.6b07262 [pdf] (https://drive.google.com/file/d/0B3Yj4QkZpI-dSmZpd0RqVUprc1U/view?usp=sharing)
+- Y Hong, J Zhang, X Zeng, "_Thermal Conductivity of Monolayer MoSe2 and MoS2_", The Journal of Physical Chemistry C, DOI: 10.1021/acs.jpcc.6b07262 [pdf](https://drive.google.com/file/d/0B3Yj4QkZpI-dSmZpd0RqVUprc1U/view?usp=sharing)
 - W Chen, J Zhang, Y Yue, "_Molecular dynamics study on thermal transport at carbon nanotube interface junctions: Effects of mechanical force and chemical functionalization_", International Journal of Heat and Mass Transfer 103, 1058–1064, 2016 [pdf](https://drive.google.com/file/d/0B3Yj4QkZpI-ddjB3bEw2MDg2YTQ/view?usp=sharing)
 - Y Hong, J Zhang and X Zeng, "_Thermal contact resistance across a linear heterojunction within a hybrid graphene/hexagonal boron nitride sheet_", Physical Chemistry Chemical Physics, 18, 24164-24170, 2016 [pdf](https://drive.google.com/file/d/0B3Yj4QkZpI-dTXRaaWJTTlBsWDQ/view?usp=sharing)
 - Q Xiong, J Zhang, F Xu, G Wiggins, CS Daw, “_Coupling DAEM and CFD for simulatingbiomass fast pyrolysis in fluidized beds_”, Journal of Analytical and Applied Pyrolysis 117, 176–181,1,2016 [pdf](https://drive.google.com/open?id=0B3Yj4QkZpI-dOHp3TXhoemx4N1k)
