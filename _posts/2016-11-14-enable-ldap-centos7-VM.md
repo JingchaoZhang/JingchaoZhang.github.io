@@ -3,6 +3,8 @@ layout: single
 author_profile: false
 ---
 
+Only essential commands are listed. Confiditial info varies by sites.  
+
 ```
 #yum install openldap.x86_64 openldap-devel.x86_64 -y
 #yum install sssd.x86_64 sssd-ldap.x86_64 -y
