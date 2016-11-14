@@ -3,7 +3,7 @@ layout: single
 author_profile: false
 ---
 
-Only essential commands are listed. Confiditial info varies by sites.  
+Only essential commands are listed. Confidential info varies by sites.  
 
 ```
 #yum install openldap.x86_64 openldap-devel.x86_64 -y
