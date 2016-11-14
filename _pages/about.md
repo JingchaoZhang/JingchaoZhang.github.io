@@ -1,7 +1,7 @@
 ---
 layout: single
 permalink: /about/
-author_profile: true
+author_profile: false
 ---
 
 - HPC Applications Specialist at [Holland Computing Center](https://hcc.unl.edu/)
