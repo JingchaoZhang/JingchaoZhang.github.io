@@ -6,6 +6,7 @@ author_profile: false
 ---
 
 - J Zhang, Y Hong, M Liu, Y Yue, Q Xiong, G Lorenzini, "_Molecular dynamics simulation of the interfacial thermal resistance between phosphorene and silicon substrate_", International Journal of Heat and Mass Transfer 104, 87-877, 2017 [pdf](https://drive.google.com/file/d/0B3Yj4QkZpI-deGVXQ0pybURsRjA/view?usp=sharing)
+- Y Hong, J Zhang and X Zeng, "_Interlayer thermal conductance within a phosphorene and graphene bilayer_", Nanoscale, DOI: 10.1039/C6NR07977F, 2016 [pdf](https://drive.google.com/file/d/0B3Yj4QkZpI-dOF9EaGk5UnBwQm8/view?usp=sharing)
 - Y Hong, J Zhang, X Zeng, "_Thermal Conductivity of Monolayer MoSe<sub>2</sub> and MoS<sub>2</sub>_", The Journal of Physical Chemistry C, DOI: 10.1021/acs.jpcc.6b07262, 2016 [pdf](https://drive.google.com/file/d/0B3Yj4QkZpI-dSmZpd0RqVUprc1U/view?usp=sharing)
 - W Chen, J Zhang, Y Yue, "_Molecular dynamics study on thermal transport at carbon nanotube interface junctions: Effects of mechanical force and chemical functionalization_", International Journal of Heat and Mass Transfer 103, 1058–1064, 2016 [pdf](https://drive.google.com/file/d/0B3Yj4QkZpI-ddjB3bEw2MDg2YTQ/view?usp=sharing)
 - Y Hong, J Zhang and X Zeng, "_Thermal contact resistance across a linear heterojunction within a hybrid graphene/hexagonal boron nitride sheet_", Physical Chemistry Chemical Physics, 18, 24164-24170, 2016 [pdf](https://drive.google.com/file/d/0B3Yj4QkZpI-dTXRaaWJTTlBsWDQ/view?usp=sharing)
