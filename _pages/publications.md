@@ -1,7 +1,7 @@
 ---
 layout: single
 permalink: /publications/
-author_profile: true
+author_profile: false
 ---
 
 - J Zhang, Y Hong, M Liu, Y Yue, Q Xiong, G Lorenzini, "_Molecular dynamics simulation of the interfacial thermal resistance between phosphorene and silicon substrate_", International Journal of Heat and Mass Transfer 104, 87-877, 2017 [pdf](https://drive.google.com/file/d/0B3Yj4QkZpI-deGVXQ0pybURsRjA/view?usp=sharing)
