@@ -22,7 +22,7 @@ R CMD INSTALL Rmpi_0.6-6.tar.gz --configure-args="--with-Rmpi-include=/util/opt/
 
 Example
 
-- Rmpi-test.R
+- Rmpi-test.R  
 ```
 library("datasets")
 library("snow")
@@ -45,7 +45,7 @@ for(round.j in c(1:length(self.num))){
 
 stopCluster(cl)
 mpi.exit()
-```
+```  
 - submit.slurm
 ```
 #!/bin/sh
@@ -58,10 +58,10 @@ mpi.exit()
 
 module load compiler/gcc/4.9 openmpi/1.10 R/3.3
 mpirun -n 1 R CMD BATCH Rmpi-test.R
-```
+```  
 
-- $sbatch submit.slurm
-- $cat Rmpi-test.Rout
+- $sbatch submit.slurm  
+- $cat Rmpi-test.Rout  
 ```
 R version 3.3.1 (2016-06-21) -- "Bug in Your Hair"
 Copyright (C) 2016 The R Foundation for Statistical Computing
