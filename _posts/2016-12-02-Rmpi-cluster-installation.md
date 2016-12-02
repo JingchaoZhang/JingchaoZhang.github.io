@@ -4,7 +4,7 @@ author_profile: false
 ---
 
 ```
-module load comppiler/gcc openmpi R
+module load compiler/gcc openmpi R
 export R_LIBS=$HOME/R/x86_64-pc-linux-gnu-library/3.3
 mkdir -p $HOME/R/x86_64-pc-linux-gnu-library/3.3
 wget https://cran.r-project.org/src/contrib/Rmpi_0.6-6.tar.gz
