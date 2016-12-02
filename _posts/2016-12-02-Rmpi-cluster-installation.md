@@ -23,42 +23,42 @@ R CMD INSTALL Rmpi_0.6-6.tar.gz --configure-args="--with-Rmpi-include=/util/opt/
 Example
 
 - Rmpi-test.R  
-```
-library("datasets")
-library("snow")
-library("Rmpi")
+```  
+library("datasets")  
+library("snow")  
+library("Rmpi")  
 
-mydata = iris[,-5] #dataset used to test
-self.num = c(3,5,7,9,10) #centers tested
-nboot.d=5
+mydata = iris[,-5] #dataset used to test  
+self.num = c(3,5,7,9,10) #centers tested  
+nboot.d=5  
 
-parallel.function <- function(i,data,centers) {
-            kmeans(data, centers, nstart=i )
-        }
-cl <- makeCluster( mpi.universe.size()-1, type="MPI" )
-clusterExport(cl, c('data'))
+parallel.function <- function(i,data,centers) {  
+            kmeans(data, centers, nstart=i )  
+        }  
+cl <- makeCluster( mpi.universe.size()-1, type="MPI" )  
+clusterExport(cl, c('data'))  
 
-for(round.j in c(1:length(self.num))){
-  para.result <- parLapply( cl, rep(1,nboot.d), fun=parallel.function, data=mydata, centers=self.num[round.j])
-  print(para.result)
-}
+for(round.j in c(1:length(self.num))){  
+  para.result <- parLapply( cl, rep(1,nboot.d), fun=parallel.function, data=mydata, centers=self.num[round.j])  
+  print(para.result)  
+}  
 
-stopCluster(cl)
-mpi.exit()
+stopCluster(cl)  
+mpi.exit()  
 ```  
 
 - submit.slurm  
-```
-#!/bin/sh
-#SBATCH --time=01:00:00
-#SBATCH -N 2
-#SBATCH --ntasks-per-node=4
-#SBATCH --mem-per-cpu=1024
-#SBATCH --error=job.%J.err
-#SBATCH --output=job.%J.out
+```  
+#!/bin/sh  
+#SBATCH --time=01:00:00  
+#SBATCH -N 2  
+#SBATCH --ntasks-per-node=4  
+#SBATCH --mem-per-cpu=1024  
+#SBATCH --error=job.%J.err  
+#SBATCH --output=job.%J.out  
 
-module load compiler/gcc/4.9 openmpi/1.10 R/3.3
-mpirun -n 1 R CMD BATCH Rmpi-test.R
+module load compiler/gcc/4.9 openmpi/1.10 R/3.3  
+mpirun -n 1 R CMD BATCH Rmpi-test.R  
 ```  
 
 - $sbatch submit.slurm
