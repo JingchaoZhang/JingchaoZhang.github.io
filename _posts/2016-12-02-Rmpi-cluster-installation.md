@@ -11,11 +11,11 @@ wget https://cran.r-project.org/src/contrib/Rmpi_0.6-6.tar.gz
 R CMD INSTALL Rmpi_0.6-6.tar.gz --configure-args="--with-Rmpi-type=OPENMPI"
 ```
 
-With QLogic infiniband, add 
+With QLogic infiniband, add  
 ```
 export OMPI_MCA_mtl=^psm
 ``` 
-before 
+before  
 ```
 R CMD INSTALL Rmpi_0.6-6.tar.gz --configure-args="--with-Rmpi-type=OPENMPI"
 ```
