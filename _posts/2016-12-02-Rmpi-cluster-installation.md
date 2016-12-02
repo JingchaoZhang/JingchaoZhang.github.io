@@ -23,6 +23,7 @@ R CMD INSTALL Rmpi_0.6-6.tar.gz --configure-args="--with-Rmpi-include=/util/opt/
 Example
 
 - Rmpi-test.R  
+
 ```  
 library("datasets")  
 library("snow")  
@@ -48,6 +49,7 @@ mpi.exit()
 ```  
 
 - submit.slurm  
+
 ```  
 #!/bin/sh  
 #SBATCH --time=01:00:00  
