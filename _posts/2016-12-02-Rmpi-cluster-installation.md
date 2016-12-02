@@ -24,7 +24,7 @@ Example
 
 - Rmpi-test.R  
 
-```  
+```R  
 library("datasets")  
 library("snow")  
 library("Rmpi")  
@@ -50,7 +50,7 @@ mpi.exit()
 
 - submit.slurm  
 
-```  
+```bash  
 #!/bin/sh  
 #SBATCH --time=01:00:00  
 #SBATCH -N 2  
