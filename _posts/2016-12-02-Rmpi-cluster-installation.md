@@ -14,7 +14,7 @@ R CMD INSTALL Rmpi_0.6-6.tar.gz --configure-args="--with-Rmpi-type=OPENMPI"
 With QLogic infiniband, add  
 ```
 export OMPI_MCA_mtl=^psm
-``` 
+```  
 before  
 ```
 R CMD INSTALL Rmpi_0.6-6.tar.gz --configure-args="--with-Rmpi-type=OPENMPI"
