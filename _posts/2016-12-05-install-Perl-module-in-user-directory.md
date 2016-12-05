@@ -6,7 +6,7 @@ author_profile: false
 - option 1  
   
 ```bash
-echo "eval $(perl -Mlocal::lib)" >> ~/.bashrc
+echo 'eval $(perl -Mlocal::lib)' >> ~/.bashrc
 source ~/.bashrc
 cpan
 cpan> install Module::Load::Conditional  
