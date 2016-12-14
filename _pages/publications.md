@@ -5,6 +5,7 @@ permalink: /publications/
 author_profile: false
 ---
 
+- J Zhang, X Wang, Y Hong, Q Xiong, J Jiang, Y Yue, "_Understanding thermal transport in asymmetric layer hexagonal boron nitride heterostructure_", Nanotechnology 28, 035404, 2017 [pdf](https://drive.google.com/file/d/0B3Yj4QkZpI-dMnBVbi1oWUQ2b00/view?usp=sharing)
 - J Zhang, Y Hong, M Liu, Y Yue, Q Xiong, G Lorenzini, "_Molecular dynamics simulation of the interfacial thermal resistance between phosphorene and silicon substrate_", International Journal of Heat and Mass Transfer 104, 87-877, 2017 [pdf](https://drive.google.com/file/d/0B3Yj4QkZpI-deGVXQ0pybURsRjA/view?usp=sharing)
 - Y Hong, J Zhang and X Zeng, "_Interlayer thermal conductance within a phosphorene and graphene bilayer_", Nanoscale, 8, 19211-19218, 2016 [pdf](https://drive.google.com/file/d/0B3Yj4QkZpI-dOF9EaGk5UnBwQm8/view?usp=sharing)
 - Y Hong, J Zhang, X Zeng, "_Thermal Conductivity of Monolayer MoSe<sub>2</sub> and MoS<sub>2</sub>_", The Journal of Physical Chemistry C, 120 (45), 26067–26075, 2016 [pdf](https://drive.google.com/file/d/0B3Yj4QkZpI-dSmZpd0RqVUprc1U/view?usp=sharing)
