@@ -16,12 +16,16 @@ Potential topics include but are not limited to the following:
 - Modelling and simulations of the thermal transport from atomic scale to micrometer scale
 
 Authors can submit their manuscripts through the Manuscript Tracking System at http://mts.hindawi.com/submit/journals/jnm/tto/.
+
 ----------------------------------------------------
 | Manuscript Due         | Friday, 14 July 2017    |
+
 ----------------------------------------------------
 | First Round of Reviews | Friday, 6 October 2017  | 
+
 ----------------------------------------------------
 | Publication Date       | Friday, 1 December 2017 |
+
 ----------------------------------------------------
 
 [Link](https://www.hindawi.com/journals/jnm/si/245036/cfp/)
