@@ -3,7 +3,7 @@ layout: single
 author_profile: false
 ---
 
-```mysql
+```sql
 mysql
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MariaDB connection id is 1299
