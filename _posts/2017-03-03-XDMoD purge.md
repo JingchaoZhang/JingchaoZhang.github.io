@@ -73,6 +73,6 @@ MariaDB [mod_hpcdb]> Bye
 xdmod-import-csv -t hierarchy -i hierarchy.csv
 xdmod-import-csv -t group-to-hierarchy -i group.csv
 xdmod-admin --truncate --jobs
-xdmod-shredder -r Tusker -f slurm -i tusker.txt && xdmod-shredder -r Crane -f slurm -i crane.txt && xdmod-shredder -r Sandhills -f slurm -i sandhills.txt && xdmod-ingestor
+xdmod-shredder -r Tusker -f slurm -i tusker.txt && xdmod-shredder -r Crane -f slurm -i crane.txt && xdmod-shredder -r Sandhills -f slurm -i sandhills.txt
 xdmod-ingestor
 ```
