@@ -1,4 +1,9 @@
-http://open.xdmod.org/software-requirements.html
+---
+layout: single
+author_profile: false
+---
+
+[link](http://open.xdmod.org/software-requirements.html)
 
 ```bash
 yum install httpd php php-cli php-mysql php-gd php-mcrypt \
