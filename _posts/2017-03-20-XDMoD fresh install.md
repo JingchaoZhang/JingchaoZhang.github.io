@@ -27,7 +27,7 @@ tar jxvf phantomjs-2.1.1-linux-x86_64.tar.bz2
 yum install xdmod-6.5.0-1.0.el7.centos.noarch.rpm -y
 ```
 
-- SimpleSAML setup. [Federated Authentication](http://open.xdmod.org/simpleSAMLphp.html) and [LDAP Authentication](http://open.xdmod.org/simpleSAMLphp-ldap.html)
+SimpleSAML setup. [Federated Authentication](http://open.xdmod.org/simpleSAMLphp.html) and [LDAP Authentication](http://open.xdmod.org/simpleSAMLphp-ldap.html)
 ```bash
 yum install php-ldap.x86_64 -y
 vim /etc/httpd/conf.d/xdmod.conf
