@@ -5,7 +5,7 @@ permalink: /publications/
 author_profile: false
 ---
 
-(<sup>\*</sup> corresponding author; <sup>†</sup> Equal contribution)  
+(<sup>\*</sup>Corresponding author; <sup>†</sup>Equal contribution)  
 
 1. Y Yue<sup>\*</sup><sup>†</sup>, **J Zhang**<sup>†</sup>, Y Xie, W Chen, X Wang<sup>\*</sup>, "_Energy Coupling across Low-dimensional Contact Interfaces at the Atomic Scale_", International Journal of Heat and Mass Transfer, 2017 [In print]
 1. Q Xiong, Y Yang, F Xu, Y Pan, **J Zhang**, K Hong\*, G Lorenzini\*, S Wang\*, "_An overview of computational fluid dynamics simulation of reactor-scale biomass pyrolysis_", ACS Sustainable Chemistry & Engineering, DOI: 10.1021/acssuschemeng.6b02634, 2017 [pdf](https://drive.google.com/file/d/0B3Yj4QkZpI-dTGVDZFdyRlhqaVE/view?usp=sharing)
