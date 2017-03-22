@@ -5,6 +5,7 @@ permalink: /publications/
 author_profile: false
 ---
 
+1. Y Yue, J Zhang, Y Xie, W Chen, X Wang, "_Energy Coupling across Low-dimensional Contact Interfaces at the Atomic Scale_", International Journal of Heat and Mass Transfer, 2017 [In print]
 1. Q Xiong, Y Yang, F Xu, Y Pan, J Zhang, K Hong, G Lorenzini, S Wang, "_An overview of computational fluid dynamics simulation of reactor-scale biomass pyrolysis_", ACS Sustainable Chemistry & Engineering, DOI: 10.1021/acssuschemeng.6b02634, 2017 [pdf](https://drive.google.com/file/d/0B3Yj4QkZpI-dTGVDZFdyRlhqaVE/view?usp=sharing)
 1. X Wang, J Zhang, Y Chen, P Chan, "_Molecular dynamics study of thermal transport in dinaphtho[2,3-b:2',3'-f]thieno[3,2-b]thiophene (DNTT) organic semiconductor_", Nanoscale, 9, 2262-2271, 2017 [pdf](https://drive.google.com/file/d/0B3Yj4QkZpI-ddHJYWmpEeWVkZ1k/view?usp=sharing)
 1. J Zhang, X Wang, Y Hong, Q Xiong, J Jiang, Y Yue, "_Understanding thermal transport in asymmetric layer hexagonal boron nitride heterostructure_", Nanotechnology 28, 035404, 2017 [pdf](https://drive.google.com/file/d/0B3Yj4QkZpI-dMnBVbi1oWUQ2b00/view?usp=sharing)
