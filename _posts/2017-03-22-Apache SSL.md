@@ -36,7 +36,7 @@ SSLStaplingCache "shmcb:logs/stapling-cache(150000)"
     SSLHonorCipherOrder On
     Header always set Strict-Transport-Security "max-age=21600; includeSubDomains; preload"
     #Header always set X-Frame-Options DENY
-    Header always set X-Frame-Options **SAMEORIGIN**
+    Header always set X-Frame-Options SAMEORIGIN
     Header always set X-Content-Type-Options nosniff
     SSLCompression off
     SSLUseStapling on
