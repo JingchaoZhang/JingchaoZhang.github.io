@@ -3,9 +3,6 @@ layout: single
 author_profile: false
 ---
 
-[Template](https://cipherli.st/)  
-[SSL Check](https://ssldecoder.org/)
-
 xdmod.conf
 ```bash
 # Redirect HTTP to HTTPS
@@ -76,3 +73,6 @@ SSLStaplingCache "shmcb:logs/stapling-cache(150000)"
     CustomLog /var/log/xdmod/apache-access.log combined
 </VirtualHost>
 ```
+
+[Template](https://cipherli.st/)  
+[SSL Check](https://ssldecoder.org/)
