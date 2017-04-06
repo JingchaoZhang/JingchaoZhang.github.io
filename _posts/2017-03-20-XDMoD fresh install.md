@@ -3,8 +3,6 @@ layout: single
 author_profile: false
 ---
 
-[link](http://open.xdmod.org/software-requirements.html)
-
 ```bash
 yum install httpd php php-cli php-mysql php-gd php-mcrypt \
               gmp-devel php-gmp php-pdo php-xml php-pear-Log \
@@ -44,3 +42,5 @@ vim /etc/httpd/conf.d/xdmod.conf
         </IfModule>
     </Directory>
 ```
+
+[link](http://open.xdmod.org/software-requirements.html)
