@@ -5,7 +5,7 @@ author_profile: false
 
 chrony is a versatile implementation of the Network Time Protocol (NTP). It can synchronize the system clock with NTP servers, reference clocks (e.g. GPS receiver), and manual input using wristwatch and keyboard. It can also operate as an NTPv4 (RFC 5905) server and peer to provide a time service to other computers in the network.
 
-*chronyc tracking
+- chronyc tracking
 ```
 Reference ID    : CB00710F (foo.example.net)
 Stratum         : 3
@@ -23,7 +23,7 @@ Leap status     : Normal
 ```
 The tracking command displays parameters about the system’s clock performance. An example of the output is shown below.
 
-*chronyc sources
+- chronyc sources
 ```
 210 Number of sources = 3
 MS Name/IP address         Stratum Poll Reach LastRx Last sample
