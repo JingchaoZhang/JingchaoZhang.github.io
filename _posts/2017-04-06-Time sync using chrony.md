@@ -1,3 +1,7 @@
+---
+layout: single
+author_profile: false
+---
 
 chrony is a versatile implementation of the Network Time Protocol (NTP). It can synchronize the system clock with NTP servers, reference clocks (e.g. GPS receiver), and manual input using wristwatch and keyboard. It can also operate as an NTPv4 (RFC 5905) server and peer to provide a time service to other computers in the network.
 
@@ -28,3 +32,5 @@ MS Name/IP address         Stratum Poll Reach LastRx Last sample
 ^? foo.example.net               2   6   377    23   -923us[ -924us] +/-   43ms
 ^+ bar.example.net               1   6   377    21  -2629us[-2619us] +/-  
 ```
+
+[link](https://chrony.tuxfamily.org/doc/3.1/chronyc.html)
