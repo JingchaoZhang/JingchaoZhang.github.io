@@ -7,7 +7,7 @@ author_profile: false
 
 (<sup>\*</sup>Corresponding author; <sup>†</sup>Equal contribution)  
 
-1. J. Zhang<sup>\*</sup>, Y Hong, X Wang, Y Yue<sup>\*</sup>, D Xie, J Jiang, Y Xiong, P Li, "_Phonon Thermal Properties of Transition-Metal Dichalcogenides MoS<sub>2</sub> and MoSe<sub>2</sub> Heterostructure_", The Journal of Physical Chemistry C, 2017 (In print)
+1. **J. Zhang**<sup>\*</sup>, Y Hong, X Wang, Y Yue<sup>\*</sup>, D Xie, J Jiang, Y Xiong, P Li, "_Phonon Thermal Properties of Transition-Metal Dichalcogenides MoS<sub>2</sub> and MoSe<sub>2</sub> Heterostructure_", The Journal of Physical Chemistry C, 2017 (In print)
 1. Y Yue<sup>\*</sup><sup>†</sup>, **J Zhang**<sup>†</sup>, Y Xie, W Chen, X Wang<sup>\*</sup>, "_Energy Coupling across Low-dimensional Contact Interfaces at the Atomic Scale_", International Journal of Heat and Mass Transfer, 110, 827–844, 2017 [pdf](https://drive.google.com/file/d/0B3Yj4QkZpI-dbHZraTVJU016cDQ/view?usp=sharing)
 1. Q Xiong, Y Yang, F Xu, Y Pan, **J Zhang**, K Hong<sup>\*</sup>, G Lorenzini<sup>\*</sup>, S Wang<sup>\*</sup>, "_An overview of computational fluid dynamics simulation of reactor-scale biomass pyrolysis_", ACS Sustainable Chemistry & Engineering, 5(4), 2783–2798, 2017 [pdf](https://drive.google.com/file/d/0B3Yj4QkZpI-dTGVDZFdyRlhqaVE/view?usp=sharing)
 1. X Wang, **J Zhang**, Y Chen<sup>\*</sup>, P Chan<sup>\*</sup>, "_Molecular dynamics study of thermal transport in dinaphtho[2,3-b:2',3'-f]thieno[3,2-b]thiophene (DNTT) organic semiconductor_", Nanoscale, 9, 2262-2271, 2017 [pdf](https://drive.google.com/file/d/0B3Yj4QkZpI-ddHJYWmpEeWVkZ1k/view?usp=sharing)
