@@ -3,6 +3,13 @@ layout: single
 author_profile: false
 ---
 
+OpenStack Manage Security Group Rules: XALT
+
+```
+Direction Ether Type IP Protocol Port Range Remote IP Prefix
+Ingress	  IPv4	TCP	 3306 (MYSQL)	          0.0.0.0/0
+```
+
 CentOS 7 mysql server
 ```bash
 yum install vim -y
