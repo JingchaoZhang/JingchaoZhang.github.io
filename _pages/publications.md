@@ -7,6 +7,7 @@ author_profile: false
 
 (<sup>\*</sup>Corresponding author; <sup>†</sup>Equal contribution)  
 
+1. X. Wang, M Wang, Y Hong, Z Wang, **J Zhang**<sup>\*</sup>, "_Coherent and Incoherent Phonon Transport in Graphene and Nitrogenated Holey Graphene Superlattice_", Physical Chemistry Chemical Physics, 2017 (Accepted)
 1. X. Wang, Y Hong, P K L Chan, **J Zhang**<sup>\*</sup>, "_Phonon Thermal Transport in Silicene-Germanene Superlattice: A Molecular Dynamics Study_", Nanotechnology, 28, 255403, 2017 [pdf](http://iopscience.iop.org/article/10.1088/1361-6528/aa71fa)
 1. X. Wang, **J Zhang**, Y Chen, P K L Chan, "_Interfacial Thermal Transport across Graphene and Organic Semiconductor by Molecular Dynamics Simulation_", Physical Chemistry Chemical Physics, 19, 15933-15941, 2017 [pdf](http://pubs.rsc.org/en/content/articlelanding/2017/cp/c7cp01958k#!divAbstract)
 1. X. Wang, Y Hong, D Ma, **J Zhang**<sup>\*</sup>, "_Molecular Dynamics Study of Thermal Transport in Nitrogenated Holey Graphene Bilayer_", Journal of Materials Chemistry C, 5, 5119-5127, 2017 [pdf](https://drive.google.com/file/d/0B3Yj4QkZpI-dS1RVdXlDRzJBMU0/view?usp=sharing)
