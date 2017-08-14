@@ -1,8 +1,9 @@
 ---
 layout: single
 header:
-  image: /images/GoBigRed.jpg
+  overlay_image: /assets/images/unsplash-image-1.jpg
   caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
+  cta_url: "https://unsplash.com"
 title: About Jingchao
 permalink: /about/
 author_profile: false
