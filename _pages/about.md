@@ -2,6 +2,7 @@
 layout: single
 header:
   image: /images/GoBigRed.jpg
+  caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
 title: About Jingchao
 permalink: /about/
 author_profile: false
