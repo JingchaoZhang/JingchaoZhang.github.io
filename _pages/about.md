@@ -1,5 +1,7 @@
 ---
 layout: single
+header:
+  image: /images/GoBigRed.jpg
 title: About Jingchao
 permalink: /about/
 author_profile: false
