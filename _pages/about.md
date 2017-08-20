@@ -1,6 +1,9 @@
 ---
 layout: single
 title: About Jingchao
+header:
+  image:/assets/images/GBR.jpg
+  caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
 permalink: /about/
 author_profile: false
 ---
