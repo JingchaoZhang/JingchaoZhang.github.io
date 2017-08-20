@@ -3,7 +3,7 @@ layout: single
 title: About Jingchao
 header:
   image: GBR.jpg
-  caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
+  caption: "Photo credit: [**AndrewShoemaker**](https://andrewshoemaker.deviantart.com/)"
 permalink: /about/
 author_profile: false
 ---
