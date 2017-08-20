@@ -1,4 +1,5 @@
 ---
+layout: single
 title: About Jingchao
 header:
   image: /assets/images/GBR.jpg
