@@ -7,7 +7,7 @@ author_profile: false
 
 (<sup>\*</sup>Corresponding author; <sup>†</sup>Equal contribution)  
 
-1. Y Hong, **J Zhang**<sup>\*</sup>, XC Zeng<sup>\*</sup>, "_Thermal Transport in Phosphorene and Phosphorene-Based Materials: A Review on Numerical Studies_", Chinese Physics B, 2017 (Invited Review; In Print)
+1. Y Hong, **J Zhang**<sup>\*</sup>, XC Zeng<sup>\*</sup>, "_Thermal Transport in Phosphorene and Phosphorene-Based Materials: A Review on Numerical Studies_", Chinese Physics B, 2017 (Invited Review，Accepted)
 1. D Liao, W Chen, **J Zhang**, Y Yue<sup>\*</sup>, "_Tuning Thermal Conductance of CNT Interface Junction via Stretching and Atomic Bonding_", Journal of Physics D: Applied Physics, 2017 [url](http://iopscience.iop.org/article/10.1088/1361-6463/aa8ff8)
 1. X Wang, M Wang, Y Hong, Z Wang, **J Zhang**<sup>\*</sup>, "_Coherent and Incoherent Phonon Transport in Graphene and Nitrogenated Holey Graphene Superlattice_", Physical Chemistry Chemical Physics, 19, 24240-24248, 2017 [pdf](https://drive.google.com/file/d/0B3Yj4QkZpI-dcjJnX3NzRFBJeXM/view?usp=sharing), [Endnote](https://drive.google.com/uc?export=download&id=0B3Yj4QkZpI-dSUV0RHpCZGVOZlE)
 1. X Wang, Y Hong, P K L Chan, **J Zhang**<sup>\*</sup>, "_Phonon Thermal Transport in Silicene-Germanene Superlattice: A Molecular Dynamics Study_", Nanotechnology, 28, 255403, 2017 [pdf](https://drive.google.com/file/d/0B3Yj4QkZpI-dWFZsdUFQei1GRjA/view?usp=sharing), [Endnote](https://drive.google.com/uc?export=download&id=0B3Yj4QkZpI-dQm9Wd1Q4SjdSRUk)
