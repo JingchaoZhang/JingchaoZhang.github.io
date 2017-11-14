@@ -40,4 +40,4 @@ PasswordAuthentication yes
 ChallengeResponseAuthentication yes
 ```
 
-Link[https://hcc-docs.unl.edu/pages/viewpage.action?spaceKey=ADMIN&title=OpenConnect+VPN]
+[Link](https://hcc-docs.unl.edu/pages/viewpage.action?spaceKey=ADMIN&title=OpenConnect+VPN)
