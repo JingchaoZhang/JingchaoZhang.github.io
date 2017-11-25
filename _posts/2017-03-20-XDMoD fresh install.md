@@ -4,7 +4,7 @@ author_profile: false
 ---
 
 ```bash
-yum install vim httpd php php-cli php-mysql php-gd php-mcrypt \
+yum install vim wget httpd php php-cli php-mysql php-gd php-mcrypt \
               gmp-devel php-gmp php-pdo php-xml php-pear-Log \
               php-pear-MDB2 php-pear-MDB2-Driver-mysql \
               java-1.7.0-openjdk java-1.7.0-openjdk-devel \
