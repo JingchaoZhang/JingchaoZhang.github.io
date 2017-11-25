@@ -15,6 +15,7 @@ systemctl start httpd
 systemctl enable httpd
 systemctl start mariadb.service 
 systemctl enable mariadb.service
+setenforce 0
 cp /usr/share/zoneinfo/America/Chicago /etc/localtime
 vim /etc/php.ini; date.timezone = America/Chicago
 ```
