@@ -4,11 +4,14 @@ author_profile: false
 ---
 
 ```bash
+yum install epel-release -y
+yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm -y
 yum install vim wget httpd php php-cli php-mysql php-gd php-mcrypt \
               gmp-devel php-gmp php-pdo php-xml php-pear-Log \
               php-pear-MDB2 php-pear-MDB2-Driver-mysql \
               java-1.7.0-openjdk java-1.7.0-openjdk-devel \
               mariadb-server mariadb cronie logrotate -y
+yum install php-pear-MDB2 php-pear-Log php-mcrypt php-pear-MDB2-Driver-mysql -y
 ```
 ```bash
 systemctl start httpd
