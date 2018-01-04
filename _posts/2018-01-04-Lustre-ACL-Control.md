@@ -27,3 +27,5 @@ group::---
 mask::r-x
 other::---
 ```
+
+Source: http://supercomputers.aei.mpg.de/user-guide-2/lustre-file-system-acls-quota/
