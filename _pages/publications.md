@@ -7,7 +7,7 @@ author_profile: false
 
 (<sup>\*</sup>Corresponding author; <sup>†</sup>Equal contribution)  
 
-1. Y Hong, M Ju, J Zhang, XC Zeng, "_Phonon Thermal Transport in Graphene/MoSe2 van der Waals Heterobilayer_", Physical Chemistry Chemical Physics, DOI: 10.1039/C7CP06874C, 2018 [url](http://pubs.rsc.org/en/content/articlelanding/2017/cp/c7cp06874c#!divAbstract)
+1. Y Hong, M Ju, **J Zhang**<sup>\*</sup>, XC Zeng<sup>\*</sup>, "_Phonon Thermal Transport in Graphene/MoSe2 van der Waals Heterobilayer_", Physical Chemistry Chemical Physics, DOI: 10.1039/C7CP06874C, 2018 [url](http://pubs.rsc.org/en/content/articlelanding/2017/cp/c7cp06874c#!divAbstract)
 1. C Li, **J Zhang**, Q Xiong, G Lorenzini, Y Yue<sup>\*</sup>, "_pH Effect on Thermal Response of Fluorescence Spectroscopy of Graphene Quantum Dots for Nanoscale Thermal Characterization_", Journal of Engineering Thermophysics, 2018 (Accepted)
 1. Y Hong, **J Zhang**<sup>\*</sup>, XC Zeng<sup>\*</sup>, "_Thermal Transport in Phosphorene and Phosphorene-Based Materials: A Review on Numerical Studies_", Chinese Physics B, 2018 (Invited Review，Accepted)
 1. D Liao, W Chen, **J Zhang**, Y Yue<sup>\*</sup>, "_Tuning Thermal Conductance of CNT Interface Junction via Stretching and Atomic Bonding_", Journal of Physics D: Applied Physics, 50, 475302, 2017 [pdf](https://drive.google.com/file/d/0B3Yj4QkZpI-dUjhxMnhKcUVYRW8/view?usp=sharing), [Endnote](https://drive.google.com/uc?export=download&id=0B3Yj4QkZpI-dZ3d0UVNwaHBia2c)
