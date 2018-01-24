@@ -7,6 +7,7 @@ author_profile: false
 
 (<sup>\*</sup>Corresponding author; <sup>†</sup>Equal contribution)  
 
+1. Y Hong, **J Zhang**<sup>\*</sup>, XC Zeng<sup>\*</sup>, "_Monolayer and Bilayer Polyaniline C3N: Two-Dimensional Semiconductors with High Thermal Conductivity_", Nanoscale, 2018 (Accepted)
 1. Y Hong, M Ju, **J Zhang**<sup>\*</sup>, XC Zeng<sup>\*</sup>, "_Phonon Thermal Transport in Graphene/MoSe2 van der Waals Heterobilayer_", Physical Chemistry Chemical Physics, DOI: 10.1039/C7CP06874C, 2018 [pdf](https://drive.google.com/file/d/1k5u2lq0edLLrHe_thXeGPViDP6baNOrH/view?usp=sharing)
 1. C Li, **J Zhang**, Q Xiong, G Lorenzini, Y Yue<sup>\*</sup>, "_pH Effect on Thermal Response of Fluorescence Spectroscopy of Graphene Quantum Dots for Nanoscale Thermal Characterization_", Journal of Engineering Thermophysics, 2018 (Accepted)
 1. Y Hong, **J Zhang**<sup>\*</sup>, XC Zeng<sup>\*</sup>, "_Thermal Transport in Phosphorene and Phosphorene-Based Materials: A Review on Numerical Studies_", Chinese Physics B, 2018 (Invited Review，Accepted)
