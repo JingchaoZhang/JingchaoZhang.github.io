@@ -6,6 +6,7 @@ author_profile: false
 ```bash
 yum install epel-release -y
 yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm -y
+yum groupinstall "Development Tools" -y
 yum install vim wget httpd php php-cli php-mysql php-gd php-mcrypt \
               gmp-devel php-gmp php-pdo php-xml php-pear-Log \
               php-pear-MDB2 php-pear-MDB2-Driver-mysql \
@@ -26,7 +27,6 @@ reboot
 ```
 ```bash
 wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2
-yum groupinstall "Development Tools" -y
 tar jxvf phantomjs-2.1.1-linux-x86_64.tar.bz2
 yum install xdmod-6.5.0-1.0.el7.centos.noarch.rpm -y
 ```
