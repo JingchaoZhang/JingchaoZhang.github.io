@@ -18,9 +18,11 @@ systemctl start httpd
 systemctl enable httpd
 systemctl start mariadb.service 
 systemctl enable mariadb.service
-setenforce 0
 cp /usr/share/zoneinfo/America/Chicago /etc/localtime
 vim /etc/php.ini; date.timezone = America/Chicago
+vim /etc/sysconfig/selinux
+    SELINUX=disabled
+reboot
 ```
 ```bash
 wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2
