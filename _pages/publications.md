@@ -7,7 +7,7 @@ author_profile: false
 
 (<sup>\*</sup>Corresponding author; <sup>†</sup>Equal contribution)  
 
-1. Y Hong, **J Zhang**<sup>\*</sup>, XC Zeng<sup>\*</sup>, "_Monolayer and Bilayer Polyaniline C<sub>3</sub>N: Two-Dimensional Semiconductors with High Thermal Conductivity_", Nanoscale, DOI: 10.1039/C7NR08458G, 2018 [pdf](https://drive.google.com/file/d/1sECnbFaP6Q1bmvQS4k0AjIOJqxok746I/view?usp=sharing)
+1. Y Hong, **J Zhang**<sup>\*</sup>, XC Zeng<sup>\*</sup>, "_Monolayer and Bilayer Polyaniline C<sub>3</sub>N: Two-Dimensional Semiconductors with High Thermal Conductivity_", Nanoscale, 10, 4301-4310, 2018 [pdf](https://drive.google.com/file/d/1sECnbFaP6Q1bmvQS4k0AjIOJqxok746I/view?usp=sharing)
 1. Y Hong, M Ju, **J Zhang**<sup>\*</sup>, XC Zeng<sup>\*</sup>, "_Phonon Thermal Transport in Graphene/MoSe<sub>2</sub> van der Waals Heterobilayer_", Physical Chemistry Chemical Physics, 20, 2637-2645, 2018 [pdf](https://drive.google.com/file/d/1k5u2lq0edLLrHe_thXeGPViDP6baNOrH/view?usp=sharing), [Endnote](https://drive.google.com/uc?export=download&id=1ZJy2oPJVW0wXyWCvhVaUJGBgGGVWsfaS)
 1. C Li, **J Zhang**, Q Xiong, G Lorenzini, Y Yue<sup>\*</sup>, "_pH Effect on Thermal Response of Fluorescence Spectroscopy of Graphene Quantum Dots for Nanoscale Thermal Characterization_", Journal of Engineering Thermophysics, 2018 (Accepted)
 1. Y Hong, **J Zhang**<sup>\*</sup>, XC Zeng<sup>\*</sup>, "_Thermal Transport in Phosphorene and Phosphorene-Based Materials: A Review on Numerical Studies_", Chinese Physics B, 27, 036501, 2018 [pdf](https://drive.google.com/file/d/1u7typxe5JFBIy2WccJqppn1kRMj4wYIm/view?usp=sharing), [Endnote](https://drive.google.com/uc?export=download&id=1bVoKtKJo2kXffScuZml13ccHEqH1V6ih)
