@@ -3,13 +3,13 @@ layout: single
 author_profile: false
 ---
 
-*OpenStack
-  *Flavor: general-xlarge
-  *Boot from snapshot: hcc0xdmod prod snap 3/8/18
-  *Security Groups: Port 8080/tcp; default
-  *Networking: Cluster Interface
+-OpenStack
+  -Flavor: general-xlarge
+  -Boot from snapshot: hcc0xdmod prod snap 3/8/18
+  -Security Groups: Port 8080/tcp; default
+  -Networking: Cluster Interface
 
-*Within VM
+-Within VM
 ```bash
 cd /etc/httpd/conf.d
 mv xdmod.conf xdmod.conf.20180308
