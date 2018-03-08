@@ -5,8 +5,8 @@ author_profile: false
 
 - OpenStack
   - Flavor: general-xlarge
-  - Boot from snapshot: hcc0xdmod prod snap 3/8/18
-  - Security Groups: Port 8080/tcp; default
+  - Boot from snapshot: "hcc-xdmod prod snap 3/8/18"
+  - Security Groups: **Port 8080/tcp**; default
   - Networking: Cluster Interface
 
 - Within VM
