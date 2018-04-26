@@ -7,6 +7,6 @@ author_profile: false
 ```bash
 $ ./bootstrap.sh --prefix=/home/username/usr
 $ vim boost_1_55_0/tools/build/v2/user-config.jam
-using mpi ；#add to last time
+using mpi ；#add this to the last line
 $ ./b2 install --prefix=/home/username/usr | tee install.log
 ```
