@@ -13,6 +13,7 @@ author_profile: false
 ```bash
 cd /etc/httpd/conf.d
 mv xdmod.conf xdmod.conf.20180308
+mv xdmod.conf.20170321 xdmod.conf
 mv ssl.conf ssl.conf.20180308
 mv http-trace-off.conf http-trace-off.conf.20180308
 cd /etc/httpd/conf.modules.d
