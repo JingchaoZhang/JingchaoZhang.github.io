@@ -33,7 +33,7 @@ xdmod-import-csv -t names -i names.csv
 ```
 
 - Fix database
-```mysql
+```bash
 use mod_hpcdb;
 update hpcdb_jobs set groupname='gladich' where uid_number=4963;
 update hpcdb_jobs set gid_number=11378 where uid_number=4963;
