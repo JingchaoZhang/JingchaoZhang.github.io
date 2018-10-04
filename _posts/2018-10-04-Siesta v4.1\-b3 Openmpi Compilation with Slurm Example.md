@@ -1,0 +1,125 @@
+---
+layout: single
+author_profile: false
+---
+
+SIESTA is both a method and its computer program implementation, to perform efficient electronic structure calculations and ab initio molecular dynamics simulations of molecules and solids. 
+
+```bash
+wget https://launchpad.net/siesta/4.1/4.1-b3/+download/siesta-4.1-b3.tar.gz
+tar zxvf siesta-4.1-b3.tar.gz
+cd siesta-4.1-b3/Obj/
+bash ../Src/obj_setup.sh
+vim arch.make
+```
+
+arch.make file contents intel compiler with openmpi
+```bash
+ml load compiler/intel/15 openmpi/1.10 intel-mkl/15
+```
+```bash
+#
+# Copyright (C) 1996-2016       The SIESTA group
+#  This file is distributed under the terms of the
+#  GNU General Public License: see COPYING in the top directory
+#  or http://www.gnu.org/copyleft/gpl.txt.
+# See Docs/Contributors.txt for a list of contributors.
+#
+#-------------------------------------------------------------------
+# arch.make file for gfortran compiler.
+# To use this arch.make file you should rename it to
+#   arch.make
+# or make a sym-link.
+# For an explanation of the flags see DOCUMENTED-TEMPLATE.make
+
+.SUFFIXES:
+.SUFFIXES: .f .F .o .c .a .f90 .F90
+
+SIESTA_ARCH = unknown
+
+CC = mpicc
+FPP = $(FC) -E -P -x c
+FC = mpif90
+
+FFLAGS = -O2 -fPIC -ftree-vectorize
+
+AR = ar
+RANLIB = ranlib
+
+SYS = nag
+
+LDFLAGS = -L/util/opt/openmpi/1.10/intel/15/lib -lmpi
+
+COMP_LIBS = libsiestaLAPACK.a libsiestaBLAS.a
+
+FPPFLAGS = -DMPI -DMPI_TIMING -DFC_HAVE_FLUSH -DFC_HAVE_ABORT
+
+MKL              = /util/comp/intel/15/mkl
+INTEL_LIBS       = $(MKL)/lib/intel64/libmkl_intel_lp64.a \
+                   $(MKL)/lib/intel64/libmkl_sequential.a \
+                   $(MKL)/lib/intel64/libmkl_core.a \
+                   $(MKL)/lib/intel64/libmkl_blacs_openmpi_lp64.a \
+                   $(MKL)/lib/intel64/libmkl_scalapack_lp64.a
+MKL_LIBS         = -Wl,--start-group $(INTEL_LIBS) \
+                   -Wl,--end-group -lpthread -lm
+MKL_INCLUDE      = -I$(MKL)/include
+
+MPI_INTERFACE = libmpi_f90.a
+MPI_INCLUDE = /util/opt/openmpi/1.10/intel/15/include
+MPI_LIBS = -L/util/opt/openmpi/1.10/intel/15/lib -lmpi
+
+DUMMY_FOX= --enable-dummy
+
+LIBS = $(MKL_LIBS) $(MPI_LIBS)
+
+# Dependency rules ---------
+
+FFLAGS_DEBUG = -g -O1   # your appropriate flags here...
+
+# The atom.f code is very vulnerable. Particularly the Intel compiler
+# will make an erroneous compilation of atom.f with high optimization
+# levels.
+atom.o: atom.F
+        $(FC) -c $(FFLAGS_DEBUG) $(INCFLAGS) $(FPPFLAGS) $(FPPFLAGS_fixed_F) $<
+
+.c.o:
+        $(CC) -c $(CFLAGS) $(INCFLAGS) $(CPPFLAGS) $<
+.F.o:
+        $(FC) -c $(FFLAGS) $(INCFLAGS) $(FPPFLAGS) $(FPPFLAGS_fixed_F)  $<
+.F90.o:
+        $(FC) -c $(FFLAGS) $(INCFLAGS) $(FPPFLAGS) $(FPPFLAGS_free_F90) $<
+.f.o:
+        $(FC) -c $(FFLAGS) $(INCFLAGS) $(FCFLAGS_fixed_f)  $<
+.f90.o:
+        $(FC) -c $(FFLAGS) $(INCFLAGS) $(FCFLAGS_free_f90)  $<
+```
+
+Slurm file
+```bash
+#/bin/bash
+#SBATCH -n 4
+#SBATCH -t 01:00:00
+#SBATCH --mem-per-cpu=1G
+#SBATCH --error=job.%J.err
+#SBATCH --output=job.%J.out
+
+ml load compiler/intel/15 openmpi/1.10 intel-mkl/15
+mpirun -np 4 siesta ch4.fdf
+```
+
+Note:
+1. siesta sometimes cannot take command line re-direction properly. So "mpirun -np 4 siesta < ch4.fdf" is not suggested. 
+2. The number of cores for parallel siesta cannot be smaller than the number of atoms in the system. So example like Fe.fdf cannot run in paralle, since the system only has 1 atom.
+(Ref: https://www.mail-archive.com/siesta-l@uam.es/msg07962.html) 
+
+
+
+
+
+
+
+
+
+
+
+
