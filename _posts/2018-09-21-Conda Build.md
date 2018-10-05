@@ -15,6 +15,6 @@ conda render -c hcc -m /opt/conda/conda_build_config.yaml -m /opt/conda/lib/pyth
 ```
 
 Kill all docker processes
-``bash
+```bash
 docker ps -aq | xargs docker rm
 ```
