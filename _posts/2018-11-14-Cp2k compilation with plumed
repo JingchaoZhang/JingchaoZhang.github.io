@@ -15,3 +15,4 @@ make libintel64 compiler=intel
 cp /util/comp/intel/2016.3/mkl/interfaces/fftw3xc/libfftw3xc_intel.a /util/comp/intel/2016.3/mkl/lib/intel64/
 cp /util/comp/intel/2016.3/mkl/interfaces/fftw3xf/libfftw3xf_intel.a /util/comp/intel/2016.3/mkl/lib/intel64/
 ```
+https://software.intel.com/en-us/mkl-developer-reference-c-building-your-own-fftw3-interface-wrapper-library
