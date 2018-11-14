@@ -1,0 +1,17 @@
+---
+layout: single
+author_profile: false
+---
+
+
+Building Your Own FFTW3 Interface Wrapper Library
+```bash
+source /util/opt/lmod/lmod/init/profile
+ml load compiler/intel/16
+cd /util/comp/intel/2016.3/mkl/interfaces/fftw3xf
+make libintel64 compiler=intel
+cd /util/comp/intel/2016.3/mkl/interfaces/fftw3xc
+make libintel64 compiler=intel
+cp /util/comp/intel/2016.3/mkl/interfaces/fftw3xc/libfftw3xc_intel.a /util/comp/intel/2016.3/mkl/lib/intel64/
+cp /util/comp/intel/2016.3/mkl/interfaces/fftw3xf/libfftw3xf_intel.a /util/comp/intel/2016.3/mkl/lib/intel64/
+```
