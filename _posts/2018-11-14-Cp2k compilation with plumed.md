@@ -69,3 +69,20 @@ Generic Unix FS: yes
 Lustre: yes
 PVFS2/OrangeFS: no
 ```
+
+dbcsr_tensor_test.F90 error
+```bash
+/tmp/ifortFeHxAb.i90: catastrophic error: **Internal compiler error: segmentation violation signal raised** Please report this error along with the circumstances in which it occurred in a Software Problem Report.  Note: File and line given may not be explicit cause of this error.
+compilation aborted for dbcsr_tensor_test.F90 (code 1)
+make[3]: *** [dbcsr_tensor_test.o] Error 1
+make[2]: *** [all] Error 2
+make[1]: *** [popt] Error 2
+make: *** [all] Error 2
+```
+Fix
+```
+As a quick and dirty solution, you could remove the two files
+dbcsr_tensor/dbcsr_tensor_test.F
+dbcsr_tensor/dbcsr_tensor_unittest.F
+and CP2K will probably compile fine even with the 2015 version of the intel compiler, since these 2 files are compiled into a separate executable and not part of CP2K executable.
+```
