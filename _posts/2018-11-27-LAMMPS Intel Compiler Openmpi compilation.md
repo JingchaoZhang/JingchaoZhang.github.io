@@ -3,7 +3,6 @@ layout: single
 author_profile: false
 ---
 
-```bash
 1. wget https://github.com/lammps/lammps/archive/stable_22Aug2018.tar.gz
 1. tar zxvf stable_22Aug2018.tar.gz
 1. cd lammps-stable_22Aug2018/src
@@ -13,4 +12,3 @@ author_profile: false
 1. make -j 8 -f Makefile.mpi
 1. cd ../../src
 1. make -j 8 icc_openmpi
-```
