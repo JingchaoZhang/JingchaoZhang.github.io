@@ -41,3 +41,6 @@ ChallengeResponseAuthentication yes
 ```
 
 [Link](https://hcc-docs.unl.edu/pages/viewpage.action?spaceKey=ADMIN&title=OpenConnect+VPN)
+
+Make sure sssd configuration is correct.
+/etc/sssd/sssd.conf
