@@ -7,6 +7,7 @@ author_profile: false
 
 (<sup>\*</sup>Corresponding author; <sup>†</sup>Equal contribution)  
 
+1. Y Hong, **J Zhang**, C Zhu<sup>\*</sup>, XC Zeng<sup>\*</sup>, J Francisco, "_Water Desalination through Rim Functionalized Carbon Nanotubes_", Journal of Materials Chemistry A, 2019 [Accepted]
 1. D Han, X Wang<sup>\*</sup>, W Ding, Y Chen, **J Zhang**, G Xin, L Cheng<sup>\*</sup>, "_Phonon thermal conduction in a graphene-C<sub>3</sub>N heterobilayer using molecular dynamics simulations_", Nanotechnology, 2018 [In Print](http://iopscience.iop.org/article/10.1088/1361-6528/aaf481)
 1. Y Hong, Z Zhang, **J Zhang**<sup>\*</sup>, XC Zeng<sup>\*</sup>, "_Machine Learning and Artificial Neural Network Prediction of Interfacial Thermal Resistance between Graphene and Hexagonal Boron Nitride_", Nanoscale, 10, 19092-19099, 2018 [pdf](https://drive.google.com/file/d/1-mUKthEzCdohvYXtTj_1QzqLwKe0oGZ5/view?usp=sharing), [Endnote](https://drive.google.com/uc?export=download&id=1R_SUDPaCgP0ktp5DMrVbTy_ge3qJPbnB)
 1. M Han, Y Xie, J Liu, **J Zhang**, X Wang<sup>\*</sup>, "_Significantly Reduced c-axis Thermal Diffusivity of Graphene-based Papers_", Nanotechnology, 29, 265702, 2018 [pdf](https://drive.google.com/file/d/12vrbAVAE5yhElxyaysbJXoMcDQT0xEQ_/view?usp=sharing), [Endnote](https://drive.google.com/uc?export=download&id=1Ouoij_GYguDGWXZuTTO84psoiOwbHc_T)
