@@ -7,6 +7,9 @@ author_profile: false
 
 (<sup>\*</sup>Corresponding author; <sup>†</sup>Equal contribution)  
 
+
+1. X Wang, Y Hong, M Wang, G Xin, Y Yue, **J Zhang**<sup>\*</sup>, "_Mechanical Properties of Molybdenum Diselenide Revealed by Molecular Dynamics Simulation and Support Vector Machine_", Physical Chemistry Chemical Physics, 2019 [In Print]
+1. Y Xiong, H Wu, J Gao, W Chen, **J Zhang**<sup>\*</sup>, Y Yue<sup>\*</sup>, "_A Molecular Dynamics Study on Thermal Conductance of Graphene-Polyethylene Composites with Vacancy Defects_", Acta Physico-Chimica Sinica, 2019 [In Print]
 1. Y Hong, **J Zhang**, C Zhu<sup>\*</sup>, XC Zeng<sup>\*</sup>, J Francisco, "_Water Desalination through Rim Functionalized Carbon Nanotubes_" (outside front cover), Journal of Materials Chemistry A, 2019 [In Print](https://pubs.rsc.org/en/content/articlelanding/2018/ta/c8ta10941a#!divAbstract)
 1. D Han, X Wang<sup>\*</sup>, W Ding, Y Chen, **J Zhang**, G Xin, L Cheng<sup>\*</sup>, "_Phonon thermal conduction in a graphene-C<sub>3</sub>N heterobilayer using molecular dynamics simulations_", Nanotechnology, 30, 075403, 2018 [pdf](https://drive.google.com/uc?export=download&id=1NrZk_BFOK1-de00kWBua7Egqhpz31fYA), [Endnote](https://drive.google.com/uc?export=download&id=10pyX0IA0xN29_HcFoLM-KpDwTJE6TqK5)
 1. Y Hong, Z Zhang, **J Zhang**<sup>\*</sup>, XC Zeng<sup>\*</sup>, "_Machine Learning and Artificial Neural Network Prediction of Interfacial Thermal Resistance between Graphene and Hexagonal Boron Nitride_", Nanoscale, 10, 19092-19099, 2018 [pdf](https://drive.google.com/file/d/1-mUKthEzCdohvYXtTj_1QzqLwKe0oGZ5/view?usp=sharing), [Endnote](https://drive.google.com/uc?export=download&id=1R_SUDPaCgP0ktp5DMrVbTy_ge3qJPbnB)
