@@ -48,6 +48,10 @@ systemctl start slurmctld.service
 systemctl status slurmctld.service
 systemctl enable slurmctld.service
 #Slurm DBD
+MariaDB [(none)]> GRANT ALL PRIVILEGES ON *.* TO 'slurm'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+MariaDB [(none)]> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.00 sec)
 mkdir -p /var/log/slurm/archive
 chown slurm: /var/log/slurm/archive
 systemctl start slurmdbd.service
