@@ -18,9 +18,9 @@ yum install perl-Tk-devel.x86_64 -y
 ```
 Munge and Mysql
 ```bash
-chmod 711 /var/lib/munge/
 dd if=/dev/urandom bs=1 count=1024 >/etc/munge/munge.key
 chmod 400 /etc/munge/munge.key
+chmod 711 /var/lib/munge/
 chown munge /etc/munge/munge.key
 systemctl start munge
 systemctl status munge
@@ -32,6 +32,7 @@ systemctl enable mariadb
 SLURM
 ```bash
 rpmbuild --tb --with mysql slurm-17.02.7.tar.bz2
+#NOTE slurm-17.02.7.tar.bz2 name format is required. slurm-17-02-7.tar.bz2 will fail the rpmbuild. 
 cd rpmbuild/RPMS/
 yum install * -y
 cd /etc/slurm/
@@ -43,9 +44,9 @@ chown slurm: /var/spool/slurm/ctld
 systemctl start slurmd.service
 systemctl status slurmd.service
 systemctl enable slurmd.service
-systemctl status slurmctld.service
 systemctl start slurmctld.service
 systemctl status slurmctld.service
+systemctl enable slurmctld.service
 ```
 slurm.conf
 ```bash
