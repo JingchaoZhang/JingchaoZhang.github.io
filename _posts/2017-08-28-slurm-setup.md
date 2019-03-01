@@ -66,6 +66,12 @@ systemctl start slurmdbd.service
 systemctl status slurmdbd.service
 systemctl enable slurmdbd.service
 ```
+
+Populate the mysql database from a previous dump
+```bash
+mysql -u slurm -p slurm_acct_db < slurm_acct_db.sql
+```
+
 slurm.conf
 ```bash
 #
@@ -162,3 +168,4 @@ JobCompType=jobcomp/none
 NodeName=comsol-centos Procs=8 State=UNKNOWN
 PartitionName=batch Nodes=ALL Default=YES MaxTime=INFINITE State=UP
 ```
+Grep the NodeName from `hostname` output.
