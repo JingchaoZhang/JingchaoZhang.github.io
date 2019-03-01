@@ -60,6 +60,7 @@ systemctl start slurmctld.service
 systemctl status slurmctld.service
 systemctl enable slurmctld.service
 #Slurm DBD
+#Uncomment AccountingStorageType in /etc/slurm/slurm.conf
 mkdir -p /var/log/slurm/archive
 chown slurm: /var/log/slurm/archive
 systemctl start slurmdbd.service
