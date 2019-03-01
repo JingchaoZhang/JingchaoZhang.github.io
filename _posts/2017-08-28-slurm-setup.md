@@ -47,6 +47,12 @@ systemctl enable slurmd.service
 systemctl start slurmctld.service
 systemctl status slurmctld.service
 systemctl enable slurmctld.service
+#Slurm DBD
+mkdir -p /var/log/slurm/archive
+chown slurm: /var/log/slurm/archive
+systemctl start slurmdbd.service
+systemctl status slurmdbd.service
+systemctl enable slurmdbd.service
 ```
 slurm.conf
 ```bash
