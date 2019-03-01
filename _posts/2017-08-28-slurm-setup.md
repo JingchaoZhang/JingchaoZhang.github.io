@@ -72,6 +72,11 @@ Populate the mysql database from a previous dump
 mysql -u slurm -p slurm_acct_db < slurm_acct_db.sql
 ```
 
+Check the processes in mysql database every second
+```bash
+mysqladmin -u root -i 1 processlist
+```
+
 slurm.conf
 ```bash
 #
