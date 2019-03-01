@@ -29,6 +29,18 @@ systemctl start mariadb
 systemctl status mariadb
 systemctl enable mariadb
 ```
+
+```mysql
+mysql> create user 'slurm'@'localhost' identified by 'password';
+Query OK, 0 rows affected (0.00 sec)
+# The password created for slurm user need to match "StoragePass" in "/etc/slurm/slurmdbd.conf"
+
+mysql> grant all on slurm_acct_db.* TO 'slurm'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> create database slurm_acct_db;
+```
+
 SLURM
 ```bash
 rpmbuild --tb --with mysql slurm-17.02.7.tar.bz2
@@ -48,10 +60,6 @@ systemctl start slurmctld.service
 systemctl status slurmctld.service
 systemctl enable slurmctld.service
 #Slurm DBD
-MariaDB [(none)]> GRANT ALL PRIVILEGES ON *.* TO 'slurm'@'localhost';
-Query OK, 0 rows affected (0.00 sec)
-MariaDB [(none)]> FLUSH PRIVILEGES;
-Query OK, 0 rows affected (0.00 sec)
 mkdir -p /var/log/slurm/archive
 chown slurm: /var/log/slurm/archive
 systemctl start slurmdbd.service
