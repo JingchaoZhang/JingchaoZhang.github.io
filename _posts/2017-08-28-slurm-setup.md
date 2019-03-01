@@ -30,7 +30,7 @@ systemctl status mariadb
 systemctl enable mariadb
 ```
 
-```mysql
+```sql
 mysql> create user 'slurm'@'localhost' identified by 'password';
 Query OK, 0 rows affected (0.00 sec)
 # The password created for slurm user need to match "StoragePass" in "/etc/slurm/slurmdbd.conf"
