@@ -33,7 +33,7 @@ SLURM
 ```bash
 rpmbuild --tb --with mysql slurm-17.02.7.tar.bz2
 #NOTE slurm-17.02.7.tar.bz2 name format is required. slurm-17-02-7.tar.bz2 will fail the rpmbuild. 
-cd rpmbuild/RPMS/
+cd ~/rpmbuild/RPMS/
 yum install * -y
 cd /etc/slurm/
 cp slurm.conf.example slurm.conf
