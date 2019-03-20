@@ -7,8 +7,8 @@ author_profile: false
 
 (<sup>\*</sup>Corresponding author; <sup>†</sup>Equal contribution)  
 
-1. Y Hong, Y Wu, S Wu, X Wang, **J Zhang**<sup>\*</sup>, "_Overview of Computational Simulations in Quantum Dots_", Israel Journal of Chemistry, 2019 [In Print]
-1. Z Zhang, Y Hong, B Hou, Z Zhang, M Negahban, **J Zhang**<sup>\*</sup>, "_Accelerated Discoveries of Mechanical Properties of Graphene Using Machine Learning and High-Throughput Computation_", Carbon, 2019 [In Print]
+1. Y Hong, Y Wu, S Wu, X Wang, **J Zhang**<sup>\*</sup>, "_Overview of Computational Simulations in Quantum Dots_", Israel Journal of Chemistry, 2019 [In Print]()
+1. Z Zhang, Y Hong, B Hou, Z Zhang, M Negahban, **J Zhang**<sup>\*</sup>, "_Accelerated Discoveries of Mechanical Properties of Graphene Using Machine Learning and High-Throughput Computation_", Carbon, 2019 [In Print]()
 1. X Wang, Y Hong, M Wang, G Xin, Y Yue, **J Zhang**<sup>\*</sup>, "_Mechanical Properties of Molybdenum Diselenide Revealed by Molecular Dynamics Simulation and Support Vector Machine_", Physical Chemistry Chemical Physics, 2019 [In Print](https://pubs.rsc.org/en/Content/ArticleLanding/2019/CP/C8CP07881E#!divAbstract)
 1. Y Xiong, H Wu, J Gao, W Chen, **J Zhang**<sup>\*</sup>, Y Yue<sup>\*</sup>, "_A Molecular Dynamics Study on Thermal Conductance of Graphene-Polyethylene Composites with Vacancy Defects_", Acta Physico-Chimica Sinica, 2019 [pdf](https://drive.google.com/uc?export=download&id=1hD--MZAkrm2w7zpOpH6ZmWK64A1WYhT3), [Endnote](https://drive.google.com/uc?export=download&id=1v_wFh63Gjdnul8chgS1s7i4qRreSMCSJ)
 1. Y Hong, **J Zhang**, C Zhu<sup>\*</sup>, XC Zeng<sup>\*</sup>, J Francisco, "_Water Desalination through Rim Functionalized Carbon Nanotubes_" [Cover Article](https://drive.google.com/uc?export=download&id=1HEtxkD1w4FyBffVsLtWWaBo4_kKu6ZFJ), Journal of Materials Chemistry A, 7, 3583-3591, 2019 [pdf](https://drive.google.com/uc?export=download&id=1vSOt9J_dsNnpZiDcBepsy5Imy1KedKyv), [Endnote](https://drive.google.com/uc?export=download&id=1XmpT1jEp9kdlLOL7FoCxhuVWpSi9OecA)
