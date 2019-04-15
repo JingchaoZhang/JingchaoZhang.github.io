@@ -6,6 +6,7 @@ author_profile: true
 {% include base_path %}
 
 <h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
+<script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?d=jrwmMB5TLBWBfwgKKwcqr3mE3cxLiuu7Wc-UN6VoBYg&cl=ffffff&w=a"></script>
 
 {% for post in paginator.posts %}
   {% include archive-single.html %}
