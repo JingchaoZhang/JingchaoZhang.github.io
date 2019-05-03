@@ -7,6 +7,7 @@ author_profile: false
 
 (<sup>\*</sup>Corresponding author; <sup>†</sup>Equal contribution)  
 
+1. W Ding, D Han, J Zhang, X Wang<sup>\*</sup>, "_Mechanical Responses of WSe<sub>2</sub> Monolayers: A Molecular Dynamics Study_", Materials Research Express, 2019, [Accepted]()
 1. Y Hong, Y Wu, S Wu, X Wang, **J Zhang**<sup>\*</sup>, "_Overview of Computational Simulations in Quantum Dots_", Israel Journal of Chemistry, 59, 1–13, 2019 [pdf](https://drive.google.com/file/d/14MZ9eGvzLXFkTjf9m713s-8ooDSlySMd/view?usp=sharing), [Endnote](https://drive.google.com/uc?export=download&id=11IbuYseV9TjA5so-vHovLT9ubQ1G5U4H)
 1. Z Zhang, Y Hong, B Hou, Z Zhang, M Negahban, **J Zhang**<sup>\*</sup>, "_Accelerated Discoveries of Mechanical Properties of Graphene Using Machine Learning and High-Throughput Computation_", Carbon, 148, 115-123, 2019 [pdf](https://drive.google.com/file/d/135cjpy0XeG1xwKV36J-Po_XvT4CtbtMK/view?usp=sharing), [Endnote](https://drive.google.com/uc?export=download&id=1ixkfDtvS0PK2id4dCfvVZWeD0Sae-Cz0)
 1. X Wang, Y Hong, M Wang, G Xin, Y Yue, **J Zhang**<sup>\*</sup>, "_Mechanical Properties of Molybdenum Diselenide Revealed by Molecular Dynamics Simulation and Support Vector Machine_", Physical Chemistry Chemical Physics, 10.1039/C8CP07881E, 2019 [In Print](https://pubs.rsc.org/en/Content/ArticleLanding/2019/CP/C8CP07881E#!divAbstract)
