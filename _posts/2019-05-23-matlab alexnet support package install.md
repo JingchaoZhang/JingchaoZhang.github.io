@@ -15,6 +15,6 @@ Above instructions cannot be used in cluster environment. To install support pac
 1. Make sure X11 is working
 1. <MATLAB root directory>/bin/glnxa64/SupportSoftwareInstaller -downloadfolder <pathtodownloadfolder> -inputFile <pathtoinputFile>/ssi_input.txt
 
-Userful links:
-[How do I silently install Support Packages in MATLAB R2018a or newer?](https://www.mathworks.com/matlabcentral/answers/389223-how-do-i-silently-install-support-packages-in-matlab-r2018a-or-newer)
+Userful links:  
+[How do I silently install Support Packages in MATLAB R2018a or newer?](https://www.mathworks.com/matlabcentral/answers/389223-how-do-i-silently-install-support-packages-in-matlab-r2018a-or-newer)  
 [How do I download Hardware Support Packages and Optional Features for installation on a computer that is offline or that is behind a Proxy/Firewall?](https://www.mathworks.com/matlabcentral/answers/293235-how-do-i-download-hardware-support-packages-and-optional-features-for-installation-on-a-computer-tha)
