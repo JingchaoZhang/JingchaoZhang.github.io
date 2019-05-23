@@ -7,7 +7,7 @@ author_profile: false
 If Deep Learning Toolbox Model for AlexNet Network support package is not installed, then the function provides a link to the required support package in the Add-On Explorer. To install the support package, click the link, and then click Install. Check that the installation is successful by typing alexnet at the command line.
 [Details](https://www.mathworks.com/help/deeplearning/ref/alexnet.html#bvnyo6s)
 
-Above instructions cannot be applied to cluster environment. To install support packages from command line, one needs to
+Above instructions cannot be used in cluster environment. To install support packages from command line, one needs to
 1. Download and run the file from the URL below [url](https://www.mathworks.com/support/install/support-software-downloader.html?s_tid=srchtitle)
 1. Login to a MathWorks account when prompted
 1. Select and Download the Support Software
