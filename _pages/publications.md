@@ -7,6 +7,7 @@ author_profile: false
 
 (<sup>\*</sup>Corresponding author; <sup>†</sup>Equal contribution)  
 
+1. B Hou, Su-Ho Jung, **Jingchao Zhang**, Yang Hong, Byung-Sung Kim, Jung Inn Sohn, Eun-Kyung Lee, Byoung Lyong Choi, Dongmok Whang, SeungNam Cha, JongMin Kim, "_Growth of Quantum Dot Coated Core-Shell Anisotropic Nanowires and Their Thermal and Electronic Transport_", Applied Physics Letters, 2019, [Accepted]()
 1. B Yang, M Li, J Wang, **J Zhang**, D Liao, Y Yue, "_Critical Fracture Properties in Puckered and Buckled Arsenene by Molecular Dynamics Simulation_", Physical Chemistry Chemical Physics, 10.1039/C9CP01605H, 2019, [Accepted](https://pubs.rsc.org/en/content/articlelanding/2019/cp/c9cp01605h#!divAbstract)
 1. X Wang<sup>\*</sup>, D Han, Y Hong, H Sun, Jingzhi Zhang, **J Zhang**<sup>\*</sup>, "_Machine Learning Enabled Prediction of Mechanical Properties of Tungsten Disulfide Monolayer_", ACS Omega, 2019, [Accepted]()
 1. W Ding, D Han, **J Zhang**, X Wang<sup>\*</sup>, "_Mechanical Responses of WSe<sub>2</sub> Monolayers: A Molecular Dynamics Study_", Materials Research Express, 2, 085071, 2019, [pdf](https://drive.google.com/file/d/12c0kijqGKKUxgNFdALvV62PjyUHDUj0R/view?usp=sharing), [Endnote](https://drive.google.com/uc?export=download&id=1ZCex0B-9K3aWD8rpYC92Hi9k9hxvs1mi)
