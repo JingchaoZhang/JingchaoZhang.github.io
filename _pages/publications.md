@@ -7,6 +7,7 @@ author_profile: false
 
 (<sup>\*</sup>Corresponding author; <sup>†</sup>Equal contribution)  
 
+1. Bo Hou, Myungbeom Sohn, Young-Woo Lee, **Jingchao Zhang**, Jung Inn Sohn, Hansu Kim<sup>\*</sup>, SeungNam Cha<sup>\*</sup> and Jong Min Kimg, "Chemically Encoded Self-Organized Quantum Chain Supracrystals with Exceptional Charge and Ion Transport Properties", *Nano Energy*, 2019, [Accepted]()
 1. Bo Hou, Su-Ho Jung, **Jingchao Zhang**, Yang Hong, Byung-Sung Kim, Jung Inn Sohn, Eun-Kyung Lee, Byoung Lyong Choi, Dongmok Whang, SeungNam Cha<sup>\*</sup>, JongMin Kim, "_Growth of Quantum Dot Coated Core-Shell Anisotropic Nanowires and Their Thermal and Electronic Transport_", *Applied Physics Letters*, 2019, [Accepted]()
 1. Bo Yang, Maodong Li<sup>\*</sup>, Jiye Wang, **Jingchao Zhang**, Dongmei Liao, Yanan Yue<sup>\*</sup>, "_Critical Fracture Properties in Puckered and Buckled Arsenene by Molecular Dynamics Simulation_", *Physical Chemistry Chemical Physics*, 10.1039/C9CP01605H, 2019, [Accepted](https://pubs.rsc.org/en/content/articlelanding/2019/cp/c9cp01605h#!divAbstract)
 1. Xinyu Wang<sup>\*</sup>, Dan Han, Yang Hong, Haiyi Sun, Jingzhi Zhang, **Jingchao Zhang**<sup>\*</sup>, "_Machine Learning Enabled Prediction of Mechanical Properties of Tungsten Disulfide Monolayer_", *ACS Omega*, 2019, [Accepted]()
