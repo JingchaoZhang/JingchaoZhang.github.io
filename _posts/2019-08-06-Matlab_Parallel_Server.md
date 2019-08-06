@@ -3,9 +3,9 @@ layout: single
 author_profile: false
 ---
 
-This document provides the steps to configure MATLAB to submit jobs to a cluster, retrieve results, and debug errors.
+# This document provides the steps to configure MATLAB to submit jobs to a cluster, retrieve results, and debug errors.
 
-CONFIGURATION
+## CONFIGURATION    
 After logging into the cluster, start MATLAB.  Configure MATLAB to run parallel jobs on your cluster by calling configCluster.
 ```Matlab
 >> configCluster
@@ -18,7 +18,7 @@ NOTE: If you would like to submit to the local machine then run the following co
 >> c = parcluster('local');
 ```
 
-CONFIGURING JOBS
+## CONFIGURING JOBS    
 Prior to submitting the job, we can specify various parameters to pass to our jobs, such as queue, e-mail, walltime, etc. 
 ```Matlab
 >> % Get a handle to the cluster
@@ -65,7 +65,7 @@ Unset a value when no longer needed.
 >> c.saveProfile
 ```
 
-INTERACTIVE JOBS
+## INTERACTIVE JOBS    
 To run an interactive pool job on the cluster, continue to use parpool as you’ve done before.
 ```Matlab
 >> % Get a handle to the cluster
@@ -91,7 +91,7 @@ Once we’re done with the pool, delete it.
 >> p.delete
 ```
 
-INDEPENDENT BATCH JOB
+## INDEPENDENT BATCH JOB    
 Rather than running interactively, use the batch command to submit asynchronous jobs to the cluster.  The batch command will return a job object which is used to access the output of the submitted job.  See the MATLAB documentation for more help on batch.
 ```Matlab
 >> % Get a handle to the cluster
@@ -191,7 +191,7 @@ Alternatively, to retrieve job results via a graphical user interface, use the J
  
 
 
-DEBUGGING
+# DEBUGGING    
 If a serial job produces an error, call the getDebugLog method to view the error log file.  When submitting independent jobs, with multiple tasks, specify the task number.  
 ```Matlab
 >> c.getDebugLog(j.Tasks(3))
