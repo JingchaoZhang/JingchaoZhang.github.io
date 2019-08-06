@@ -124,7 +124,7 @@ NOTE: You can view a list of your jobs, as well as their IDs, using the above c.
 >> j2.fetchOutputs{:}
 ```
 
-PARALLEL BATCH JOB
+### PARALLEL BATCH JOB    
 Users can also submit parallel workflows with the batch command.  Let’s use the following example for a parallel job.   
  
 This time when we use the batch command, in order to run a parallel job, we’ll also specify a MATLAB Pool.    
