@@ -127,6 +127,21 @@ NOTE: You can view a list of your jobs, as well as their IDs, using the above c.
 ### PARALLEL BATCH JOB    
 Users can also submit parallel workflows with the batch command.  Let’s use the following example for a parallel job.   
  
+```Matlab
+function t = parallel_example(iter)
+if nargin==0, iter = 16; end
+disp('Start sim')
+
+t0 = tic;
+parfor idx = 1:iter
+    A(idx) = idx;
+    pause(2)
+end
+t = toc(t0);
+
+disp('Sim completed.')
+```    
+
 This time when we use the batch command, in order to run a parallel job, we’ll also specify a MATLAB Pool.    
 ```Matlab
 >> % Get a handle to the cluster
