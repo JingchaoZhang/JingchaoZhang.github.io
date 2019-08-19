@@ -125,7 +125,7 @@ NOTE: You can view a list of your jobs, as well as their IDs, using the above c.
 ```
 
 ### PARALLEL BATCH JOB    
-Users can also submit parallel workflows with the batch command.  Let’s use the following example for a parallel job.   
+Users can also submit parallel workflows with the batch command.  Let’s use the following example for a parallel job 'parallel_example.m'.   
  
 ```Matlab
 function t = parallel_example(iter)
