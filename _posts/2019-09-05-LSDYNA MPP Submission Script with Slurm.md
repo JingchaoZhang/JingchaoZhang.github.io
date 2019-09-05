@@ -4,7 +4,6 @@ author_profile: false
 ---
 
 ```bash
-========================================================
 #!/bin/sh
 # Change the job name, if you want to
 #SBATCH --job-name=pendulum  
