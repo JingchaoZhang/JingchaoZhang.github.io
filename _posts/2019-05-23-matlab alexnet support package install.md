@@ -8,12 +8,21 @@ If Deep Learning Toolbox Model for AlexNet Network support package is not instal
 [Details](https://www.mathworks.com/help/deeplearning/ref/alexnet.html#bvnyo6s)
 
 Above instructions cannot be used in cluster environment. To install support packages from command line, one needs to
-1. Download and run the file from the URL below [url](https://www.mathworks.com/support/install/support-software-downloader.html?s_tid=srchtitle)
+1. Download and run the file from the URL below [url](https://www.mathworks.com/support/install/support-software-downloader.html?s_tid=srchtitle) NOTE: I run this file from my Windows PC since it needs a GUI. Once the software starts, you can select the Support Package from the list.
 1. Login to a MathWorks account when prompted
 1. Select and Download the Support Software
 1. Move the files to the target machine
 1. Make sure X11 is working
 1. <MATLAB root directory>/bin/glnxa64/SupportSoftwareInstaller -downloadfolder <pathtodownloadfolder> -inputFile <pathtoinputFile>/ssi_input.txt
+Example:  
+```bash
+[root@login.crane glnxa64]# ./install_supportsoftware.sh -matlabroot /util/opt/matlab/r2019b -archives /work/swanson/jingchao/matlab/resnet50/archives/
+Starting Support Package Installation...
+MATLAB is selecting SOFTWARE OPENGL rendering.
+[1029/134627.838537:INFO:context.cpp(159)] Using multi-threaded message loop for Linux
+Finished
+
+```
 
 Userful links:  
 [How do I silently install Support Packages in MATLAB R2018a or newer?](https://www.mathworks.com/matlabcentral/answers/389223-how-do-i-silently-install-support-packages-in-matlab-r2018a-or-newer)  
