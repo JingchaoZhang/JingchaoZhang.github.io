@@ -17,7 +17,7 @@ Copy from a remote server to local HPC directory
 ```bash
 ascp -QT -l 100M user@source_hostname:source_file /local/destination/folder/
 ```
--- \-T Disable encryption for maximum throughput.
--- \-l max_rate  
+* \-T Disable encryption for maximum throughput.
+* \-l max_rate  
 
 For a full list of `ascp` options, check this [link](https://download.asperasoft.com/download/docs/ascp/3.5.2/html/index.html#dita/ascp_usage.html)
