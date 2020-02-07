@@ -11,7 +11,7 @@ mkdir ~/conda; cd ~/conda
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 vim ~/.bashrc
-export PATH=/home/jzhan61/miniconda3/bin:$PATH
+export PATH=/home/\`whoami\`/miniconda3/bin:$PATH
 source ~/.bashrc
 pip install jupyter
 
