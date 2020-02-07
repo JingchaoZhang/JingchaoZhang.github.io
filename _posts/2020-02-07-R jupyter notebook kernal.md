@@ -25,3 +25,9 @@ R -e "IRkernel::installspec(name = '$CONDA_DEFAULT_ENV', displayname = 'R ($COND
 conda deactivate
 jupyter notebook
 ```
+
+To use it in the future, type the following lines.
+```bash
+source ~/.bashrc
+jupyter notebook
+```
