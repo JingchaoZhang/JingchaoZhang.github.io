@@ -14,5 +14,6 @@ export PATH=/home/$USER/miniconda3/bin:$PATH
 2. Install rstudio package and start GUI
 ```bash
 conda create -n rstudio rstudio=1.1.456
+source activate rstudio
 rstudio
 ```
