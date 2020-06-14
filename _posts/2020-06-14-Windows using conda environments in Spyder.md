@@ -14,5 +14,5 @@ where python
 Copy the Python environment path.
 
 In Spyder Editor  
-  Tools --> Preferences --> Python interpreter --> Use the following Pythin interpreter  
+  Tools --> Preferences --> Python interpreter --> Use the following Python interpreter  
   --> Paste Python path -- > Apply --> Ok --> restart
