@@ -7,6 +7,7 @@ author_profile: false
 
 (<sup>\*</sup>Corresponding author; <sup>†</sup>Equal contribution)  
 
+1. Fei Li, Qingming Ma, Gongming Xin, **Jingchao Zhang**<sup>\*</sup>， Xinyu Wang,"Heat transfer and flow characteristics of microchannels with solid and porous ribs", *Applied Thermal Engineering*, 2020, [in print]
 1. Bo Hou, Byung-Sung Kim, Harrison K. H. Lee, Yuljae Cho, Paul Giraud, Mengxia Liu, **Jingchao Zhang**, Matthew L. Davies, James R. Durrant, Wing C. Tsoi, Zhe Li, Stoichko Dimitrov<sup>\*</sup>, Jung Inn Sohn<sup>\*</sup>, SeungNam Cha<sup>\*</sup>, Jong Min Kim, "Multiphoton Absorption Stimulated Metal Chalcogenide Quantum Dot Solar Cells Under Ambient and Concentrated Irradiance", *Advanced Functional Materials*, 2020, [in print]
 1. Wenyang Ding, Dan Han, Jingzhi Zhang, Qingming Ma, Xiaoyan Li, **Jingchao Zhang**<sup>\*</sup>, Xinyu Wang<sup>\*</sup>, "Molecular Dynamics Study of Anisotropic Behaviors of Water Droplet on Textured Surfaces with Various Energies", *Molecular Physics*, 2020, [in print]
 1. Benxuan Li, Mingxia Lu, Jiangtao Feng, **Jingchao Zhang**, Peter M Smowton, Jung Inn Sohn, Il-Kyu Park, Haizheng Zhong, Bo Hou<sup>\*</sup>, "Colloidal Quantum Dot Hybrids: An Emerging Class of Materials for Ambient Lighting", *Journal of Materials Chemistry C*, 2020, [In Print](https://pubs.rsc.org/en/content/articlelanding/2020/TC/D0TC01349H#!divAbstract)
