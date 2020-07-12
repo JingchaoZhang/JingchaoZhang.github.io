@@ -8,8 +8,10 @@ author_profile: false
 mkdir ~/conda; cd ~/conda
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
+
 vim ~/.bashrc
-export PATH=/home/$USER/miniconda3/bin:$PATH
+export PATH=/home/$USER/miniconda3/bin:$PATH #put this line in the ~/.bashrc file
+
 source ~/.bashrc
 
 #Create R env
