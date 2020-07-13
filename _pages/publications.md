@@ -7,7 +7,7 @@ author_profile: false
 
 (<sup>\*</sup>Corresponding author; <sup>†</sup>Equal contribution)  
 
-1. Fei Li, Qingming Ma, Gongming Xin, **Jingchao Zhang**<sup>\*</sup>, Xinyu Wang<sup>\*</sup>, "Heat transfer and flow characteristics of microchannels with solid and porous ribs", *Applied Thermal Engineering*, 2020, [in print](https://www.sciencedirect.com/science/article/abs/pii/S1359431120331215)
+1. Fei Li, Qingming Ma, Gongming Xin, **Jingchao Zhang**<sup>\*</sup>, Xinyu Wang<sup>\*</sup>, "Heat transfer and flow characteristics of microchannels with solid and porous ribs", *Applied Thermal Engineering*, 2020, 178, 115639 [pdf](https://drive.google.com/file/d/1L4Ve3W8WaWSMiDQL0IOmuG8vqyqlnQkV/view?usp=sharing), [Endnote](https://drive.google.com/uc?export=download&id=1_pSbhmsLvi6zaxLrK406ANJVZ-SqrVFH)
 1. Wenyang Ding, Dan Han, Jingzhi Zhang, Qingming Ma, Xiaoyan Li, **Jingchao Zhang**<sup>\*</sup>, Xinyu Wang<sup>\*</sup>, "Molecular Dynamics Study of Anisotropic Behaviors of Water Droplet on Textured Surfaces with Various Energies", *Molecular Physics*, 2020, [in print](https://www.tandfonline.com/doi/full/10.1080/00268976.2020.1785028?scroll=top&needAccess=true&)
 1. Hongzhao Fan, Man Wang, Dan Han, Jingzhi Zhang, **Jingchao Zhang**, Xinyu Wang<sup>\*</sup>, "Enhancement of interfacial thermal transport between metal and organic semiconductor using selfassembled monolayers with different terminal groups", *Journal of Physical Chemistry C*, 2020, [in print]
 1. Mingxia Lu, Shanshan Liu, Jing Chen, Xia Zhang, **Jingchao Zhang**, Zhe Li, Bo Hou<sup>\*</sup>, "Rational-Designed Hybrid Aerogels for Ultra-Flyweight Electrochemical Energy Storage", *Journal of Physical Chemistry C*, 2020, [in print](https://pubs.acs.org/doi/10.1021/acs.jpcc.0c02217)
