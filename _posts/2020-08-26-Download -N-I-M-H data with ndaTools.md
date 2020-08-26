@@ -3,7 +3,7 @@ layout: single
 author_profile: false
 ---
 
-In order to access NIMH Data Archive, users need to apply for an account using this [link](https://nda.nih.gov/abcd/request-access). Porject PI needs to add the new user to their project for data access.  
+In order to access NIMH Data Archive, users need to apply for an account using this [link](https://nda.nih.gov/abcd/request-access). Project PI needs to add the new user to their project for data access.  
   
   
 Follow the steps below to create the data package:
