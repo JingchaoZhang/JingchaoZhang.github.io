@@ -8,7 +8,7 @@ In order to access NIMH Data Archive, users need to apply for an account using t
   
 Follow the steps below to create the data package:
 1. Click on the top tab "Get Data"
-1. In "TEXT SEARCH" Search ABCD
+1. In "TEXT SEARCH" search ABCD
 1. Select the checkbox for the first result
 1. Click "Add to Workspace"
 1. Click the filter icon on the top-right corner
