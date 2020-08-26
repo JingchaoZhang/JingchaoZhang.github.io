@@ -4,7 +4,8 @@ author_profile: false
 ---
 
 In order to access NIMH Data Archive, users need to apply for an account using this [link](https://nda.nih.gov/abcd/request-access). Porject PI needs to add the new user to their project for data access.  
-
+  
+  
 Follow the steps below to create the data package:
 1. Click the top tab "Get Data"
 1. In "TEXT SEARCH" Search ABCD
@@ -18,7 +19,8 @@ Follow the steps below to create the data package:
 1. Click on "create data package" at the bottom of the page
 1. Go to your account dashboard
 1. Click on "Data packages" to view a list of your packages. 
-
+  
+  
 Install and use [nda-tools](https://github.com/NDAR/nda-tools) for data package download. 
 ```bash
 #install Miniconda
@@ -37,7 +39,8 @@ pip install nda-tools
 #Now you can download using nda-tools
 downloadcmd PACKAGEID -dp -d /path/to/your/download/directory -wt NUM_OF_THREADS -v -u $USER -p PASSWORD
 ```
-
+  
+  
 For large dataset, perform the download in a SLURM job. Below is a sample SLURM file named "submit.sh":
 ```bash
 #!/bin/bash
@@ -52,7 +55,8 @@ For large dataset, perform the download in a SLURM job. Below is a sample SLURM 
 conda activate nda-tools
 downloadcmd PACKAGEID -dp -d /path/to/your/download/directory -wt 32 -v -u $USER
 ```
-
+  
+  
 Then submit this job to SLURM.
 ```
 sbatch submit.sh
