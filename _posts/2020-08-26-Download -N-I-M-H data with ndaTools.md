@@ -18,7 +18,7 @@ Follow the steps below to create the data package:
 1. Select the data you want.
 1. Click on "create data package" at the bottom of the page
 1. Go to your account dashboard
-1. Click on "Data packages" to view a list of your packages. 
+1. Click on "Data packages" to view a list of your packages
   
   
 Install and use [nda-tools](https://github.com/NDAR/nda-tools) for data package download. 
