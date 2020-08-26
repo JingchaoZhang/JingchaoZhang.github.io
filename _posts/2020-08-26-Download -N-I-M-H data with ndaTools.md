@@ -13,7 +13,7 @@ Follow the steps below to create the data package:
 1. Click "Add to Workspace"
 1. Click the filter icon on the top-right corner
 1. Click "Submit to Filter Cart"
-1. wait for this to finish (takes a while): 
+1. Wait for this to finish (takes a while / unstable): 
 1. Click "create data package/add to study"
 1. Select the data you want.
 1. Click on "create data package" at the bottom of the page
