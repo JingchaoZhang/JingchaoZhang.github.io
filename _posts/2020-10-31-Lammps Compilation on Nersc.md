@@ -35,7 +35,7 @@ make -j 12 icc_openmpi
 #The following steps are for "KNL" nodes
 ```bash
 #If compiling on a KNL node is needed, do the following “sacct” to get onto a compute node
-#salloc –N 1 –q interactive –C knl–t 4:00:00
+#salloc –N 1 –q interactive –C knl –t 4:00:00
 module load impi/2020
 module swap craype-haswell craype-mic-knl
 make -j 12 knl
