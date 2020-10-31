@@ -31,7 +31,7 @@ for i in BODY CLASS2 COLLOID DIPOLE GRANULAR KSPACE MANYBODY MISC MOLECULE MPIIO
 make -j 12 icc_openmpi
 ```
 
-#TODO: KNL COMPILATION NOT WORKING. 
+#TODO: KNL COMPILATION NOT WORKING.  
 #The following steps are for "KNL" nodes
 ```bash
 #If compiling on a KNL node is needed, do the following “sacct” to get onto a compute node
