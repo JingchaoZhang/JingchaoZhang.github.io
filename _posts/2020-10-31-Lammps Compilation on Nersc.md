@@ -31,6 +31,7 @@ for i in BODY CLASS2 COLLOID DIPOLE GRANULAR KSPACE MANYBODY MISC MOLECULE MPIIO
 make -j 12 icc_openmpi
 ```
 
+#TODO: KNL COMPILATION NOT WORKING
 #The following steps are for "KNL" nodes
 ```bash
 #If compiling on a KNL node is needed, do the following “sacct” to get onto a compute node
@@ -39,6 +40,7 @@ module load impi/2020
 module swap craype-haswell craype-mic-knl
 make -j 12 knl
 ```
+#TODO: KNL COMPILATION NOT WORKING
 
 #Place the binary in PATH. Only need to do this once
 ```bash
