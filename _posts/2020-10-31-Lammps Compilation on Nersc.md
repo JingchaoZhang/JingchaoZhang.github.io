@@ -3,6 +3,8 @@ layout: single
 author_profile: false
 ---
 
+**NOTE: NERSC provides compiled LAMMPS binaries as modules. This tutorial is for users with modified source code.**
+
 **NERSC**: National Energy Research Scientific Computing Center
 **Mission**: Accelerate scientific discovery at the DOE Office of Science through High-Performance Computing and Extreme Data Analysis
 
