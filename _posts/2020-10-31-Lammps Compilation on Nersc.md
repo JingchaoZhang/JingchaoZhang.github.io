@@ -21,7 +21,7 @@ author_profile: false
 ```bash
 cd ~/lammps-stable_29Oct2020/src
 module load intel/19.0.3.199    
-module load impi/2020 #openmpi/4.0.2
+module load openmpi/4.0.2 #impi/2020
 #If not first time compilation, run make clean-all first
 make clean-all
 #The for command only need to be run once to enable optional packages
@@ -47,4 +47,27 @@ vim ~/.bash_profile
 source ~/.bash_profile
 cd #HOME/bin
 ln -s ~/lammps-stable_29Oct2020/src/ ./
+```
+
+To submit a job, switch to $SCATCH first
+```bash
+cd $SCRATCH
+```
+**Sample SLURM File**
+```bash
+#!/bin/bash
+#SBATCH -J test_lammps
+#SBATCH -C haswell
+#SBATCH -q regular
+#SBATCH -N 2
+#SBATCH -t 01:00:00
+#SBATCH -o job.%j.out
+
+module load intel/19.0.3.199 openmpi/4.0.2
+
+srun -n 64 -c 2 --cpu-bind=cores lmp_icc_openmpi < in.file
+```
+Submit the job using sbatch
+```bash
+sbatch SLURMFILE
 ```
