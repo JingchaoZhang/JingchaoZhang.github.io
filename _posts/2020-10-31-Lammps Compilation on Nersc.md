@@ -31,7 +31,7 @@ for i in BODY CLASS2 COLLOID DIPOLE GRANULAR KSPACE MANYBODY MISC MOLECULE MPIIO
 make -j 12 icc_openmpi
 ```
 
-#TODO: KNL COMPILATION NOT WORKING
+#TODO: KNL COMPILATION NOT WORKING. 
 #The following steps are for "KNL" nodes
 ```bash
 #If compiling on a KNL node is needed, do the following “sacct” to get onto a compute node
@@ -65,11 +65,12 @@ cd $SCRATCH
 #SBATCH -q regular
 #SBATCH -N 2
 #SBATCH -t 01:00:00
+#SBATCH -e job.%j.err
 #SBATCH -o job.%j.out
 
 module load intel/19.0.3.199 openmpi/4.0.2
 
-srun -n 64 -c 2 --cpu-bind=cores lmp_icc_openmpi < in.file
+srun -n 64 -c 2 --cpu-bind=cores lmp_icc_openmpi < in.snr
 ```
 Submit the job using sbatch
 ```bash
