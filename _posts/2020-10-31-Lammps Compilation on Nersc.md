@@ -31,16 +31,21 @@ for i in BODY CLASS2 COLLOID DIPOLE GRANULAR KSPACE MANYBODY MISC MOLECULE MPIIO
 make -j 12 icc_openmpi
 ```
 
-#TODO: KNL COMPILATION NOT WORKING.  
 #The following steps are for "KNL" nodes
 ```bash
 #If compiling on a KNL node is needed, do the following “sacct” to get onto a compute node
 #salloc –N 1 –q interactive –C knl –t 4:00:00
 module load impi/2020
 module swap craype-haswell craype-mic-knl
+vim ~/lammps-stable_7Aug2019/src/MAKE/OPTIONS/Makefile.knl
+#Change this line
+#LIB =           -ltbbmalloc
+#to
+#LIB =           -L/opt/intel/compilers_and_libraries_2019.3.199/linux/tbb/lib/intel64/gcc4.7 -ltbbmalloc
 make -j 12 knl
+#The following lammps file is generated
+ls ~/lammps-stable_7Aug2019/src/lmp_knl
 ```
-#TODO: KNL COMPILATION NOT WORKING
 
 #Place the binary in PATH. Only need to do this once
 ```bash
