@@ -23,5 +23,4 @@ do
   echo $ssh_host
   ssh -q $ssh_host "nvidia-smi --format=csv --query-gpu=utilization.gpu,utilization.memory"
 done
-
 ```
