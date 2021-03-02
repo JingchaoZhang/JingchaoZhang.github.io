@@ -11,7 +11,7 @@ parser.add_argument('--local_rank', default=os.getenv('LOCAL_RANK',0), type=int)
 ```
 A full example command line using srun then might be like this: 
 ```bash
-srun -N2 --ntasks-per-node=2 singularity run --nv /blue/vendor-nvidia/jingchao.zhang/pytorch_20.12-py3.sif python example.py
+srun -N2 --ntasks-per-node=2 singularity run --nv pytorch_20.12-py3.sif python example.py
 ```
 Note I'm assuming the --local_world_size=4 at the end is not needed; I've never seen a pyt distributed script that needed that.
 
@@ -22,5 +22,5 @@ If you're using mpirun without SLURM, you'll need to set the MASTER_ADDR and MAS
 ```bash
 export MASTER_ADDR=aa
 export MASTER_PORT=1234 # or whatever
-mpirun -H aa,bb -npernode 4 singularity run --nv /blue/vendor-nvidia/jingchao.zhang/pytorch_20.12-py3.sif python example.py
+mpirun -H aa,bb -npernode 4 singularity run --nv pytorch_20.12-py3.sif python example.py
 ```
