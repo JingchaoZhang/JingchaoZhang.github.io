@@ -3,6 +3,8 @@ layout: single
 author_profile: false
 ---
 
+Get a snapshot of GPU stats without [DCGM](https://developer.nvidia.com/dcgm).
+
 GPU query command to get card utilization, temperature, fan speed and power consumption
 ```
 nvidia-smi --format=csv --query-gpu=power.draw,utilization.gpu,fan.speed,temperature.gpu,memory.used,memory.free
