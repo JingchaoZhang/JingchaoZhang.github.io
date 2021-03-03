@@ -366,3 +366,178 @@ predict_letter("data/asl_images/b.png")
 predict_letter("data/asl_images/a.png")
 ```
 
+# Pre-Trained Models
+```python
+from tensorflow.keras.applications import VGG16
+  
+# load the VGG16 network *pre-trained* on the ImageNet dataset
+model = VGG16(weights="imagenet")
+model.summary()
+
+#Loading an image
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+
+def show_image(image_path):
+    image = mpimg.imread(image_path)
+    print(image.shape)
+    plt.imshow(image)
+
+show_image("data/doggy_door_images/happy_dog.jpg")
+
+#Preprocessing the Image
+from tensorflow.keras.preprocessing import image as image_utils
+from tensorflow.keras.applications.vgg16 import preprocess_input
+
+def load_and_process_image(image_path):
+    # Print image's original shape, for reference
+    print('Original image shape: ', mpimg.imread(image_path).shape)
+    
+    # Load in the image with a target size of 224, 224
+    image = image_utils.load_img(image_path, target_size=(224, 224))
+    # Convert the image from a PIL format to a numpy array
+    image = image_utils.img_to_array(image)
+    # Add a dimension for number of images, in our case 1
+    image = image.reshape(1,224,224,3)
+    # Preprocess image to align with original ImageNet dataset
+    image = preprocess_input(image)
+    # Print image's shape after processing
+    print('Processed image shape: ', image.shape)
+    return image
+
+processed_image = load_and_process_image("data/doggy_door_images/brown_bear.jpg")
+
+#Make a prediction
+from tensorflow.keras.applications.vgg16 import decode_predictions
+
+def readable_prediction(image_path):
+    # Show image
+    show_image(image_path)
+    # Load and pre-process image
+    image = load_and_process_image(image_path)
+    # Make predictions
+    predictions = model.predict(image)
+    # Print predictions in readable form
+    print('Predicted:', decode_predictions(predictions, top=3))
+    
+readable_prediction("data/doggy_door_images/happy_dog.jpg")
+readable_prediction("data/doggy_door_images/brown_bear.jpg")
+readable_prediction("data/doggy_door_images/sleepy_cat.jpg")
+
+#Only Dogs
+import numpy as np
+
+def doggy_door(image_path):
+    show_image(image_path)
+    image = load_and_process_image(image_path)
+    preds = model.predict(image)
+    if (np.argmax(preds) >= 151) and (np.argmax(preds) <= 268):
+        print("Doggy come on in!")
+    elif (np.argmax(preds) >= 281) and (np.argmax(preds) <= 285):
+        print("Kitty stay inside!")
+    else:
+        print("You're not a dog! Stay outside!")
+
+readable_prediction("data/doggy_door_images/happy_dog.jpg")
+readable_prediction("data/doggy_door_images/brown_bear.jpg")
+readable_prediction("data/doggy_door_images/sleepy_cat.jpg")
+```
+
+# Transfer Learning
+```python
+from tensorflow import keras
+
+base_model = keras.applications.VGG16(
+    weights='imagenet',  # Load weights pre-trained on ImageNet.
+    input_shape=(224, 224, 3),
+    include_top=False)
+    
+base_model.summary()
+
+#Freezing the Base Model
+base_model.trainable = False
+
+#Adding New Layers
+inputs = keras.Input(shape=(224, 224, 3))
+# Separately from setting trainable on the model, we set training to False 
+x = base_model(inputs, training=False)
+x = keras.layers.GlobalAveragePooling2D()(x)
+# A Dense classifier with a single unit (binary classification)
+outputs = keras.layers.Dense(1)(x)
+model = keras.Model(inputs, outputs)
+model.summary()
+model.compile(loss=keras.losses.BinaryCrossentropy(from_logits=True), metrics=[keras.metrics.BinaryAccuracy()])
+
+#Data Augumentation
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+# create a data generator
+datagen = ImageDataGenerator(
+        samplewise_center=True,  # set each sample mean to 0
+        rotation_range=10,  # randomly rotate images in the range (degrees, 0 to 180)
+        zoom_range = 0.1, # Randomly zoom image 
+        width_shift_range=0.1,  # randomly shift images horizontally (fraction of total width)
+        height_shift_range=0.1,  # randomly shift images vertically (fraction of total height)
+        horizontal_flip=True,  # randomly flip images
+        vertical_flip=False) # we don't expect Bo to be upside-down so we will not flip vertically
+        
+#Loading the data
+# load and iterate training dataset
+train_it = datagen.flow_from_directory('data/presidential_doggy_door/train/', 
+                                       target_size=(224, 224), 
+                                       color_mode='rgb', 
+                                       class_mode='binary', 
+                                       batch_size=8)
+# load and iterate validation dataset
+valid_it = datagen.flow_from_directory('data/presidential_doggy_door/valid/', 
+                                      target_size=(224, 224), 
+                                      color_mode='rgb', 
+                                      class_mode='binary', 
+                                      batch_size=8)
+                                      
+model.fit(train_it, steps_per_epoch=12, validation_data=valid_it, validation_steps=4, epochs=20)
+
+#Fine-tuning the Model
+# Unfreeze the base model
+base_model.trainable = True
+
+# It's important to recompile your model after you make any changes
+# to the `trainable` attribute of any inner layer, so that your changes
+# are taken into account
+model.compile(optimizer=keras.optimizers.RMSprop(learning_rate = .00001),  # Very low learning rate
+              loss=keras.losses.BinaryCrossentropy(from_logits=True),
+              metrics=[keras.metrics.BinaryAccuracy()])
+              
+model.fit(train_it, steps_per_epoch=12, validation_data=valid_it, validation_steps=4, epochs=10)
+
+#Examing the Predictions
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+from tensorflow.keras.preprocessing import image as image_utils
+from tensorflow.keras.applications.imagenet_utils import preprocess_input
+
+def show_image(image_path):
+    image = mpimg.imread(image_path)
+    plt.imshow(image)
+
+def make_predictions(image_path):
+    show_image(image_path)
+    image = image_utils.load_img(image_path, target_size=(224, 224))
+    image = image_utils.img_to_array(image)
+    image = image.reshape(1,224,224,3)
+    image = preprocess_input(image)
+    preds = model.predict(image)
+    return preds
+    
+make_predictions('data/presidential_doggy_door/valid/bo/bo_20.jpg')
+make_predictions('data/presidential_doggy_door/valid/not_bo/121.jpg')
+
+#Bo's Doggy Door
+def presidential_doggy_door(image_path):
+    preds = make_predictions(image_path)
+    if preds[0] < 0:
+        print("It's Bo! Let him in!")
+    else:
+        print("That's not Bo! Stay out!")
+presidential_doggy_door('data/presidential_doggy_door/valid/not_bo/131.jpg')
+presidential_doggy_door('data/presidential_doggy_door/valid/bo/bo_29.jpg')
+```
