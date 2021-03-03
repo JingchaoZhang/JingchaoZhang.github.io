@@ -122,6 +122,6 @@ model.compile(loss='categorical_crossentropy', metrics=['accuracy'])
 history = model.fit(
     x_train, y_train, epochs=20, verbose=1, validation_data=(x_valid, y_valid)
 )
-#This is an example of the model learning to categorize the training data, but performing poorly against new data that it has not been trained on. Essentially, it is memorizing #the dataset, but not gaining a robust and general understanding of the problem. This is a common issue called overfitting. We will discuss overfitting in the next two lectures, #as well as some ways to address it.
+#This is an example of the model learning to categorize the training data, but performing poorly against new data that it has not been trained on. Essentially, it is memorizing the dataset, but not gaining a robust and general understanding of the problem. This is a common issue called overfitting. We will discuss overfitting in the next two lectures, as well as some ways to address it.
 ```
 
