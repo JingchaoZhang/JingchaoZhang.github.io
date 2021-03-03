@@ -10,6 +10,7 @@ app = IPython.Application.instance()
 app.kernel.do_shutdown(True)
 ```
 
+#MNIST
 ```python
 from tensorflow.keras.datasets import mnist
 # the data, split between train and validation sets
@@ -61,5 +62,66 @@ history = model.fit(
 )
 ```
 
+#Image Classification of an American Sign Language Dataset
+```python
+import pandas as pd
+train_df = pd.read_csv("data/asl_data/sign_mnist_train.csv")
+valid_df = pd.read_csv("data/asl_data/sign_mnist_valid.csv")
 
+#Extracting the Labels and Images
+y_train = train_df['label']
+y_valid = valid_df['label']
+del train_df['label']
+del valid_df['label']
+x_train = train_df.values
+x_valid = valid_df.values
+x_train.shape
+y_train.shape
+x_valid.shape
+y_valid.shape
+
+import matplotlib.pyplot as plt
+plt.figure(figsize=(40,40))
+
+num_images = 20
+for i in range(num_images):
+    row = x_train[i]
+    label = y_train[i]
+    
+    image = row.reshape(28,28)
+    plt.subplot(1, num_images, i+1)
+    plt.title(label, fontdict={'fontsize': 30})
+    plt.axis('off')
+    plt.imshow(image, cmap='gray')
+    
+#Normalize the Image Data
+x_train.min()
+x_train.max()
+# TODO: Normalize x_train and x_valid.
+x_train = x_train / 255
+x_valid = x_valid / 255 
+
+#Categorize the Labels
+import tensorflow.keras as keras
+num_classes = 24
+# TODO: Categorically encode y_train and y_valid.
+y_train = keras.utils.to_categorical(y_train, num_classes)
+y_valid = keras.utils.to_categorical(y_valid, num_classes)
+
+#Build the Model
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+# TODO: build a model following the guidelines above.
+model = Sequential([
+    Dense(units=512, activation='relu', input_shape=(784,)),
+    Dense(units = 512, activation='relu'),
+    Dense(units = 24, activation='softmax')])
+model.summary()
+model.compile(loss='categorical_crossentropy', metrics=['accuracy'])
+# TODO: Train the model for 20 epochs.
+history = model.fit(
+    x_train, y_train, epochs=20, verbose=1, validation_data=(x_valid, y_valid)
+)
+#This is an example of the model learning to categorize the training data, but performing poorly against new data that it has not been trained on. Essentially, it is memorizing #the dataset, but not gaining a robust and general understanding of the problem. This is a common issue called overfitting. We will discuss overfitting in the next two lectures, #as well as some ways to address it.
+```
 
