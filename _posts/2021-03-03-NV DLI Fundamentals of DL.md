@@ -10,7 +10,7 @@ app = IPython.Application.instance()
 app.kernel.do_shutdown(True)
 ```
 
-#MNIST
+# MNIST
 ```python
 from tensorflow.keras.datasets import mnist
 # the data, split between train and validation sets
@@ -62,7 +62,7 @@ history = model.fit(
 )
 ```
 
-#Image Classification of an American Sign Language Dataset
+# Image Classification of an American Sign Language Dataset
 ```python
 import pandas as pd
 train_df = pd.read_csv("data/asl_data/sign_mnist_train.csv")
@@ -125,7 +125,7 @@ history = model.fit(
 #This is an example of the model learning to categorize the training data, but performing poorly against new data that it has not been trained on. Essentially, it is memorizing the dataset, but not gaining a robust and general understanding of the problem. This is a common issue called overfitting. We will discuss overfitting in the next two lectures, as well as some ways to address it.
 ```
 
-#CNN
+# CNN
 ```python
 #Loading and Preparing the Data
 import tensorflow.keras as keras
@@ -194,6 +194,7 @@ model.compile(loss="categorical_crossentropy", metrics=["accuracy"])
 model.fit(x_train, y_train, epochs=20, verbose=1, validation_data=(x_valid, y_valid))
 ```
 
-#Data Augmentation and Deployment
+# Data Augmentation and Deployment
 ```python
+
 ```
