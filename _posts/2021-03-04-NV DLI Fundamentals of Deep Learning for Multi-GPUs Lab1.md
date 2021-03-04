@@ -604,6 +604,4 @@ plt.show()
 !python fashion_mnist.py --batch-size 32 --target-accuracy 0.82 --patience 2
 ```
 
-# Lab 2: Multi-GPU DL Training Implementation using Horovod
-
 # Lab 3: Algorithmic Concerns for Training at Scale
