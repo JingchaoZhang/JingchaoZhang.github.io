@@ -7,6 +7,7 @@ author_profile: false
 
 (<sup>\*</sup>Corresponding author; <sup>†</sup>Equal contribution)  
 
+1. Wenxiang Liu, Yongqiang Wu, Yang Hong, Bo Hou, **Jingchao Zhang**<sup>\*</sup>, Yanan Yue<sup>\*</sup>, "Full-Spectrum Thermal Analysis in Twisted Bilayer Graphene", *Physical Chemistry Chemical Physics*, 2021 [in print]()
 1. Xinyu Wang<sup>\*</sup>, Hongzhao Fan, Dan Han, Yang Hong, **Jingchao Zhang**<sup>\*</sup>, "Thermal Boundary Resistance at Graphene-Pentacene Interface Explored by A Data-Intensive Approach", *Nanotechnology*, 2021, 32, 215404 [pdf](https://drive.google.com/file/d/1AcEVYFfYAEEPisRVgxOCoeWjl8AfNH-_/view?usp=sharing), [Endnote](https://drive.google.com/uc?export=download&id=1FoGh5PeH00QuHd9dqC-IvM3GcnJgR6V_)
 2. Yang Hong, Dan Han, Bo Hou, Xinyu Wang<sup>\*</sup>, **Jingchao Zhang**<sup>\*</sup>, "High-Throughput Computations of Cross-Plane Thermal Conductivity in Multilayer Stanene", *International Journal of Heat and Mass Transfer*, 2021, 272, 121073 [pdf](https://drive.google.com/file/d/1pxm9_brr3WYJ8nxofIMnBJYjYlbDMldg/view?usp=sharing), [Endnote](https://drive.google.com/uc?export=download&id=1c9AjfHcS7YwAX2cjM5y45bvDCfFkJEcp)
 3. Dan Han, Xiaoheng Yang, Mu Du, Gongming Xin, **Jingchao Zhang**, Xinyu Wang<sup>\*</sup>, Lin Cheng<sup>\*</sup>, "Improved thermoelectric properties of WS2–WSe2 phononic crystals: insights from first-principles calculations", *Nanoscale*, 2021 [pdf](https://drive.google.com/uc?export=download&id=1mLxrIYwhfRgyEZeE6U4hgvNMiOqZSObp)
