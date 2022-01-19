@@ -47,40 +47,7 @@ dlprof --mode=pytorch python mnist.py
 ```
   
 - Sample DLProf terminal output  
-```bash
-Expert Systems Feedback: 6 issues detected. Note that expert systems is still experimental as are all recommended changes
-
-Problem detected: 
-  48 ops were eligible to use tensor cores but none are using FP16
-Recommended change: 
-  Try enabling AMP (Automatic Mixed Precision). For more information: https://developer.nvidia.com/automatic-mixed-precision
-
-Problem detected: 
-  The GPU is underutilized: Only 0.6% of the profiled time is spent on GPU kernel operations
-Recommended change: 
-  Dataloader has the highest (non-GPU) usage at 87.3%. Investigate the dataloading pipeline as this often indicates too much time is being spent here
-
-Problem detected: 
-  87.3% of the aggregated run was spent in the dataloader while not simultaneously running on the GPU
-Recommended change: 
-  Focus on reducing time spent in the training data input process. This could be time spent in file reading, preprocessing and augmentation or file transfer.
-Consider using NVIDIA DALI, a library that is a high performance alternative to built-in data loaders and data iterators. Learn more here: https://developer.nvidia.com/DALI
-
-Problem detected: 
-  The aggregated iteration range of 0 to 938 contains a lot of variation
-Recommended change: 
-  Try limiting the iteration range to a steady range by rerunning with the --database option and setting --iter_start=3 --iter_stop=107
-
-Problem detected: 
-  Convolution operations were detected but torch.backends.cudnn.benchmark was not enabled.
-Recommended change: 
-  Try setting torch.backends.cudnn.benchmark = True in your network. For best performance, the input shapes should be relatively stable.
-
-Problem detected: 
-  GPU Memory is underutilized: Only 7% of GPU Memory is used
-Recommended change: 
-  Try increasing batch size by 4x to increase data throughput
-```
+![alt text](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/images/DLProf_terminal_output.png)
 
 - Files
 ```bash
