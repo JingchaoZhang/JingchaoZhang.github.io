@@ -13,7 +13,7 @@ author_profile: false
 - MNIST example code  
 [PyTorch MNIST example](https://github.com/pytorch/examples/blob/master/mnist/main.py)
   
-- DLProf installation
+- DLProf installation (you can skip DLProf and PyTorch installation if you use the .yml file from [Github](https://github.com/JingchaoZhang/DLProf_Demo))
 ```
 pip install nvidia-pyindex
 pip install nvidia-dlprof[pytorch] #For PyTorch
