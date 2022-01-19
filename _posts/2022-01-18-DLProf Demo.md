@@ -3,12 +3,15 @@ layout: single
 author_profile: false
 ---
 
+- Code in this demo
+[Github](https://github.com/JingchaoZhang/DLProf_Demo)
+
 - Documentation  
-https://docs.nvidia.com/deeplearning/frameworks/dlprof-user-guide/index.html#profiling
-https://docs.nvidia.com/deeplearning/frameworks/dlprof-viewer-user-guide/index.html
-  
+[User Guide](https://docs.nvidia.com/deeplearning/frameworks/dlprof-user-guide/index.html#profiling)
+[DLProf Viewer](https://docs.nvidia.com/deeplearning/frameworks/dlprof-viewer-user-guide/index.html)
+
 - MNIST example code  
-https://github.com/pytorch/examples/blob/master/mnist/main.py
+[PyTorch MNIST example](https://github.com/pytorch/examples/blob/master/mnist/main.py)
   
 - DLProf installation
 ```
