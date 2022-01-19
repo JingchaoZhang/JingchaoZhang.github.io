@@ -47,8 +47,7 @@ dlprof --mode=pytorch python mnist.py
 ```
   
 - Sample DLProf terminal output  
-```bash  
-  
+```
 [DLProf-04:35:49] Aggregating profile data
 [DLProf-04:35:53] Creating dlprof database at ./dlprof_dldb.sqlite
 [DLProf-04:35:53] Writing profile data to dlprof database
@@ -86,7 +85,7 @@ Problem detected:
   GPU Memory is underutilized: Only 7% of GPU Memory is used
 Recommended change: 
   Try increasing batch size by 4x to increase data throughput
-```
+```  
   
 - Files
 ```bash
