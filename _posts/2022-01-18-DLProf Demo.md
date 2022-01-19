@@ -47,11 +47,7 @@ dlprof --mode=pytorch python mnist.py
 ```
   
 - Sample DLProf terminal output  
-[DLProf-04:35:49] Aggregating profile data
-[DLProf-04:35:53] Creating dlprof database at ./dlprof_dldb.sqlite
-[DLProf-04:35:53] Writing profile data to dlprof database
-[DLProf-04:36:00] Writing aggregated data to dlprof database
-[DLProf-04:36:07] Writing expert_systems report to (stdout)
+```bash
 Expert Systems Feedback: 6 issues detected. Note that expert systems is still experimental as are all recommended changes
 
 Problem detected: 
@@ -84,7 +80,8 @@ Problem detected:
   GPU Memory is underutilized: Only 7% of GPU Memory is used
 Recommended change: 
   Try increasing batch size by 4x to increase data throughput
-  
+```
+
 - Files
 ```bash
 total 249M
