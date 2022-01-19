@@ -7,7 +7,7 @@ author_profile: false
 [Github](https://github.com/JingchaoZhang/DLProf_Demo)
 
 - Documentation  
-[User Guide](https://docs.nvidia.com/deeplearning/frameworks/dlprof-user-guide/index.html#profiling)
+[User Guide](https://docs.nvidia.com/deeplearning/frameworks/dlprof-user-guide/index.html#profiling)  
 [DLProf Viewer](https://docs.nvidia.com/deeplearning/frameworks/dlprof-viewer-user-guide/index.html)
 
 - MNIST example code  
