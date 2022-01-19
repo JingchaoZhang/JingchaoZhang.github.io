@@ -46,7 +46,7 @@ python mnist.py
 dlprof --mode=pytorch python mnist.py
 ```
   
-- Sample DLProf terminal output
+- Sample DLProf terminal output  
 ```bash
 [DLProf-04:35:49] Aggregating profile data
 [DLProf-04:35:53] Creating dlprof database at ./dlprof_dldb.sqlite
