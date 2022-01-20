@@ -18,7 +18,8 @@ author_profile: false
   - [Nsight Tutorial given by Max Katz/NVIDIA](https://drive.google.com/file/d/1TEPiRpxqZXK2iqzy1uAQoAlrH3u7z-iX/view?usp=sharing)
   
 - [NVProf](https://docs.nvidia.com/cuda/profiler-users-guide/)
-  - [Nvprof Transition Guide](https://docs.nvidia.com/nsight-compute/NsightComputeCli/index.html#nvprof-guide)  This guide provides tips for moving from nvprof to NVIDIA Nsight Compute CLI. NVIDIA Nsight Compute CLI tries to provide as much feature and usage parity as possible with nvprof, but some features are now covered by different tools and some command line options have changed their name or meaning.
+  - [Nvprof Transition Guide](https://docs.nvidia.com/nsight-compute/NsightComputeCli/index.html#nvprof-guide)  
+This guide provides tips for moving from nvprof to NVIDIA Nsight Compute CLI. NVIDIA Nsight Compute CLI tries to provide as much feature and usage parity as possible with nvprof, but some features are now covered by different tools and some command line options have changed their name or meaning.
   
 - Useful Links
   - [NVIDIA’s Deep Learning Performance Guide](https://docs.nvidia.com/deeplearning/performance/index.html)
