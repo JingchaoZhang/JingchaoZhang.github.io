@@ -40,5 +40,6 @@ Run in batch mode
 
 ml load singularity/3.7.4 cuda/11.4.3
 cd /home/jingchao.zhang/red/modulus/simple_cubic/sif
-singularity exec --nv --writable --bind .:/mnt /home/jingchao.zhang/red/modulus/sif/modulus python -u /mnt/simple_cubic.py
+#add srun here to pass the mpi flag
+srun --mpi=pmi2 singularity exec --nv --writable --bind .:/mnt /home/jingchao.zhang/red/modulus/sif/modulus python -u /mnt/simple_cubic.py
 ```
