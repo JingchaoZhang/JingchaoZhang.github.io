@@ -25,3 +25,20 @@ From within the sif shell
 cd /mnt/simple_cubic/sif/
 python simple_cubic.py
 ```
+
+Run in batch mode
+```bash
+#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --mem=500GB
+#SBATCH --partition=gpu
+#SBATCH --gpus=a100:1
+#SBATCH --time=72:00:00
+#SBATCH --output=job.%J.out
+#SBATCH --error=job.%J.err
+
+ml load singularity/3.7.4 cuda/11.4.3
+cd /home/jingchao.zhang/red/modulus/simple_cubic/sif
+singularity exec --nv --writable --bind .:/mnt /home/jingchao.zhang/red/modulus/sif/modulus python -u /mnt/simple_cubic.py
+```
