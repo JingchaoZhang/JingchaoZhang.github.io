@@ -4,7 +4,7 @@ author_profile: false
 ---
 
 
-Get the docker image from NVIDIA [wesite](https://docs.nvidia.com/deeplearning/modulus/index.html). You need to register and login.
+Get the docker image from NVIDIA [website](https://docs.nvidia.com/deeplearning/modulus/index.html). You need to register and login.
 Download file is `modulus_image_v21.06.tar.gz` (5.7G).
 Build a singularity image.
 ```
