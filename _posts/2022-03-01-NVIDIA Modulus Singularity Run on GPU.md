@@ -43,7 +43,13 @@ cd /home/jingchao.zhang/red/modulus/simple_cubic/sif
 #add srun here to pass the mpi flag
 srun --mpi=pmi2 singularity exec --nv --writable --bind .:/mnt /home/jingchao.zhang/red/modulus/sif/modulus python -u /mnt/simple_cubic.py
 ```
-
+  
+  
+  
+  
+  
+  
+  
 Fix memory explosion issue. Need to edit source code in the container.
 ```
 singularity shell --nv --writable --bind .:/mnt /home/jingchao.zhang/red/modulus/sif/modulus
