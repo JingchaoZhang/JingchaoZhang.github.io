@@ -48,7 +48,7 @@ srun --mpi=pmi2 singularity exec --nv --writable --bind .:/mnt /home/jingchao.zh
   
   
   
-CUDA OOM Error
+CUDA OOM Error when running on multi-GPUs
 ```bash
 2022-03-02 00:26:00.281061: I tensorflow/stream_executor/cuda/cuda_driver.cc:745] failed to allocate 76.74G (82399395840 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY: out of memory
 2022-03-02 00:26:00.284245: I tensorflow/stream_executor/cuda/cuda_driver.cc:745] failed to allocate 69.07G (74159456256 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY: out of memory
