@@ -19,4 +19,8 @@ Despite being similar to MPI, NCCL’s design goals and the target platforms are
 # Advanced pipelining schemes for large-message broadcast
 To better utilize the net- work resources, i.e., to saturate the available bandwidth, pipelin- ing schemes that divide the message into multiple smaller chunks need to be explored. Issuing multiple non-blocking point-to-point communication calls, i.e., MPI_Isend, MPI_Irecv, to allow overlap of these transfers is one strategy to implement a pipelined broadcast that achieves better bandwidth utilization. Classically, the chain (or ring) algorithm has been considered an inefficient algorithm by MPI implementers. However, with the advent of Deep Learning applications, very large message transfers and a relatively smaller number of nodes (GPUs) are becoming a new use-case for MPI run- times. Thus, the conventional intuition around the broadcast algo- rithms needs to be revisited.
 
+![alt text](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/images/1_Screenshot%20from%202022-03-08%2001-58-12.png)
+![alt text](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/images/2_Screenshot%20from%202022-03-08%2001-58-04.png)
+![alt text](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/images/3_Screenshot%20from%202022-03-08%2001-58-29.png)
+
 Link to [paper](https://www.sciencedirect.com/science/article/pii/S0167819118303284?via%3Dihub)
