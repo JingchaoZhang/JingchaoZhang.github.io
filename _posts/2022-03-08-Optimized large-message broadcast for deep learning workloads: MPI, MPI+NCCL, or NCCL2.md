@@ -24,3 +24,4 @@ To better utilize the net- work resources, i.e., to saturate the available bandw
 ![alt text](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/images/3_Screenshot%20from%202022-03-08%2001-58-29.png)
 
 Link to [paper](https://www.sciencedirect.com/science/article/pii/S0167819118303284?via%3Dihub)
+Link to [Multi-GPU Programming with CUDA, GPUDirect, NCCL, NVSHMEM, and MPI](https://www.nvidia.com/en-us/on-demand/session/gtcspring21-cwes1084/)
