@@ -7,9 +7,9 @@ author_profile: false
 
 (<sup>\*</sup>Corresponding author; <sup>†</sup>Equal contribution)  
 
-1. Alexandre Bordas, **Jingchao Zhang**<sup>\*</sup>, and Juan C. Nino<sup>\*</sup>, "Deep Learning Workflow for Microstructure Analysis and Quantification", 2022 (Under Review)
+1. Alexandre Bordas, **Jingchao Zhang**<sup>\*</sup>, and Juan C. Nino<sup>\*</sup>, "Application of Deep Learning Workflow for Autonomous Grain Size Analysis", 2022 (In Print)
 2. Dong Yan, Xingwen Lu, Shiyi Zhao, Zuhong Zhang, Mingxia Lu, Jiangtao Feng, **Jingchao Zhang**, Kate Spencer, Trystan Watson, Meng Li<sup>\*</sup>, Bo Hou<sup>\*</sup>, Fei Wang<sup>\*</sup>, Zhe Li<sup>\*</sup>, "Lead Leaching of Perovskite Solar Cells in Aqueous Environments: A Quantitative Investigation", *Solar PRL*, 2022 [in print](https://onlinelibrary.wiley.com/doi/abs/10.1002/solr.202200332)
-3. Wenxiang Liu, Yang Hong, **Jingchao Zhang**<sup>\*</sup>, Yanan Yue<sup>\*</sup>, "High-Fidelity Anisotropic Thermal Transport Regulation in Twisted Bilayer Graphene", 2022 (Under Review)
+3. Wenxiang Liu, Yang Hong, **Jingchao Zhang**<sup>\*</sup>, Yanan Yue<sup>\*</sup>, "Anisotropic Thermal Transport in Twisted Bilayer Graphene", 2022 (Under Review)
 4. **Jingchao Zhang**, Hongbo Miao, "Build Robust QA System with Small Datasets using Data Augmentation and Answer Length Penalty", 2022 [pdf](http://web.stanford.edu/class/cs224n/reports/default_116631452.pdf)
 5. Yanru Xu<sup>†</sup>, Shen Xu<sup>†</sup>, **Jingchao Zhang**<sup>†</sup>, Jianshu Gao, Shugang Deng, Wenxiang Liu, Xinwei Wang<sup>\*</sup>, Xin Zhang<sup>\*</sup>, Yanan Yue<sup>\*</sup>, "Ballistic Transport Enhanced Heat Convection at Nanoscale Hotspots", 2022 (Under Review)
 6. Rong Yu<sup>\*</sup>, Gabriel Hmimina, Alexei Lyapustin, Yujie Wang, Karl Fred Huemmrich, Dave Billesbach, **Jingchao Zhang**, Zheng Xu, John A. Gamon, "Reducing angular effects in high-latitude MODIS MAIAC reflectance using random forests", 2022 (Under Review)
