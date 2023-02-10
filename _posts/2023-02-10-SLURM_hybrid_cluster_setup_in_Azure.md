@@ -20,18 +20,18 @@ To setup SLURM federation we need to enable slurmdbd communications between on-p
 
 First go to the scheduler node which hosts the slurmdbd and add inbound/outbound rules. This needs to be done from both on-prem and cloud scheduler nodes.
 
-![Figure_1](./2023-02-10-figures/1.png)
-![Figure_2](./2023-02-10-figures/2.png)
-![Figure_3](./2023-02-10-figures/3.png)
-![Figure_4](./2023-02-10-figures/4.png)
-![Figure_5](./2023-02-10-figures/5.png)
-![Figure_6](./2023-02-10-figures/6.png)
+![Figure_1](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/_posts/2023-02-10-figures/1.png)
+![Figure_2](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/_posts/2023-02-10-figures/2.png)
+![Figure_3](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/_posts/2023-02-10-figures/3.png)
+![Figure_4](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/_posts/2023-02-10-figures/4.png)
+![Figure_5](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/_posts/2023-02-10-figures/5.png)
+![Figure_6](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/_posts/2023-02-10-figures/6.png)
 
 Then add vnet peering from either the on-prem or the cloud end. The other end will be created automatically. 
 
-![Figure_7](./2023-02-10-figures/7.png)
-![Figure_8](./2023-02-10-figures/8.png)
-![Figure_9](./2023-02-10-figures/9.png)
+![Figure_7](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/_posts/2023-02-10-figures/7.png)
+![Figure_8](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/_posts/2023-02-10-figures/8.png)
+![Figure_9](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/_posts/2023-02-10-figures/9.png)
 
 ## Sync the munge key
 Copy the on-prem munge key from `/etc/munge/munge.key`
