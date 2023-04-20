@@ -137,8 +137,8 @@ REPOSITORY                        TAG                  IMAGE ID       CREATED   
 ghcr.io/deepmodeling/deepmd-kit   2.1.1_cuda11.6_gpu   80e9ba4a6a0c   11 months ago   7.2GB
 ```
 
-1. Reference [[1]](https://stackoverflow.com/questions/24309526/how-to-change-the-docker-image-installation-directory)
-1. Reference [[2]](https://blog.adriel.co.nz/2018/01/25/change-docker-data-directory-in-debian-jessie/)
+1. Reference [1](https://stackoverflow.com/questions/24309526/how-to-change-the-docker-image-installation-directory)
+1. Reference [2](https://blog.adriel.co.nz/2018/01/25/change-docker-data-directory-in-debian-jessie/)
 
 
 
