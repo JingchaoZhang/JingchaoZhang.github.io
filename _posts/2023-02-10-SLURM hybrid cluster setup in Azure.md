@@ -20,7 +20,7 @@ To setup SLURM federation we need to enable slurmdbd communications between on-p
 
 First go to the scheduler node which hosts the slurmdbd and add inbound/outbound rules. This needs to be done from both on-prem and cloud scheduler nodes.
 
-![Figure_1](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/_posts/2023-02-10-figures/1.png)
+![Figure_1](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-02-10-figures/1.png)
 ![Figure_2](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/_posts/2023-02-10-figures/2.png)
 ![Figure_3](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/_posts/2023-02-10-figures/3.png)
 ![Figure_4](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/_posts/2023-02-10-figures/4.png)
