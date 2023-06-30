@@ -4,6 +4,7 @@ author_profile: false
 ---
 
 ### Disk Details
+
 | Disk name                                            | Storage type    | Size (GiB) | Max IOPS | Max throughput (MBps) | Encryption    | Host caching |
 |------------------------------------------------------|-----------------|------------|----------|-----------------------|---------------|--------------|
 | V100_OsDisk_1_9d9847279b55436b92dba603cd7bd366        | Premium SSD LRS | 1024       | 5000     | 200                   | SSE with PMK  | Read/Write   |
