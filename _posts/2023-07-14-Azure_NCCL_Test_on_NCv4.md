@@ -170,6 +170,7 @@ $ cat /etc/nccl.conf
 NCCL_TOPO_FILE=/opt/microsoft/ncv4/topo.xml
 NCCL_GRAPH_FILE=/opt/microsoft/ncv4/graph.xml
 ```
+**In order to run NCCL test with SLURM, you need to install pmix following the instructions [here](https://github.com/Azure/azurehpc/blob/df46027e0380aee06a292b54ed6a1d90a6f5a1db/experimental/deploy_cycle_slurm_ndv4/scripts/install-pmix.sh) on the compute node.**
 ### NC96v4
 #### Test with both `NCCL_TOPO_FILE` and `NCCL_GRAPH_FILE` being set
 SLURM script
