@@ -20,7 +20,7 @@ ncv3         up   infinite      1   idle ncv3-1
 ndv4*        up   infinite      1  comp% ndv4-pg0-1
 ndv4*        up   infinite      1  idle% ndv4-pg0-2
 ```
-**The image used in all N-series VMs is `microsoft-dsvm:ubuntu-hpc:2004:20.04.2023031501`.**
+The image used in all N-series VMs is `microsoft-dsvm:ubuntu-hpc:2004:20.04.2023031501`.
 
 ### This post will compare nc48v4 and nc96v4, which have 2 and 4 80G A100 GPUs, respectively. 
 **NC48v4**
