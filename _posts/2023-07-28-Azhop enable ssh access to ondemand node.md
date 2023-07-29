@@ -18,7 +18,7 @@ Here are the details:
 ```bash
 [hpcadmin@ondemand ~]$ sudo vim /etc/ssh/sshd_config
 PasswordAuthentication yes
-sudo systemctl restart sshd
+[hpcadmin@ondemand ~]$ sudo systemctl restart sshd
 ```
 
 This should allow you to ssh into the ondemand node as any user.
