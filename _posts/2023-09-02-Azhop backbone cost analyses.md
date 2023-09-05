@@ -17,7 +17,8 @@ The experiment was conducted over the period from September 2nd to September 4th
   
 ![Figure_1](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-09-02-figures/AF-daily.png)  
   
-Let's break down the cost for 09/03 in the table below:
+Let's break down the cost for 09/03 in the table below:  
+  
 | Date     | Service Name                 | Cost                |
 |----------|------------------------------|---------------------|
 | Sep 03   | Virtual Machines            | 9.960719999999998  |
@@ -35,7 +36,8 @@ Analogous to the previous experiment, the cost data for both September 2nd and S
   
 ![Figure_3](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-09-02-figures/ANF-daily.png)  
   
-Here is a table breakdown for 09/03:
+Here is a table breakdown for 09/03:  
+  
 | Date     | Service Name               | Cost             |
 |----------|----------------------------|------------------|
 | Sep 03   | Azure NetApp Files         | 13.469614080000001 |
