@@ -50,3 +50,16 @@ Here is a table breakdown for 09/03:
 | Sep 03   | Advanced Threat Protection | 6e-7 |
 
 With Azure NetApp Files (ANF), the smallest allowable volume size is 4TB, translating to an estimated daily cost of approximately $13.5. If you opt to run your setup without MariaDB, the projected cost increases to **$25/day**. This is roughly double the expense when compared to utilizing Azure Files (1TB without MariaDB).  
+
+## AMLFS
+### Network size requirements
+
+The size of subnet that you need depends on the size of the file system you create. The following table gives a rough estimate of the minimum subnet size for Azure Managed Lustre file systems of different sizes.
+
+| Storage capacity     | Recommended CIDR prefix value |
+|----------------------|-------------------------------|
+| 4 TiB to 16 TiB      | /27 or larger                 |
+| 20 TiB to 40 TiB     | /26 or larger                 |
+| 44 TiB to 92 TiB     | /25 or larger                 |
+| 96 TiB to 196 TiB    | /24 or larger                 |
+| 200 TiB to 400 TiB   | /23 or larger                 |
