@@ -52,10 +52,40 @@ Here is a table breakdown for 09/03:
 With Azure NetApp Files (ANF), the smallest allowable volume size is 4TB, translating to an estimated daily cost of approximately $13.5. If you opt to run your setup without MariaDB, the projected cost increases to **$25/day**. This is roughly double the expense when compared to utilizing Azure Files (1TB without MariaDB).  
 
 ## AMLFS
-### Network size requirements
+NOTE: If you want to use integrated Azure Blob storage with AMLFS, you must specify it in the Blob integration section when you create the file system. You can't add an HSM-integrated blob container to an existing file system. Integrating blob storage when you create a file system is optional, but it's the only way to use Lustre Hierarchical Storage Management (HSM) features. If you don't want the benefits of Lustre HSM, you can import and export data for the Azure Managed Lustre file system by using client commands directly.
 
+### Without Blob integration
+Setup  
+
+| Attribute                | Value                           |
+|--------------------------|---------------------------------|
+| Subscription             | XXXX          |
+| Resource group           | JZ-AMLFS                        |
+| Region                   | South Central US                |
+| Availability zone        | 1                               |
+| File system name         | lustre                          |
+| Storage capacity         | 8 TiB                           |
+| Throughput per TiB       | 250 MB/s                        |
+| Total Throughput         | 2000 MB/s                       |
+| Virtual network          | (New) lustre-vnet               |
+| Subnet                   | (New) default (10.4.0.0/27)      |
+| Maintenance window       | Sunday, 12:00                   |
+
+### With Blob integration
+
+
+
+
+
+
+
+
+
+
+## Details on AMLFS
+### Determining network size
 The size of subnet that you need depends on the size of the file system you create. The following table gives a rough estimate of the minimum subnet size for Azure Managed Lustre file systems of different sizes.
-
+  
 | Storage capacity     | Recommended CIDR prefix value |
 |----------------------|-------------------------------|
 | 4 TiB to 16 TiB      | /27 or larger                 |
@@ -63,3 +93,6 @@ The size of subnet that you need depends on the size of the file system you crea
 | 44 TiB to 92 TiB     | /25 or larger                 |
 | 96 TiB to 196 TiB    | /24 or larger                 |
 | 200 TiB to 400 TiB   | /23 or larger                 |
+
+- [Install pre-built client software](https://learn.microsoft.com/en-us/azure/azure-managed-lustre/client-install?source=recommendations&pivots=centos-7)
+- [Connect clients to an Azure Managed Lustre file system](https://learn.microsoft.com/en-us/azure/azure-managed-lustre/connect-clients)
