@@ -83,7 +83,7 @@ The size of subnet that you need depends on the size of the file system you crea
 | 200 TiB to 400 TiB   | /23 or larger                 |
 
 ### Steps to mount AMLFS to AzHOP
-1. Create AMLFS resource group in the same region
+- Create AMLFS resource group in the same region
 AMLFS RG Details:
   
 | Attribute                | Value                           |
@@ -98,15 +98,17 @@ AMLFS RG Details:
 | Total Throughput         | 2000 MB/s                       |
 | Virtual network          | (New) lustre-vnet               |
 | Subnet                   | (New) default (10.4.0.0/27)      |
-| Maintenance window       | Sunday, 12:00                   |
-2. Create AMLFS and AzHOP vnet peering.
+| Maintenance window       | Sunday, 12:00                   |  
+  
+- Create AMLFS and AzHOP vnet peering.
   - Select **Allow access to remote virtual network** for both vnet
   - Select **Allow traffic to remote virtual network** for both vnet
-3. In AzHOP RG, edit `nsg-common`.
+- In AzHOP RG, edit `nsg-common`.
   - Change Inbound security rule 3100 to Allow
   - Change Outbound security rule 3100 to Allow
-4. [Install pre-built client software on AzHOP](https://learn.microsoft.com/en-us/azure/azure-managed-lustre/client-install?source=recommendations&pivots=centos-7)
-5. [Connect clients to an AMLFS](https://learn.microsoft.com/en-us/azure/azure-managed-lustre/connect-clients)
+- [Install pre-built client software on AzHOP](https://learn.microsoft.com/en-us/azure/azure-managed-lustre/client-install?source=recommendations&pivots=centos-7)
+- [Connect clients to an AMLFS](https://learn.microsoft.com/en-us/azure/azure-managed-lustre/connect-clients)
+  
 ```bash
 [root@scheduler ~]# mkdir /lustre
 [root@scheduler ~]# sudo mount -t lustre -o noatime,flock 10.4.0.4@tcp:/lustrefs /lustre
