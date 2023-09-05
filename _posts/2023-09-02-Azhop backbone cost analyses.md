@@ -57,19 +57,7 @@ NOTE: If you want to use integrated Azure Blob storage with AMLFS, you must spec
 ### Without Blob integration
 Setup  
 
-| Attribute                | Value                           |
-|--------------------------|---------------------------------|
-| Subscription             | XXXX          |
-| Resource group           | JZ-AMLFS                        |
-| Region                   | South Central US                |
-| Availability zone        | 1                               |
-| File system name         | lustre                          |
-| Storage capacity         | 8 TiB                           |
-| Throughput per TiB       | 250 MB/s                        |
-| Total Throughput         | 2000 MB/s                       |
-| Virtual network          | (New) lustre-vnet               |
-| Subnet                   | (New) default (10.4.0.0/27)      |
-| Maintenance window       | Sunday, 12:00                   |
+
 
 ### With Blob integration
 
@@ -94,5 +82,45 @@ The size of subnet that you need depends on the size of the file system you crea
 | 96 TiB to 196 TiB    | /24 or larger                 |
 | 200 TiB to 400 TiB   | /23 or larger                 |
 
-- [Install pre-built client software](https://learn.microsoft.com/en-us/azure/azure-managed-lustre/client-install?source=recommendations&pivots=centos-7)
-- [Connect clients to an Azure Managed Lustre file system](https://learn.microsoft.com/en-us/azure/azure-managed-lustre/connect-clients)
+### Steps to mount AMLFS to AzHOP
+1. Create AMLFS resource group in the same region
+AMLFS RG Details:
+  
+| Attribute                | Value                           |
+|--------------------------|---------------------------------|
+| Subscription             | XXXX          |
+| Resource group           | JZ-AMLFS                        |
+| Region                   | South Central US                |
+| Availability zone        | 1                               |
+| File system name         | lustre                          |
+| Storage capacity         | 8 TiB                           |
+| Throughput per TiB       | 250 MB/s                        |
+| Total Throughput         | 2000 MB/s                       |
+| Virtual network          | (New) lustre-vnet               |
+| Subnet                   | (New) default (10.4.0.0/27)      |
+| Maintenance window       | Sunday, 12:00                   |
+2. Create AMLFS and AzHOP vnet peering.
+  - Select **Allow access to remote virtual network** for both vnet
+  - Select **Allow traffic to remote virtual network** for both vnet
+3. In AzHOP RG, edit `nsg-common`.
+  - Change Inbound security rule 3100 to Allow
+  - Change Outbound security rule 3100 to Allow
+4. [Install pre-built client software on AzHOP](https://learn.microsoft.com/en-us/azure/azure-managed-lustre/client-install?source=recommendations&pivots=centos-7)
+5. [Connect clients to an AMLFS](https://learn.microsoft.com/en-us/azure/azure-managed-lustre/connect-clients)
+```bash
+[root@scheduler ~]# mkdir /lustre
+[root@scheduler ~]# sudo mount -t lustre -o noatime,flock 10.4.0.4@tcp:/lustrefs /lustre
+[root@scheduler ~]# df -h
+Filesystem                                                                    Size  Used Avail Use% Mounted on
+devtmpfs                                                                      3.9G     0  3.9G   0% /dev
+tmpfs                                                                         3.9G     0  3.9G   0% /dev/shm
+tmpfs                                                                         3.9G  417M  3.5G  11% /run
+tmpfs                                                                         3.9G     0  3.9G   0% /sys/fs/cgroup
+/dev/sda2                                                                      30G  3.6G   26G  13% /
+/dev/sda1                                                                     494M   74M  421M  15% /boot
+/dev/sda15                                                                    495M   12M  484M   3% /boot/efi
+/dev/sdb1                                                                      16G   45M   15G   1% /mnt/resource
+nfsfilespya6el4wo2vwgx.file.core.windows.net:/nfsfilespya6el4wo2vwgx/nfshome  1.0T     0  1.0T   0% /clusterhome
+tmpfs                                                                         783M     0  783M   0% /run/user/1000
+10.4.0.4@tcp:/lustrefs                                                        8.0T  1.3M  7.6T   1% /lustre
+```
