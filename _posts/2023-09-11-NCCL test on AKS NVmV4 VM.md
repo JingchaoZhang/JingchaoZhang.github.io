@@ -4,7 +4,7 @@ author_profile: false
 ---
 
 # NCCL test on AKS NVmv4 VM
-This write-up aims to replicate the blog [Deploy NDm_v4 (A100) Kubernetes Cluster](https://techcommunity.microsoft.com/t5/azure-high-performance-computing/deploy-ndm-v4-a100-kubernetes-cluster/ba-p/3838871) by [Cormac Garvey](https://techcommunity.microsoft.com/t5/user/viewprofilepage/user-id/364170). This write-up contains the steps to create ACR, and submit the final NCCL job, which are missing from the original blog.
+This write-up aims to replicate the blog [Deploy NDm_v4 (A100) Kubernetes Cluster](https://techcommunity.microsoft.com/t5/azure-high-performance-computing/deploy-ndm-v4-a100-kubernetes-cluster/ba-p/3838871) by [Cormac Garvey](https://techcommunity.microsoft.com/t5/user/viewprofilepage/user-id/364170). The original blog assumes you have an exising ACR.
 
 All following commands run on your local laptop, except for the NCCL docker container creation step, which needs to run on a NDmv4 VM. 
 ## Login to your az account
@@ -39,7 +39,7 @@ az group create --resource-group $AKS_RG --location $LOCATION
 ```bash
 az acr create --resource-group $AKS_RG --name $ACR_NAME --sku Standard
 ```
-Without this step the create AKS cluster with `--attach-acr` will fail. 
+Without this step, the follwoing create AKS cluster command with `--attach-acr` will fail. 
 
 ## Create NCCL container (this step needs to be done on a NDmv4 VM, not your local environment)
 Login to ACR
