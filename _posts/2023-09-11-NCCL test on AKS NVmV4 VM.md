@@ -410,7 +410,7 @@ spec:
               sizeLimit: 8Gi
 ---
 ```
-Note: there are two occurances of `jzacr2.azurecr.io/pytorch_nccl_tests_2303:latest` in the above script which is the container your created and pushed to your ACR. You need to change it to your ACR in the same format. 
+Note: there are two occurances of `jzacr2.azurecr.io/pytorch_nccl_tests_2303:latest` in the above script, which is the NCCL container you pushed to your ACR. Edit it before proceeding. 
 
 ## Submit the NCCL job
 ```bash
