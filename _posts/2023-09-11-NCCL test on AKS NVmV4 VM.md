@@ -134,10 +134,7 @@ Note: Need to verify which tag is right. The blog has the second one. I tested t
 
 ## Save the credentials to your local config file
 ```bash
-az aks get-credentials --overwrite-existing --resource-group $AKS_RG --name $AKS_NAME
-```
-Output
-```bash
+$ az aks get-credentials --overwrite-existing --resource-group $AKS_RG --name $AKS_NAME
 Merged "JZ-akscluster" as current context in /home/jingchao/.kube/config
 ```
 
