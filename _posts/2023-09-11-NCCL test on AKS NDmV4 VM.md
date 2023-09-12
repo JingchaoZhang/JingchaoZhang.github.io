@@ -3,7 +3,6 @@ layout: single
 author_profile: false
 ---
 
-# NCCL test on AKS NVmv4 VM
 This write-up aims to replicate the blog [Deploy NDm_v4 (A100) Kubernetes Cluster](https://techcommunity.microsoft.com/t5/azure-high-performance-computing/deploy-ndm-v4-a100-kubernetes-cluster/ba-p/3838871) by [Cormac Garvey](https://techcommunity.microsoft.com/t5/user/viewprofilepage/user-id/364170). The original blog assumes you have an exising ACR.
 
 All following commands run on your local laptop, except for the NCCL docker container creation step, which needs to run on a NDmv4 VM. 
