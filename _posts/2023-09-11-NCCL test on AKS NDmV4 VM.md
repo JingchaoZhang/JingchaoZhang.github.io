@@ -120,7 +120,18 @@ docker push jzacr2.azurecr.io/pytorch_nccl_tests_2303:latest
 
 ## Create AKS cluster (now back to your local laptop)
 ```bash
-az aks create -g $AKS_RG --node-resource-group $NODE_RG -n $AKS_NAME --enable-managed-identity --node-count 2 --generate-ssh-keys -l $LOCATION --node-vm-size Standard_D2s_v3 --nodepool-name $AGENT_POOL_NAME --os-sku Ubuntu --attach-acr $ACR_NAME
+az aks create \
+      -g $AKS_RG \
+      --node-resource-group $NODE_RG \
+      -n $AKS_NAME \
+      --enable-managed-identity \
+      --node-count 2 \
+      --generate-ssh-keys \
+      -l $LOCATION \
+      --node-vm-size Standard_D2s_v3 \
+      --nodepool-name $AGENT_POOL_NAME \
+      --os-sku Ubuntu \
+      --attach-acr $ACR_NAME
 ```
 
 ## Add a node pool
