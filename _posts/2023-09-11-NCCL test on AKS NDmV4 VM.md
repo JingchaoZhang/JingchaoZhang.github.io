@@ -136,12 +136,11 @@ az aks create \
 
 ## Add a node pool
 ```bash
-az aks nodepool add --resource-group $AKS_RG --cluster-name $AKS_NAME --name $NDMv4_POOL_NAME --node-count 1 --node-vm-size Standard_ND96amsr_A100_v4 --node-osdisk-size 128 --os-sku Ubuntu -–tags SkipGPUDriverInstallation=true
+az aks nodepool add --resource-group $AKS_RG --cluster-name $AKS_NAME --name $NDMv4_POOL_NAME --node-count 1 --node-vm-size Standard_ND96amsr_A100_v4 --node-osdisk-size 128 --os-sku Ubuntu --tags SkipGPUDriverInstallation=true
 or
-az aks nodepool add --resource-group $AKS_RG --cluster-name $AKS_NAME --name $NDMv4_POOL_NAME --node-count 1 --node-vm-size Standard_ND96amsr_A100_v4 --node-osdisk-size 128 --os-sku Ubuntu -–tags SkipGPUDriverInstall=true
+az aks nodepool add --resource-group $AKS_RG --cluster-name $AKS_NAME --name $NDMv4_POOL_NAME --node-count 1 --node-vm-size Standard_ND96amsr_A100_v4 --node-osdisk-size 128 --os-sku Ubuntu --tags SkipGPUDriverInstall=true
 ```
 Note: Need to verify which tag is right. The blog has the second one. I tested the first one which worked.
-Note: The second option results in error `unrecognized arguments: -–tags SkipGPUDriverInstall=true`. 
 
 ## Save the credentials to your local config file
 ```bash
