@@ -46,3 +46,20 @@ In the rapidly evolving landscape of High-Performance Computing (HPC) and Artifi
 - **NCCL**: This is a library for collective communication that's particularly useful in multi-GPU setups for machine learning. It's protocol agnostic to an extent and can work over InfiniBand, RoCE, or even TCP/IP if necessary.
 
 - **MPI (Message Passing Interface)**: MPI is an application-layer API that allows for high-performance communication between nodes in a parallel computing environment. Unlike the other technologies listed, which are more focused on networking layers, MPI operates at the application layer and can be used on top of multiple kinds of networking technologies including InfiniBand, RoCE, and TCP/IP.
+
+## Network interfaces
+Understanding the network interfaces used by InfiniBand, RoCE, and TCP/IP is crucial for their effective deployment and operation. Below is a brief explanation:
+
+### InfiniBand (IB)
+- **Network Interface**: InfiniBand Host Channel Adapter (HCA)
+- **Details**: InfiniBand uses its own specialized network interfaces known as [HCAs](https://www.google.com/search?sca_esv=565545338&rlz=1C1CHBF_enUS1013US1013&sxsrf=AM9HkKnaY_cAe3tG3Uf77OinaP3Wgu8Qxg:1694748959609&q=InfiniBand+Host+Channel+Adapter+(HCA)&tbm=isch&source=lnms&sa=X&ved=2ahUKEwif4uHt16uBAxU2gGoFHdIsBv4Q0pQJegQIChAB&biw=2048&bih=995&dpr=1.25). These are different from standard Ethernet NICs (Network Interface Cards). HCAs are designed to provide low-latency and high-throughput communication.
+
+### RDMA over Converged Ethernet (RoCE)
+- **Network Interface**: Converged Network Adapter (CNA) or RDMA-enabled NIC
+- **Details**: RoCE often uses [Converged Network Adapters](https://www.google.com/search?q=Converged+Network+Adapter+(CNA)&tbm=isch&ved=2ahUKEwiXgdnu16uBAxUHAWIAHRX5CLcQ2-cCegQIABAA&oq=Converged+Network+Adapter+(CNA)&gs_lcp=CgNpbWcQAzIFCAAQgAQ6BAgjECdQ0gRY0gRgxAdoAHAAeACAAW2IAcsBkgEDMS4xmAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=IdEDZdfsIYeCiLMPlfKjuAs&bih=995&biw=2048&rlz=1C1CHBF_enUS1013US1013) (CNAs) that support both RDMA and traditional Ethernet communications. These adapters can also be RDMA-enabled NICs specifically optimized for RDMA over Ethernet.
+
+### TCP/IP
+- **Network Interface**: Ethernet Network Interface Card (NIC)
+- **Details**: The standard network interface for TCP/IP-based communication is an [Ethernet NIC](https://www.bing.com/images/search?q=Ethernet+NIC&form=HDRSC4&first=1). These are ubiquitous and come in various speeds like Gigabit Ethernet, 10 Gigabit Ethernet, etc.
+
+It's important to note that each of these network interfaces is optimized for the particular protocol stack they are designed to support. While you can run different protocols over the same physical infrastructure (for example, RoCE and TCP/IP over Ethernet), the network interface card must support those protocols for them to operate efficiently.
