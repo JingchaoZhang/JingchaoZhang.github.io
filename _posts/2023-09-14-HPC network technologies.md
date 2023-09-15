@@ -6,6 +6,8 @@ author_profile: false
 In the rapidly evolving landscape of High-Performance Computing (HPC) and Artificial Intelligence (AI), understanding the nuances between various networking protocols and libraries is crucial for performance optimization and system design. This blog aims to demystify key technologies such as RDMA, RoCE, TCP/IP, IPoIB, InfiniBand, NCCL, and MPI by categorizing them according to the OSI model layers at which they operate. By doing so, we provide a structured framework that aids in grasping how these technologies interact and complement one another in real-world applications. Whether you are an enterprise architect, a developer, or a researcher looking to harness the full potential of HPC and AI, this comprehensive guide will serve as a valuable reference point.
 
 ## Categorized by OSI layers
+
+
 | Layer | RDMA         | RoCE        | TCP/IP     | IPoIB       | IB         | NCCL     | MPI     |
 |-------|--------------|-------------|------------|-------------|------------|----------|---------|
 | Physical (1) | - | - | - | - | Yes | - | - |
@@ -15,7 +17,10 @@ In the rapidly evolving landscape of High-Performance Computing (HPC) and Artifi
 | Application (7) | - | - | - | - | - | Yes | Yes |
 
 
+
 ## Categorized by function
+
+
 | Term      | Full Form                                   | Layer       | Description                                                                                                    | Use-Cases                                            | Compatibility/Co-existence               |
 |-----------|---------------------------------------------|-------------|-----------------------------------------------------------------------------------------------------------------|------------------------------------------------------|-----------------------------------------|
 | RDMA      | Remote Direct Memory Access                  | Data Link   | Direct memory access from one computer into another without involving either's OS                               | HPC, Data Transfer                                   | Can be used over IB or Ethernet (RoCE)  |
@@ -25,6 +30,8 @@ In the rapidly evolving landscape of High-Performance Computing (HPC) and Artifi
 | IB        | InfiniBand                                   | Data Link   | High-throughput, low-latency networking stack, commonly used in HPC                                             | HPC, Data Centers                                    | Exclusive port usually                   |
 | NCCL      | NVIDIA Collective Communications Library      | Application    | Optimized primitives library for collective communications in multi-GPU environments                            | Deep Learning, AI Training                           | Can work over IB, RoCE, or even TCP/IP   |
 | MPI       | Message Passing Interface                    | Application | A standardized and portable API used for parallel computing, operates over various kinds of networks            | High-Performance Computing, parallelized applications | Can work over IB, RoCE, TCP/IP, and more |
+
+
 
 - **RDMA**: This is the foundation for zero-copy networking. It offers lower latency and higher bandwidth.
   
