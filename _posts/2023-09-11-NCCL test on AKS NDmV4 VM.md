@@ -339,7 +339,19 @@ spec:
                   MPI_HOST=$(cat /etc/volcano/mpiworker.host | tr "\n" ",")
                   mkdir -p /var/run/sshd; /usr/sbin/sshd
                   echo "HOSTS: $MPI_HOST"
-                  mpirun --allow-run-as-root -np 16 -npernode 8 --bind-to numa --map-by ppr:8:node -hostfile /etc/volcano/mpiworker.host -x NCCL_DEBUG=info -x UCX_TLS=tcp -x NCCL_TOPO_FILE=/workspace/ndv4-topo.xml -x UCX_NET_DEVICES=eth0 -x CUDA_DEVICE_ORDER=PCI_BUS_ID -x NCCL_SOCKET_IFNAME=eth0 -mca coll_hcoll_enable 0 /workspace/nccl-tests/build/all_reduce_perf -b 8 -f 2 -g 1 -e 8G -c 1 | tee /home/re
+                  mpirun --allow-run-as-root \
+                  -np 16 -npernode 8 \
+                  --bind-to numa --map-by ppr:8:node \
+                  -hostfile /etc/volcano/mpiworker.host \
+                  -x NCCL_DEBUG=info \
+                  -x UCX_TLS=tcp \
+                  -x NCCL_TOPO_FILE=/workspace/ndv4-topo.xml \
+                  -x UCX_NET_DEVICES=eth0 \
+                  -x CUDA_DEVICE_ORDER=PCI_BUS_ID \
+                  -x NCCL_SOCKET_IFNAME=eth0 \
+                  -mca coll_hcoll_enable 0 \
+                  /workspace/nccl-tests/build/all_reduce_perf -b 8 -f 2 -g 1 -e 8G -c 1 \
+                  | tee /home/re
               image: jzacr2.azurecr.io/pytorch_nccl_tests_2303:latest
               securityContext:
                 capabilities:
