@@ -10,7 +10,7 @@ author_profile: false
 - Create new subnet named AMLFS. Set range to `xx.xx.0.192/26`
 
 ### Create a new StorageAccount with DL v2
-- Create new StorageAccount under azhop RG
+- Create new StorageAccount under AzHOP RG
 - Set Data Lake Storage v2 with following properties:
 
 | **Data Lake Storage **  | **Status**              |
@@ -25,6 +25,11 @@ author_profile: false
 | **NFS v3**                  | Enabled              |
 | **SFTP**                    | Enabled              |
 
+- For Virtual network, select `hpcvnet` from AzHOP RG
+- For Subnets, select `netapp`
+- Create the storage account
+- Go to resource
+- Change `Allow access from: Selected networks` to `Allow access from: All networks`
 - Create a container named `home`
 - Create a container named `log`
 
@@ -40,6 +45,6 @@ author_profile: false
 | **Storage account**           | jzamlfs0924           |
 | **Container**                 | home                  |
 | **Logging container**         | log                   |
-| **Import Prefix**             | /scracth              |
+| **Import Prefix**             |                       |
 
 - 
