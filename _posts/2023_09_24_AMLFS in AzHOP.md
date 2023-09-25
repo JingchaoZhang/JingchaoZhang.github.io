@@ -33,7 +33,7 @@ author_profile: false
 - Change `Allow access from: Selected networks` to `Allow access from: All networks`
 - Create a container named `home`
 - Create a container named `log`
-- A storage account owner must add these roles `Storage Account Contributor` and `Storage Blob Data Contributor` before creating the file system:
+- **NOTE:** A storage account owner must add these roles `Storage Account Contributor` and `Storage Blob Data Contributor` before creating the file system
   1. Open your storage account, and select Access control (IAM) in the left navigation pane.
   2. Select Add > Add role assignment to open the Add role assignment page.
   3. Assign the role.
