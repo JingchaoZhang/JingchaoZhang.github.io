@@ -37,7 +37,7 @@ author_profile: false
   2. Open your storage account, and select Access control (IAM) in the left navigation pane.
   3. Select Add > Add role assignment to open the Add role assignment page.
   4. Assign the role.
-  5. Then add the HPC Cache Resource Provider to that role.
+  5. Then add the HPC Cache Resource Provider (search for storagecache) to that role.
   6. Repeat steps 3 and 4 for to add each role.
 
 ### Create AMLFS
