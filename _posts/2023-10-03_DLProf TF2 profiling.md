@@ -83,3 +83,34 @@ Recommended change:
   Try increasing batch size by 4x to increase data throughput
 
 ```
+
+## 2 GPU job output
+```bash
+Expert Systems Feedback: 5 issues detected. Note that expert systems is still experimental as are all recommended changes
+
+Problem detected: 
+  XLA is not enabled: No XLA ops detected
+Recommended change: 
+  Try enabling XLA. See https://www.tensorflow.org/xla/#enable_xla_for_tensorflow_models for information on how to enable XLA.
+
+Problem detected: 
+  22 ops were eligible to use tensor cores but none are using FP16
+Recommended change: 
+  Try enabling AMP (Automatic Mixed Precision). For more information: https://developer.nvidia.com/automatic-mixed-precision
+
+Problem detected: 
+  The GPU is underutilized: Only 6.9% of the profiled time is spent on GPU kernel operations
+Recommended change: 
+  "Other" has the highest (non-GPU) usage at 47.4%. Investigate the dataloading pipeline as this often indicates too much time
+ is being spent here
+
+Problem detected: 
+  Unable to split profile into training iterations: key node  not found
+Recommended change: 
+  Specify key node by setting the --key_node argument
+
+Problem detected: 
+  GPU Memory is underutilized: Only 2% of GPU Memory is used
+Recommended change: 
+  Try increasing batch size by 4x to increase data throughput
+```
