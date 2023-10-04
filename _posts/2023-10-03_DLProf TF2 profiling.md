@@ -3,21 +3,21 @@ layout: single
 author_profile: false
 ---
 
+### Launch profiling session
+```bash
+docker run --rm --gpus=1 --ipc=host --shm-size=1g\
+  --ulimit memlock=-1 --ulimit stack=67108864 -it -p 8000:8000 -v \
+  /root/CloudClassification-main/:/data nvcr.io/nvidia/tensorflow:21.07-tf2-py3
+```
+
 ### Install dependences
 ```bash
 pip install scikit-learn pandas==1.2.2
 ```
 
-### Launch profiling session
-```bash
-docker run --rm --gpus=1 --shm-size=1g --ulimit memlock=-1 \
-  --ulimit stack=67108864 -it -p 8000:8000 -v \
-  /root/CloudClassification-main/:/data nvcr.io/nvidia/tensorflow:21.07-tf2-py3
-```
-
 ### Profile with DLProf
 ```bash
-dfprof -f --nsys_opts='"-t cuda,nvtx,cublas,cudnn -s cpu"'
+dfprof -f --nsys_opts='"-t cuda,nvtx,cublas,cudnn -s cpu"' -m tensorflow2
 
 # Explanations of the flags
 -f, --force=
@@ -32,8 +32,16 @@ dfprof -f --nsys_opts='"-t cuda,nvtx,cublas,cudnn -s cpu"'
    Option must include the default for DLProf to
    operate correctly.
    Default arguments are '"-t cuda,nvtx -s none"'.
+-m, --mode=
+   Possible values are 'simple', 'tensorflow2', 'tensorrt'.
+   Specify the target framework being profiled. Use
+   'simple' to generate only high level metrics agnostic
+   to any framework. Use all other options to
+   generate detailed metrics and reports specific to
+   the framework.
+   Default is 'tensorflow2'.
 
-# Options from `nsys profile --help`
+# Options from `nsys profile --help` related to `--nsys_opts`
 -t, --trace=
    Possible values are 'cuda', 'nvtx', 'osrt', 'cublas', 'cudnn', 'opengl', 'opengl-annotations', 'mpi', 'oshmem', 'openacc', 'openmp', 'vulkan', 'vulkan-annotations' or 'none'.
    Select the API(s) to trace. Multiple APIs can be selected, separated by commas only (no spaces).
