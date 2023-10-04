@@ -18,10 +18,10 @@ Prior to retrieving a container from the NGC container registry, it's imperative
 
 Since the AzureHPC image already have Docker environment setup, we can pull the image using command below
 ```bash
-# docker pull nvcr.io/nvidia/tensorflow:21.07-tf2-py3
+docker pull nvcr.io/nvidia/tensorflow:21.07-tf2-py3
 ```
 ```bash
-# docker images
+docker images
 REPOSITORY                                  TAG             IMAGE ID       CREATED        SIZE
 nvcr.io/nvidia/tensorflow                   21.07-tf2-py3   887093b5693e   2 years ago    11.1GB
 ```
