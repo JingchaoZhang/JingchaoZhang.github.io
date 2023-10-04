@@ -123,14 +123,41 @@ Recommended change:
   Try increasing batch size by 4x to increase data throughput
 ```
 
+The profiling gives the performance suggestions summarized below:
+- Enable XLA to optimize TensorFlow computations.
+- Activate AMP (Automatic Mixed Precision) to leverage tensor cores with FP16.
+- Address GPU underutilization by investigating and optimizing the dataloading pipeline.
+- Boost data throughput by quadrupling the batch size to better utilize GPU memory.
+
 ### Start DLProfView
+We can visualize the profiling results using DLProfView. First, we need to start the server with the command below:
 ```bash
 dlprofviewer -b 0.0.0.0 dlprof_dldb.sqlite
 ```
 
-In your browser, go to `http://localhost:8000`
+In your browser, go to `http://localhost:8000`. The profiling summary looks like below. It shows a high level view of GPU utlization.
 
-### Drill deeper into a kernel using Nsight Compute
-```bash
+![Figure_1](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-04-figures/dlprof_1.png)  
 
-```
+We can take a deeper look at the operations and kernal activities by switching to the `Ops and Kernel Summaries` tab. It shows the GPU/CPU time, number of calls, and data type for all operations. The most time consuming oprations in this test is SoftMax, NCCLAllReduce, and Adam optimization. 
+![Figure_2](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-04-figures/dlprof_2.png)  
+
+If you are profiling multiple GPUs, you can see the utlizations of each GPU. 
+![Figure_3](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-04-figures/dlprof_3.png)  
+
+### Drill deeper using Nsight System
+The AzureHPC image comes with `NSight Systems` and `Nsight Compute` pre-installed. To view the profiling results using `NSight Systems`, find the app and open it from your Desktop. 
+![Figure_4](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-04-figures/nsight_1.png)  
+
+As part of the profiling process, a `.qdrep` file was generated. Find and load this file into the `NSight Systems` app. 
+![Figure_5](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-04-figures/nsight_2.png)  
+
+Once the loading is done, we can observe the timeline of the computations on the top panel. We can optionally open the events view on the bottom session. 
+![Figure_6](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-04-figures/nsight_3.png)  
+
+To gain further details on the profiling results. We can zoom in into the timeline. The first problem we can observe is the `Device to Host Memcpy` that is happening between the training batches. This inidicates the data loading process needs to be optimzied. Instead of sending data between the device and host, all computations should be done on the GPU. 
+![Figure_7](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-04-figures/nsight_4.png)  
+
+Another observation is the low `Theoretical occupancy` in some of the kernal call, which indicates low utlizations of the GPUs. Ideally we would like to see at least 50% of `Theoretical occupancy`. 
+![Figure_9](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-04-figures/nsight_6.png)  
+
