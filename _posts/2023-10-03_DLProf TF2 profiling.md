@@ -15,7 +15,43 @@ docker run --rm --gpus=1 --shm-size=1g --ulimit memlock=-1 \
   /root/CloudClassification-main/:/data nvcr.io/nvidia/tensorflow:21.07-tf2-py3
 ```
 
-### Start Dlprofview
+### Profile with DLProf
+```bash
+dfprof -f --nsys_opts='"-t cuda,nvtx,cublas,cudnn -s cpu"'
+
+# Explanations of the flags
+-f, --force=
+   Possible values are 'true' or 'false'.
+   If true, overwrite all existing result files
+   with the same output filename (QDSTREM, QDREP, 
+   SQLITE, CSV, JSON).
+   Default is 'false'.
+--nsys_opts=
+   Specify nsys args within quotes '"[<nsys args>]"'.
+   Customize the args passed to Nsight Systems.
+   Option must include the default for DLProf to
+   operate correctly.
+   Default arguments are '"-t cuda,nvtx -s none"'.
+
+# Options from `nsys profile --help`
+-t, --trace=
+   Possible values are 'cuda', 'nvtx', 'osrt', 'cublas', 'cudnn', 'opengl', 'opengl-annotations', 'mpi', 'oshmem', 'openacc', 'openmp', 'vulkan', 'vulkan-annotations' or 'none'.
+   Select the API(s) to trace. Multiple APIs can be selected, separated by commas only (no spaces).
+   If '<api>-annotations' is selected, the corresponding API will also be traced.
+   If 'none' is selected, no APIs are traced.
+-f, --force=
+   Possible values are 'true' or 'false'.
+   If true, overwrite all existing result files
+   with the same output filename (QDSTREM, QDREP, 
+   SQLITE, CSV, JSON).
+   Default is 'false'.
+-s, --sample=
+   Possible values are 'cpu' or 'none'.
+   Select the entity to sample. Select 'none' to disable sampling. 
+   Default is 'cpu'. Application scope.
+```
+
+### Start DLProfView
 ```bash
 dlprofviewer -b 0.0.0.0 dlprof_dldb.sqlite
 ```
