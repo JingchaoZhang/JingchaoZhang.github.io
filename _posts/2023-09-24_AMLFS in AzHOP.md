@@ -39,7 +39,15 @@ author_profile: false
   4. Assign the role.
   5. Then add the HPC Cache Resource Provider (search for storagecache) to that role.
   6. Repeat steps 3 and 4 for to add each role.
-
+- [Subnet access and permissions](https://learn.microsoft.com/en-us/azure/azure-managed-lustre/amlfs-prerequisites#subnet-access-and-permissions)
+  - Use the default Azure-based DNS server.
+  - Add an **outbound security rule** with the following properties:
+    - Port: Any
+    - Protocol: Any
+    - Source: Virtual Network
+    - Destination: "AzureCloud" service tag
+    - Action: Allow
+  - Your network security group must allow inbound and outbound access on **port 988 and ports 1019-1023**.
 ### Create AMLFS
 - Storage capacity: `4 TB * 500 MB/s/TB = 2000 MB/s`
 - For Virtual Network, select `hpcvnet` from AzHOP RG
@@ -62,3 +70,10 @@ author_profile: false
   - Clients must reside in the **same Availability Zone** in which the cluster resides.
   - **Be sure to enable accelerated networking on all client VMs**. If it's not enabled, then fully enabling accelerated networking requires a stop/deallocate of each VM.
 - **Security type** - When selecting the security type for the VM, choose the Standard Security Type. Choosing Trusted Launch or Confidential types will prevent the lustre module from being properly installed on the client.
+
+### Mount AMLFS
+```bash
+sudo mount -t lustre -o noatime,flock 10.42.1.5@tcp:/lustrefs /AMLFS
+# To unmount
+sudo umount /AMLFS
+```
