@@ -62,6 +62,41 @@ author_profile: false
 | **Logging container**         | log                   |
 | **Import Prefix**             |                       |
 
+### Create vnet peering
+- This virtual network
+  - Peering link name
+    - amlfs
+  - Peering status
+    - Fully Synchronized
+  - Peering state
+    - Succeeded
+  - Options
+    - Allow 'jzs310042023_vNet7501856' to access 'hpcvnet'
+    - Allow 'jzs310042023_vNet7501856' to receive forwarded traffic from 'hpcvnet'
+
+- Remote virtual network
+  - Remote Vnet Id
+    - /subscriptions/f5a67d06-2d09-4090-91cc-e3298907a021/resourceGroups/JZ-azhopnoaa2/providers/Microsoft.Network/virtualNetworks/hpcvnet
+  - Address space
+    - 10.131.0.0/24
+
+- This virtual network
+  - Peering link name
+    - amlfs
+  - Peering status
+    - Fully Synchronized
+  - Peering state
+    - Succeeded
+  - Options
+    - Allow 'hpcvnet' to access 'jzs310042023_vNet7501856'
+    - Allow 'hpcvnet' to receive forwarded traffic from 'jzs310042023_vNet7501856'
+
+- Remote virtual network
+  - Remote Vnet Id
+    - /subscriptions/f5a67d06-2d09-4090-91cc-e3298907a021/resourceGroups/JZ-s3/providers/Microsoft.Network/virtualNetworks/jzs310042023_vNet7501856
+  - Address space
+    - 10.42.0.0/16
+
 ### Connect clients to an AMLFS
 - **Lustre client software** - Clients must have the appropriate Lustre client package installed. Pre-built client packages have been tested with Azure Managed Lustre. See Install client software for instructions and package download options. Client packages are available for several commonly-used Linux OS distributions. [Client installation](https://learn.microsoft.com/en-us/azure/azure-managed-lustre/client-install?pivots=centos-7)
 - **Network access to the file system** - Client machines need network connectivity to the subnet that hosts the Azure Managed Lustre file system. If the clients are in a different virtual network, you might need to use VNet peering.
