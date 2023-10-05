@@ -58,6 +58,7 @@ author_profile: false
 - **Lustre client software** - Clients must have the appropriate Lustre client package installed. Pre-built client packages have been tested with Azure Managed Lustre. See Install client software for instructions and package download options. Client packages are available for several commonly-used Linux OS distributions. [Client installation](https://learn.microsoft.com/en-us/azure/azure-managed-lustre/client-install?pivots=centos-7)
 - **Network access to the file system** - Client machines need network connectivity to the subnet that hosts the Azure Managed Lustre file system. If the clients are in a different virtual network, you might need to use VNet peering.
 - **Mount** - Clients must be able to use the POSIX mount command to connect to the file system.
-- **To achieve advertised performance**, Clients must reside in the same Availability Zone in which the cluster resides.
-- **Be sure to enable accelerated networking on all client VMs**. If it's not enabled, then fully enabling accelerated networking requires a stop/deallocate of each VM.
+- **To achieve advertised performance**
+  - Clients must reside in the **same Availability Zone** in which the cluster resides.
+  - **Be sure to enable accelerated networking on all client VMs**. If it's not enabled, then fully enabling accelerated networking requires a stop/deallocate of each VM.
 - **Security type** - When selecting the security type for the VM, choose the Standard Security Type. Choosing Trusted Launch or Confidential types will prevent the lustre module from being properly installed on the client.
