@@ -100,6 +100,7 @@ author_profile: false
 ### Connect clients to an AMLFS
 - **Lustre client software** - Clients must have the appropriate Lustre client package installed. Pre-built client packages have been tested with Azure Managed Lustre. See Install client software for instructions and package download options. Client packages are available for several commonly-used Linux OS distributions. [Client installation](https://learn.microsoft.com/en-us/azure/azure-managed-lustre/client-install?pivots=centos-7)
 ```bash
+# CentOS 7
 cat > repo.bash << EOL
 #!/bin/bash
 set -ex
