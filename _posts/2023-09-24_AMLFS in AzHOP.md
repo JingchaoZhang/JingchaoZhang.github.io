@@ -112,3 +112,44 @@ sudo mount -t lustre -o noatime,flock 10.42.1.5@tcp:/lustrefs /AMLFS
 # To unmount
 sudo umount /AMLFS
 ```
+
+### Mount the blob storage using blobfuse
+```bash
+# Download the Microsoft signing key
+wget https://packages.microsoft.com/keys/microsoft.asc
+
+# Convert the Microsoft signing key from armored ASCII format to binary format
+gpg --dearmor microsoft.asc
+
+# Create the directory for trusted keys if it does not already exist
+mkdir -p /etc/apt/trusted.gpg.d/
+
+# Copy the binary Microsoft signing key to the trusted keys directory
+sudo cp microsoft.asc.gpg /etc/apt/trusted.gpg.d/
+
+# Download and install the Microsoft repository configuration for Red Hat Enterprise Linux 7
+sudo rpm -Uvh https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rpm
+
+# Install Blobfuse and Fuse using the Yum package manager
+sudo yum install blobfuse fuse -y
+
+# Open the configuration file 'fuse_connection.cfg' for editing using Vim
+cat > fuse_connection.cfg <<EOL
+accountName <your-azure-storage-account-name>
+accountKey <your-azure-storage-account-key>
+containerName <your-container-name>
+EOL
+
+# Create a directory to serve as the mount point for the Blobfuse filesystem
+mkdir ~/mycontainer
+
+# Mount the Azure Blob Storage container to the newly created directory
+# Set temporary path, configuration file, and timeout options for Blobfuse
+blobfuse ~/mycontainer --tmp-path=/mnt/resource/blobfusetmp  --config-file=fuse_connection.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120
+```
+
+### Transfer file from blob to AMLFS
+```bash
+cp mycontainer/image/blog.png /AMLFS/
+```
+
