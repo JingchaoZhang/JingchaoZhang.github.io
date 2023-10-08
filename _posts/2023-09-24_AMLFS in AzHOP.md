@@ -99,6 +99,28 @@ author_profile: false
 
 ### Connect clients to an AMLFS
 - **Lustre client software** - Clients must have the appropriate Lustre client package installed. Pre-built client packages have been tested with Azure Managed Lustre. See Install client software for instructions and package download options. Client packages are available for several commonly-used Linux OS distributions. [Client installation](https://learn.microsoft.com/en-us/azure/azure-managed-lustre/client-install?pivots=centos-7)
+```bash
+cat > repo.bash << EOL
+#!/bin/bash
+set -ex
+
+rpm --import https://packages.microsoft.com/keys/microsoft.asc
+
+DISTRIB_CODENAME=el7
+
+REPO_PATH=/etc/yum.repos.d/amlfs.repo
+echo -e "[amlfs]" > ${REPO_PATH}
+echo -e "name=Azure Lustre Packages" >> ${REPO_PATH}
+echo -e "baseurl=https://packages.microsoft.com/yumrepos/amlfs-${DISTRIB_CODENAME}" >> ${REPO_PATH}
+echo -e "enabled=1" >> ${REPO_PATH}
+echo -e "gpgcheck=1" >> ${REPO_PATH}
+echo -e "gpgkey=https://packages.microsoft.com/keys/microsoft.asc" >> ${REPO_PATH}
+EOL
+
+sudo bash repo.bash
+
+sudo yum install amlfs-lustre-client-2.15.1_29_gbae0abe-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
+```
 - **Network access to the file system** - Client machines need network connectivity to the subnet that hosts the Azure Managed Lustre file system. If the clients are in a different virtual network, you might need to use VNet peering.
 - **Mount** - Clients must be able to use the POSIX mount command to connect to the file system.
 - **To achieve advertised performance**
