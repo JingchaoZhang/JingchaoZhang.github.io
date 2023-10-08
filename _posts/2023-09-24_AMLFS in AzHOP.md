@@ -148,6 +148,10 @@ mkdir ~/mycontainer
 blobfuse ~/mycontainer --tmp-path=/mnt/resource/blobfusetmp  --config-file=fuse_connection.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120
 ```
 
+### Edit cluster-init
+```bash
+/az-hop/playbooks/roles/cyclecloud_cluster/projects/common/cluster-init/scripts
+```
 ### Transfer file from blob to AMLFS
 ```bash
 cp mycontainer/image/blog.png /AMLFS/
