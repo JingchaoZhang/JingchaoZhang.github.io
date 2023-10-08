@@ -122,6 +122,24 @@ sudo bash repo.bash
 
 sudo yum install amlfs-lustre-client-2.15.1_29_gbae0abe-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
 ```
+```bash
+# Ubuntu 2004
+cat > repo.bash << EOL
+#!/bin/bash
+set -ex
+
+apt update && apt install -y ca-certificates curl apt-transport-https lsb-release gnupg
+source /etc/lsb-release
+echo "deb [arch=amd64] https://packages.microsoft.com/repos/amlfs-${DISTRIB_CODENAME}/ ${DISTRIB_CODENAME} main" | tee /etc/apt/sources.list.d/amlfs.list
+curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
+
+apt update
+EOL
+
+sudo bash repo.bash
+
+sudo apt install amlfs-lustre-client-2.15.1-29-gbae0abe=$(uname -r)
+```
 - **Network access to the file system** - Client machines need network connectivity to the subnet that hosts the Azure Managed Lustre file system. If the clients are in a different virtual network, you might need to use VNet peering.
 - **Mount** - Clients must be able to use the POSIX mount command to connect to the file system.
 - **To achieve advertised performance**
