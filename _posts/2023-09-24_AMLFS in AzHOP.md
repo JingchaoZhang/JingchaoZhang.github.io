@@ -156,6 +156,10 @@ sudo umount /AMLFS
 
 ### Mount the blob storage using blobfuse
 ```bash
+#!/bin/bash
+
+set -ex
+
 # Download the Microsoft signing key
 wget https://packages.microsoft.com/keys/microsoft.asc
 
@@ -182,17 +186,24 @@ containerName <your-container-name>
 EOL
 
 # Create a directory to serve as the mount point for the Blobfuse filesystem
-mkdir ~/mycontainer
+mkdir /myblob
 
 # Mount the Azure Blob Storage container to the newly created directory
 # Set temporary path, configuration file, and timeout options for Blobfuse
-blobfuse ~/mycontainer --tmp-path=/mnt/resource/blobfusetmp  --config-file=fuse_connection.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120
+blobfuse /myblob --tmp-path=/tmp/blobfusetmp  --config-file=fuse_connection.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120
 ```
 
 ### Edit cluster-init
 ```bash
-/az-hop/playbooks/roles/cyclecloud_cluster/projects/common/cluster-init/scripts
+root@deployer:/az-hop# cat > playbooks/roles/cyclecloud_cluster/projects/common/cluster-init/scripts/91-AMLFS.sh << EOL
+#!/bin/bash
+
+# Mount the lustre filesystem
+mkdir /AMLFS
+mount -t lustre -o noatime,flock 10.42.1.5@tcp:/lustrefs /AMLFS
+EOL
 ```
+
 ### Transfer file from blob to AMLFS
 ```bash
 cp mycontainer/image/blog.png /AMLFS/
