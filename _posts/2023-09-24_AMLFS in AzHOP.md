@@ -195,17 +195,54 @@ blobfuse /myblob --tmp-path=/tmp/blobfusetmp  --config-file=fuse_connection.cfg 
 
 ### Edit cluster-init
 ```bash
+root@deployer:/az-hop# pwd
+/az-hop
+
 root@deployer:/az-hop# cat > playbooks/roles/cyclecloud_cluster/projects/common/cluster-init/scripts/91-AMLFS.sh << EOL
 #!/bin/bash
 
 # Mount the lustre filesystem
 mkdir /AMLFS
 mount -t lustre -o noatime,flock 10.42.1.5@tcp:/lustrefs /AMLFS
+chmod 777 /AMLFS
+
+# Blob
+# Download the Microsoft signing key
+wget https://packages.microsoft.com/keys/microsoft.asc
+
+# Convert the Microsoft signing key from armored ASCII format to binary format
+gpg --dearmor microsoft.asc
+
+# Create the directory for trusted keys if it does not already exist
+mkdir -p /etc/apt/trusted.gpg.d/
+
+# Copy the binary Microsoft signing key to the trusted keys directory
+sudo cp microsoft.asc.gpg /etc/apt/trusted.gpg.d/
+
+# Download and install the Microsoft repository configuration for Red Hat Enterprise Linux 7
+sudo rpm -Uvh https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rpm
+
+# Install Blobfuse and Fuse using the Yum package manager
+sudo yum install blobfuse fuse -y
+
+# Open the configuration file 'fuse_connection.cfg' for editing using Vim
+cat > fuse_connection.cfg <<EOL
+accountName jzs310042023
+accountKey 3IQ0aWKsdePJ+kaLNizGqAfomFgu7c2IEwZ2TLjxubxsUNfyu+XqBWfZqajJ41Sd7XFnNxtNc8VR+AStxn2Qhg==
+containerName home
+EOL
+
+# Create a directory to serve as the mount point for the Blobfuse filesystem
+mkdir /BLOB
+# Mount the Azure Blob Storage container to the newly created directory
+# Set temporary path, configuration file, and timeout options for Blobfuse
+blobfuse /BLOB --tmp-path=/tmp/blobfusetmp_$$  --config-file=fuse_connection.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 -o allow_other
 EOL
 ```
 
 ### Transfer file from blob to AMLFS
+
 ```bash
-cp mycontainer/image/blog.png /AMLFS/
+cp /BLOB/image/blog.png /AMLFS/
 ```
 
