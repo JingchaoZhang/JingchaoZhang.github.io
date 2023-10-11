@@ -10,7 +10,7 @@ Integrating Azure Managed Lustre File System (AMLFS) with Blob storage into AzHO
 - vnet peering between the storage account and azhop
 - Create AMLFS with blob integration
 - Update azhop network security group (NSG)
-- Add AMLFS to cluster init (optional blob via blob fuse)
+- Add AMLFS to cluster init (optional blob storage mount via blobfuse)
 
 Note: This solution is currently portal based. Many of the following steps can be automated in the future using Terraform and Anisble. 
 
