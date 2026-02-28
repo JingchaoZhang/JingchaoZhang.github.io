@@ -6,6 +6,26 @@ author_profile: true
 ---
 
 <div class="pub-item">
+<p class="pub-title">dpdata: A Scalable Python Toolkit for Atomistic Machine Learning Data Sets</p>
+<p class="pub-meta"><em>Journal of Chemical Information and Modeling</em> &middot; 2025 &middot; <a href="https://pubs.acs.org/doi/abs/10.1021/acs.jcim.5c01767" target="_blank">url</a></p>
+</div>
+
+<div class="pub-item">
+<p class="pub-title">Mechanical properties of hexagonal and trigonal molybdenum ditelluride by molecular dynamics simulation</p>
+<p class="pub-meta"><em>Applied Physics A</em> &middot; 2024 &middot; <a href="https://link.springer.com/article/10.1007/s00339-024-07739-6" target="_blank">url</a></p>
+</div>
+
+<div class="pub-item">
+<p class="pub-title">Anisotropic temperatures in multi-layered 2D materials</p>
+<p class="pub-meta"><em>Journal of Applied Physics</em> &middot; 2024 &middot; <a href="https://pubs.aip.org/aip/jap/article/135/8/085102/3266916" target="_blank">url</a></p>
+</div>
+
+<div class="pub-item">
+<p class="pub-title">Ballistic Transport Enhanced Heat Convection at Nanoscale Hotspots</p>
+<p class="pub-meta"><em>Journal of Applied Physics</em> &middot; 2024 &middot; <a href="https://pubs.aip.org/aip/jap/article/136/16/164306/3318324" target="_blank">url</a></p>
+</div>
+
+<div class="pub-item">
 <p class="pub-title">DeePMD-kit v2: A software package for Deep Potential models</p>
 <p class="pub-meta"><em>The Journal of Chemical Physics</em> &middot; 2023 &middot; <a href="https://pubs.aip.org/aip/jcp/article/159/5/054801/2904916/DeePMD-kit-v2-A-software-package-for-deep" target="_blank">url</a></p>
 </div>
@@ -38,11 +58,6 @@ author_profile: true
 <div class="pub-item">
 <p class="pub-title">Build Robust QA System with Small Datasets using Data Augmentation and Answer Length Penalty</p>
 <p class="pub-meta">2022 &middot; <a href="http://web.stanford.edu/class/cs224n/reports/default_116631452.pdf" target="_blank">pdf</a></p>
-</div>
-
-<div class="pub-item">
-<p class="pub-title">Ballistic Transport Enhanced Heat Convection at Nanoscale Hotspots</p>
-<p class="pub-meta">2022 &middot; Under Review</p>
 </div>
 
 <div class="pub-item">
