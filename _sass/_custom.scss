@@ -1336,3 +1336,17 @@ body.layout--home {
 body:not(.layout--home) .masthead__social {
   display: none;
 }
+
+/* ===== Giscus Comments ===== */
+.giscus-comments {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.giscus-comments h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}

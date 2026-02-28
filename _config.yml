@@ -20,7 +20,7 @@ teaser                   : # filename of teaser fallback teaser image placed in 
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
 comments:
-  provider               : # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
+  provider               : "giscus"
   disqus:
     shortname            : # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
   discourse:
@@ -30,6 +30,16 @@ comments:
     appid                :
     num_posts            : # 5 (default)
     colorscheme          : # "light" (default), "dark"
+  giscus:
+    repo               : "JingchaoZhang/JingchaoZhang.github.io"
+    repo_id            : "MDEwOlJlcG9zaXRvcnk3MDgzOTY1NA=="
+    category           : "General"
+    category_id        : "DIC_kwDOBDjtZs4C3Yez"
+    mapping            : "pathname"
+    reactions_enabled  : "1"
+    input_position     : "bottom"
+    theme              : "preferred_color_scheme"
+    lang               : "en"
 staticman:
   allowedFields          : ['name', 'email', 'url', 'message']
   branch                 : # "master", "gh-pages"
@@ -252,7 +262,7 @@ defaults:
       layout: single
       author_profile: false
       read_time: true
-      comments: false
+      comments: true
       share: true
-      related: true
+      related: false
       classes: wide
