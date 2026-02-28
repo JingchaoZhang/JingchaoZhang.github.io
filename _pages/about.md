@@ -52,30 +52,3 @@ Principal HPC/AI Architect at Microsoft, making AI workloads fly on hyperscaler.
   </div>
 </div>
 </div>
-
-<div class="about-section" markdown="1">
-## Areas of Expertise
-
-<div class="exp-list">
-  <div class="exp-company">
-    <span class="exp-company-name">HPC &amp; Cloud</span>
-  </div>
-  <div class="exp-role">
-    <span class="exp-role-title">Azure HPC, GPU clusters, NCCL, InfiniBand, Slurm, large-scale distributed computing</span>
-  </div>
-
-  <div class="exp-company">
-    <span class="exp-company-name">GPU Computing</span>
-  </div>
-  <div class="exp-role">
-    <span class="exp-role-title">NVIDIA profiling, multi-GPU training, CUDA optimization, DL frameworks at scale</span>
-  </div>
-
-  <div class="exp-company">
-    <span class="exp-company-name">Computational Science</span>
-  </div>
-  <div class="exp-role">
-    <span class="exp-role-title">Molecular dynamics, materials science, nanoscale thermal transport simulations</span>
-  </div>
-</div>
-</div>

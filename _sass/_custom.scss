@@ -1209,20 +1209,20 @@ body.layout--home {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding: 0.9em 0 0.25em;
-  border-bottom: 2px solid var(--color-accent);
+  padding: 0.5em 0 0.15em;
+  border-bottom: 1.5px solid var(--color-accent);
   margin-bottom: 0;
 }
 
 .exp-company-name {
   font-weight: 700;
-  font-size: 1.05em;
+  font-size: 0.95em;
   color: var(--color-primary-dark);
   letter-spacing: 0.01em;
 }
 
 .exp-company-period {
-  font-size: 0.82em;
+  font-size: 0.78em;
   color: var(--color-text-light);
   white-space: nowrap;
 }
@@ -1231,7 +1231,7 @@ body.layout--home {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding: 0.35em 0 0.35em 1.2em;
+  padding: 0.2em 0 0.2em 1.2em;
   position: relative;
 
   &::before {
@@ -1239,26 +1239,26 @@ body.layout--home {
     position: absolute;
     left: 0.35em;
     top: 50%;
-    width: 5px;
-    height: 5px;
+    width: 4px;
+    height: 4px;
     background: var(--color-accent);
     border-radius: 50%;
     transform: translateY(-50%);
   }
 
   & + .exp-company {
-    margin-top: 0.6em;
+    margin-top: 0.35em;
   }
 }
 
 .exp-role-title {
-  font-size: 0.93em;
+  font-size: 0.88em;
   font-weight: 500;
   color: var(--color-text);
 }
 
 .exp-role-period {
-  font-size: 0.8em;
+  font-size: 0.76em;
   color: var(--color-text-light);
   white-space: nowrap;
   margin-left: 1em;
