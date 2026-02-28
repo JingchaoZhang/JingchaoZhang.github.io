@@ -1,0 +1,10 @@
+_site/
+.bundle/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+vendor/
+*.gem
+*.swp
+*~
+.DS_Store

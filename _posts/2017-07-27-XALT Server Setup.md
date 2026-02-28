@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "XALT Server Setup"
 author_profile: false
 ---
 

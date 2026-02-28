@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Check Whether InfiniBand Is Being Used"
 author_profile: false
 ---
 

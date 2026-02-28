@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "LS-DYNA MPP Submission Script with SLURM"
 author_profile: false
 ---
 

@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "SLURM Cgroup Memory Usage"
 author_profile: false
 ---
 

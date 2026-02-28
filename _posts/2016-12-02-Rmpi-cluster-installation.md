@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Rmpi Cluster Installation"
 author_profile: false
 ---
 

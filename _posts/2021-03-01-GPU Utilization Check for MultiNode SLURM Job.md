@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "GPU Utilization Check for Multi-Node SLURM Job"
 author_profile: false
 ---
 

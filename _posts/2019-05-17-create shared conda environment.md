@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Create Shared Conda Environment"
 author_profile: false
 ---
 

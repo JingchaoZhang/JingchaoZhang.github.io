@@ -1,8 +1,81 @@
 ---
 layout: single
-title: About Jingchao
+title: "About Jingchao"
 permalink: /about/
-author_profile: false
+author_profile: true
 ---
 
-- Sr. TPM - AI/ML Architect at Microsoft
+<div class="about-section" markdown="1">
+
+Principal HPC/AI Architect at Microsoft, making AI workloads fly on hyperscaler.
+
+</div>
+
+<div class="about-section" markdown="1">
+## Experience
+
+<div class="exp-list">
+  <div class="exp-company">
+    <span class="exp-company-name">Microsoft</span>
+  </div>
+  <div class="exp-role">
+    <span class="exp-role-title">Principal HPC/AI Architect</span>
+    <span class="exp-role-period">Sep 2025 &ndash; Present</span>
+  </div>
+  <div class="exp-role">
+    <span class="exp-role-title">Sr. HPC/AI Architect</span>
+    <span class="exp-role-period">Jul 2022 &ndash; Aug 2025</span>
+  </div>
+
+  <div class="exp-company">
+    <span class="exp-company-name">NVIDIA</span>
+  </div>
+  <div class="exp-role">
+    <span class="exp-role-title">Sr. Solutions Architect</span>
+    <span class="exp-role-period">Feb 2021 &ndash; Jul 2022</span>
+  </div>
+
+  <div class="exp-company">
+    <span class="exp-company-name">Emory University</span>
+  </div>
+  <div class="exp-role">
+    <span class="exp-role-title">Sr. HPC Architect</span>
+    <span class="exp-role-period">Dec 2019 &ndash; Jan 2021</span>
+  </div>
+
+  <div class="exp-company">
+    <span class="exp-company-name">University of Nebraska-Lincoln</span>
+  </div>
+  <div class="exp-role">
+    <span class="exp-role-title">HPC Applications Specialist</span>
+    <span class="exp-role-period">Aug 2013 &ndash; Dec 2019</span>
+  </div>
+</div>
+</div>
+
+<div class="about-section" markdown="1">
+## Areas of Expertise
+
+<div class="exp-list">
+  <div class="exp-company">
+    <span class="exp-company-name">HPC &amp; Cloud</span>
+  </div>
+  <div class="exp-role">
+    <span class="exp-role-title">Azure HPC, GPU clusters, NCCL, InfiniBand, Slurm, large-scale distributed computing</span>
+  </div>
+
+  <div class="exp-company">
+    <span class="exp-company-name">GPU Computing</span>
+  </div>
+  <div class="exp-role">
+    <span class="exp-role-title">NVIDIA profiling, multi-GPU training, CUDA optimization, DL frameworks at scale</span>
+  </div>
+
+  <div class="exp-company">
+    <span class="exp-company-name">Computational Science</span>
+  </div>
+  <div class="exp-role">
+    <span class="exp-role-title">Molecular dynamics, materials science, nanoscale thermal transport simulations</span>
+  </div>
+</div>
+</div>

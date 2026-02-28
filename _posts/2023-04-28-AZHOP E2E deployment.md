@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "AzHOP E2E Deployment"
 author_profile: false
 ---
 

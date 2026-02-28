@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "SLURM Cluster Usage per Group"
 author_profile: false
 ---
 

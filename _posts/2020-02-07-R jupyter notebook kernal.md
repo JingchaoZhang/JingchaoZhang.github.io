@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "R Jupyter Notebook Kernel"
 author_profile: false
 ---
 

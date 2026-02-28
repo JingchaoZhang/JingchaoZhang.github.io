@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Run RStudio Server with NVIDIA Enroot"
 author_profile: false
 ---
 

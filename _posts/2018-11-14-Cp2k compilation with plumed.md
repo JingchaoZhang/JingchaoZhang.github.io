@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "CP2K Compilation with Plumed"
 author_profile: false
 ---
 

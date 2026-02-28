@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Special Issue on Thermal Transport in Nanoscale Organic Materials and Interfaces"
 author_profile: false
 ---
 

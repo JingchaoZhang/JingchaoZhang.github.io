@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Limit GPU Memory Usage in TensorFlow"
 author_profile: false
 ---
 

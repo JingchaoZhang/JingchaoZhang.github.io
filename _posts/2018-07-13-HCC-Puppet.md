@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "HCC Puppet"
 author_profile: false
 ---
 

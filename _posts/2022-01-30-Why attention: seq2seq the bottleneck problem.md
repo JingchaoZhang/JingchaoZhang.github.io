@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Why Attention: Seq2Seq the Bottleneck Problem"
 author_profile: false
 ---
 

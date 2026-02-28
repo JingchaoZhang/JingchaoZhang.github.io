@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "MATLAB AlexNet Support Package Install"
 author_profile: false
 ---
 

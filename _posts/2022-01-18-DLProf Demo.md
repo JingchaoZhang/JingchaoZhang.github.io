@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "DLProf Demo"
 author_profile: false
 ---
 

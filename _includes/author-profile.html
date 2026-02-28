@@ -28,24 +28,20 @@
       {% if author.uri %}
         <li><a href="{{ author.uri }}"><i class="fa fa-fw fa-chain" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].website_label | default: "Website" }}</a></li>
       {% endif %}
-      {% if author.email %}
-        <li><a href="mailto:{{ author.email }}"><i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].email_label | default: "Email" }}</a></li>
-      {% endif %}
-      {% if author.keybase %}
-        <li><a href="https://keybase.io/{{ author.keybase }}"><i class="fa fa-fw fa-key" aria-hidden="true"></i> Keybase</a></li>
-      {% endif %}
-      {% if author.twitter %}
-        <li><a href="https://twitter.com/{{ author.twitter }}"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
-      {% endif %}
-      {% if author.facebook %}
-        <li><a href="https://www.facebook.com/{{ author.facebook }}"><i class="fa fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
-      {% endif %}
-      {% if author.google_plus %}
-        <li><a href="https://plus.google.com/+{{ author.google_plus }}"><i class="fa fa-fw fa-google-plus-square" aria-hidden="true"></i> Google+</a></li>
-      {% endif %}
-      {% if author.linkedin %}
-        <li><a href="https://www.linkedin.com/in/{{ author.linkedin }}"><i class="fa fa-fw fa-linkedin-square" aria-hidden="true"></i> LinkedIn</a></li>
-      {% endif %}
+      <li class="author__social-icons">
+        {% if author.linkedin %}
+          <a href="https://www.linkedin.com/in/{{ author.linkedin }}" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fa-brands fa-fw fa-linkedin" aria-hidden="true"></i></a>
+        {% endif %}
+        {% if author.github %}
+          <a href="https://github.com/{{ author.github }}" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fa-brands fa-fw fa-github" aria-hidden="true"></i></a>
+        {% endif %}
+        {% if author.twitter %}
+          <a href="https://x.com/{{ author.twitter }}" target="_blank" rel="noopener noreferrer" title="X"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width:1em;height:1em;vertical-align:-0.125em;fill:currentColor;"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
+        {% endif %}
+        {% if author.website %}
+          <a href="{{ author.website }}" target="_blank" rel="noopener noreferrer" title="Google Scholar"><i class="fa fa-fw fa-graduation-cap" aria-hidden="true"></i></a>
+        {% endif %}
+      </li>
       {% if author.xing %}
         <li><a href="https://www.xing.com/profile/{{ author.xing }}"><i class="fa fa-fw fa-xing-square" aria-hidden="true"></i> XING</a></li>
       {% endif %}
@@ -58,9 +54,7 @@
       {% if author.bitbucket %}
         <li><a href="https://bitbucket.org/{{ author.bitbucket }}"><i class="fa fa-fw fa-bitbucket" aria-hidden="true"></i> Bitbucket</a></li>
       {% endif %}
-      {% if author.github %}
-        <li><a href="https://github.com/{{ author.github }}"><i class="fa fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
-      {% endif %}
+
       {% if author.stackoverflow %}
         <li><a href="https://www.stackoverflow.com/users/{{ author.stackoverflow }}"><i class="fa fa-fw fa-stack-overflow" aria-hidden="true"></i> Stackoverflow</a></li>
       {% endif %}

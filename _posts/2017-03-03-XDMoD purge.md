@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "XDMoD Purge"
 author_profile: false
 ---
 

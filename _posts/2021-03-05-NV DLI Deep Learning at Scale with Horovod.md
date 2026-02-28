@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "NV DLI Deep Learning at Scale with Horovod"
 author_profile: false
 ---
 

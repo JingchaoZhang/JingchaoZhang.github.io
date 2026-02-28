@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Aepera Quick Setup"
 author_profile: false
 ---
 

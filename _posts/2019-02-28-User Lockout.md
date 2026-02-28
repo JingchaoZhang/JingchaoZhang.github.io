@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "User Lockout"
 author_profile: false
 ---
 

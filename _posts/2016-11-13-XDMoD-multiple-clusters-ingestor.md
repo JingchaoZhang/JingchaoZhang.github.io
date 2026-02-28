@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "XDMoD Multiple Clusters Ingestor"
 author_profile: false
 ---
 

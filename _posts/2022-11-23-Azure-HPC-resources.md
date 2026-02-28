@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Azure HPC Resources"
 author_profile: false
 ---
 

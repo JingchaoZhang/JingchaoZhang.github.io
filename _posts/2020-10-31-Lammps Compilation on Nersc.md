@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "LAMMPS Compilation on NERSC"
 author_profile: false
 ---
 

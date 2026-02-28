@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "LAMMPS Intel Compiler OpenMPI Compilation"
 author_profile: false
 ---
 

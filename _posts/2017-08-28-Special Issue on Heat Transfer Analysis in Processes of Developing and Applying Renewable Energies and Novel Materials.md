@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Special Issue on Heat Transfer Analysis in Processes of Developing and Applying Renewable Energies and Novel Materials"
 author_profile: false
 ---
 

@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "NVIDIA Modulus Singularity Run on GPU"
 author_profile: false
 ---
 

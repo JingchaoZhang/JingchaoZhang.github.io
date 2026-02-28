@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "SLURM Setup"
 author_profile: false
 ---
 

@@ -9,11 +9,12 @@
 locale                   : "en"
 title                    : "Jingchao's Website"
 title_separator          : "-"
-name                     : "Jingchao Zhang"
+name                     : "Jingchao Zhang, PhD"
 description              : "Jingchao's Website"
 url                      : "https://jingchaozhang.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 future                   : true
+quiet                    : true
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
 # breadcrumbs            : false # true, false (default)
@@ -78,10 +79,10 @@ analytics:
 
 # Site Author
 author:
-  name             : "Jingchao Zhang"
+  name             : "Jingchao Zhang, PhD"
   avatar           : "bio-photo.jpg"
-  bio              : "AI/ML Architect at Microsoft"
-  location         : "Atlanta, GA"
+  bio              : "HPC/AI @Microsoft"
+  location         :
   email            : "jingczhang@microsoft.com"
   uri              :
   bitbucket        :
@@ -91,20 +92,20 @@ author:
   facebook         :
   foursquare       :
   github           : "JingchaoZhang"
-  google_plus      :
+  # google_plus    :  # deprecated
   keybase          :
   instagram        :
   lastfm           :
-  linkedin         :
+  linkedin         : "jingchao-zhang"
   pinterest        :
   soundcloud       :
   stackoverflow    : # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
   steam            :
   tumblr           :
-  twitter          :
+  twitter          : "JingchaoZhang1"
   vine             :
   weibo            :
-  website          : "https://publons.com/researcher/1744266/jingchao-zhang/"
+  website          : "https://scholar.google.com/citations?user=PjBTMRcAAAAJ&hl=en"
   xing             :
   youtube          :
 
@@ -178,7 +179,7 @@ timezone: # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
 # Plugins
-gems:
+plugins:
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-gist
@@ -231,13 +232,11 @@ compress_html:
     envs: development
 
 defaults:
-  -
-    scope:
-      path: "" # an empty string here means all files in the project
+  # all files
+  - scope:
+      path: ""
     values:
       layout: "default"
-
-defaults:
   # _pages
   - scope:
       path: ""
@@ -245,8 +244,6 @@ defaults:
     values:
       layout: single
       author_profile: true
-
-defaults:
   # _posts
   - scope:
       path: ""
@@ -254,7 +251,8 @@ defaults:
     values:
       layout: single
       author_profile: false
-      read_time: false
+      read_time: true
       comments: false
       share: true
       related: true
+      classes: wide

@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Globus Connect CLI File Transfer"
 author_profile: false
 ---
 

@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "MATLAB Parallel Server"
 author_profile: false
 ---
 

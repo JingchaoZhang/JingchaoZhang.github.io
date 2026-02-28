@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Boost OpenMPI"
 author_profile: false
 ---
 

@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "NVIDIA Profilers"
 author_profile: false
 ---
 

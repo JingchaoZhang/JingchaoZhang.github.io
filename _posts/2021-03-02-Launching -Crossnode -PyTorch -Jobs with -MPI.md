@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Launching Cross-Node PyTorch Jobs with MPI"
 author_profile: false
 ---
 

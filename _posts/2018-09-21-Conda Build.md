@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Conda Build"
 author_profile: false
 ---
 

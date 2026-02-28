@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "SLURM Hybrid Cluster Setup in Azure"
 author_profile: false
 ---
 

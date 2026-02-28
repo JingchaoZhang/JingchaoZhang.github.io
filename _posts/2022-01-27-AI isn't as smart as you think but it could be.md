@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "AI Isn't as Smart as You Think but It Could Be"
 author_profile: false
 ---
 

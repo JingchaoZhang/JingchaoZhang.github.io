@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "HPC Network Technologies"
 author_profile: false
 ---
 

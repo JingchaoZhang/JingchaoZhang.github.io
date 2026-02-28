@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Disk IO Test"
 author_profile: false
 ---
 

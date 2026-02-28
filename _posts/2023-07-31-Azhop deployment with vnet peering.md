@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "AzHOP Deployment with VNet Peering"
 author_profile: false
 ---
 

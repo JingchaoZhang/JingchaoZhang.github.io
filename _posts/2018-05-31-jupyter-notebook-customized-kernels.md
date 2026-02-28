@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Jupyter Notebook Customized Kernels"
 author_profile: false
 ---
 

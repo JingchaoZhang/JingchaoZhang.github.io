@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "EL 7 Docker Upgrade to Docker-CE"
 author_profile: false
 ---
 

@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "SmileiMPI Compilation"
 author_profile: false
 ---
 

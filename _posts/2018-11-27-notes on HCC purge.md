@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Notes on HCC Purge"
 author_profile: false
 ---
 

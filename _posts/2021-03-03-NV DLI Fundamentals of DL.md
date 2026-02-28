@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "NV DLI Fundamentals of DL"
 author_profile: false
 ---
 

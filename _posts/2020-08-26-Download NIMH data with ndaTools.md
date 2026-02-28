@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Download NIMH Data with ndaTools"
 author_profile: false
 ---
 

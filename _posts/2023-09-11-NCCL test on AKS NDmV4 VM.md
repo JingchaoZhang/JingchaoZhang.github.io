@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "NCCL Test on AKS NDmv4 VM"
 author_profile: false
 ---
 

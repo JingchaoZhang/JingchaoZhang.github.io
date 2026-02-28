@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "XDMoD Boot from Snapshot"
 author_profile: false
 ---
 

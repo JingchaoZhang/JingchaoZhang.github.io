@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Duo Integration with XDMoD SimpleSAMLphp"
 author_profile: false
 ---
 

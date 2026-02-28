@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Windows Using Conda Environments in Spyder"
 author_profile: false
 ---
 

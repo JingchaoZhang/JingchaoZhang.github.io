@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Enable LDAP CentOS7 VM"
 author_profile: false
 ---
 

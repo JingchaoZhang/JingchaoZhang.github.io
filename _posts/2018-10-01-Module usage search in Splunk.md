@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Module Usage Search in Splunk"
 author_profile: false
 ---
 

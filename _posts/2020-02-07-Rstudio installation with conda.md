@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "RStudio Installation with Conda"
 author_profile: false
 ---
 

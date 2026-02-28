@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Conda Project"
 author_profile: false
 ---
 

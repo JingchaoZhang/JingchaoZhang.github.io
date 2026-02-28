@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "DLProf TF2 Profiling"
 author_profile: false
 ---
 

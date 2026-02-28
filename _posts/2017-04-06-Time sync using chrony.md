@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Time Sync Using Chrony"
 author_profile: false
 ---
 

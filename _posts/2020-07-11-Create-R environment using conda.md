@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Create R Environment Using Conda"
 author_profile: false
 ---
 

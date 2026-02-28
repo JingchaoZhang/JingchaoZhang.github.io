@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Coldfront Deployment"
 author_profile: false
 ---
 

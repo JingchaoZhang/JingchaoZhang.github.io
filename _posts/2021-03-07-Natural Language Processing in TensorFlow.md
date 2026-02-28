@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Natural Language Processing in TensorFlow"
 author_profile: false
 ---
 

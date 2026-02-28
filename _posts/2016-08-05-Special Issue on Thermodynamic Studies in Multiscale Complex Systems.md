@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Special Issue on Thermodynamic Studies in Multiscale Complex Systems"
 author_profile: false
 ---
 

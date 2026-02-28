@@ -175,17 +175,20 @@
 .greedy-nav {
   position: relative;
   min-width: 250px;
-  background: $background-color;
+  background: transparent;
 
   a {
     display: block;
     margin: 0 1rem;
     padding: 0.5rem 0;
-    color: $masthead-link-color;
+    color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: -0.01em;
 
     &:hover {
-      color: $masthead-link-color-hover;
+      color: #fff;
     }
   }
 
@@ -196,7 +199,7 @@
     padding: 0 0.5rem;
     border: 0;
     outline: none;
-    background-color: $primary-color;
+    background-color: rgba(99, 102, 241, 0.3);
     color: #fff;
     cursor: pointer;
   }
@@ -255,19 +258,20 @@
     right: 0;
     margin-top: 15px;
     padding: 5px;
-    border: 1px solid $border-color;
+    border: 1px solid rgba(99, 102, 241, 0.2);
     border-radius: $border-radius;
-    background: #fff;
-    box-shadow: 0 0 10px rgba(#000, 0.25);
+    background: #1e293b;
+    box-shadow: 0 8px 30px rgba(#000, 0.4);
 
     a {
       margin: 0;
       padding: 10px 20px;
       font-size: $type-size-5;
+      color: rgba(255,255,255,0.8);
 
       &:hover {
-        color: $masthead-link-color-hover;
-        background: mix(#fff, $primary-color, 75%);
+        color: #fff;
+        background: rgba(99, 102, 241, 0.2);
       }
     }
 
@@ -279,7 +283,7 @@
       width: 0;
       border-style: solid;
       border-width: 0 10px 10px;
-      border-color: $border-color transparent;
+      border-color: rgba(99, 102, 241, 0.2) transparent;
       display: block;
       z-index: 0;
     }
@@ -292,14 +296,14 @@
       width: 0;
       border-style: solid;
       border-width: 0 10px 10px;
-      border-color: #fff transparent;
+      border-color: #1e293b transparent;
       display: block;
       z-index: 1;
     }
 
     li {
       display: block;
-      border-bottom: 1px solid $border-color;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
 
       &:last-child {
         border-bottom: none;

@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Software Carpentry Certification"
 author_profile: false
 ---
 

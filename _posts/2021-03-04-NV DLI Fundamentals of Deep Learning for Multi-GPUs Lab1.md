@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "NV DLI Fundamentals of Deep Learning for Multi-GPUs Lab1"
 author_profile: false
 ---
 

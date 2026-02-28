@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "Optimized Large-Message Broadcast for Deep Learning Workloads: MPI, MPI+NCCL, or NCCL2"
 author_profile: false
 ---
 

@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "XDMoD Fresh Install"
 author_profile: false
 ---
 

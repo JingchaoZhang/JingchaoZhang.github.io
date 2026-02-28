@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "MPI Processes per GPU"
 author_profile: false
 ---
 

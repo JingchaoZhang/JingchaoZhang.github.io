@@ -1,5 +1,6 @@
 ---
 layout: single
+title: "R Package Installations"
 author_profile: false
 ---
 
