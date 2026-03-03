@@ -37,22 +37,26 @@ author_profile: true
 
 <div class="pub-item">
 <p class="pub-title">Evolution of local structural motifs in colloidal quantum dot semiconductor nanocrystals leading to nanofaceting</p>
-<p class="pub-meta"><em>Nano Letters</em> &middot; 2023 &middot; <a href="https://drive.google.com/file/d/1ryZ8kr0O31zgovuI-kvJQQWqPux05Soh/view?usp=sharing" target="_blank">pdf</a></p>
+<p class="pub-meta"><em>Nano Letters</em> &middot; 2023 &middot; <a href="https://drive.google.com/file/d/1ryZ8kr0O31zgovuI-kvJQQWqPux05Soh/view?usp=sharing" target="_blank">pdf</a> &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2023-evolution-local-structural-motifs.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title">Application of Deep Learning Workflow for Autonomous Grain Size Analysis</p>
-<p class="pub-meta"><em>Molecules</em> &middot; 2022 &middot; <a href="https://drive.google.com/file/d/1wzqFTWlsP6dPBa-PPFQurKTc0Rgqq2Xt/view?usp=sharing" target="_blank">pdf</a></p>
+<p class="pub-meta"><em>Molecules</em> &middot; 2022 &middot; <a href="https://drive.google.com/file/d/1wzqFTWlsP6dPBa-PPFQurKTc0Rgqq2Xt/view?usp=sharing" target="_blank">pdf</a> &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2022-deep-learning-grain-size-analysis.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title">Lead Leaching of Perovskite Solar Cells in Aqueous Environments: A Quantitative Investigation</p>
-<p class="pub-meta"><em>Solar PRL</em> &middot; 2022 &middot; <a href="https://drive.google.com/file/d/13hAvNmxscW69zNxvSWhCDrs5FmdE0xlN/view?usp=sharing" target="_blank">pdf</a></p>
+<p class="pub-meta"><em>Solar PRL</em> &middot; 2022 &middot; <a href="https://drive.google.com/file/d/13hAvNmxscW69zNxvSWhCDrs5FmdE0xlN/view?usp=sharing" target="_blank">pdf</a> &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2022-lead-leaching-perovskite-solar-cells.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title">Anisotropic Thermal Transport in Twisted Bilayer Graphene</p>
-<p class="pub-meta"><em>Physical Chemistry Chemical Physics</em> &middot; 2022 &middot; <a href="https://drive.google.com/file/d/103y1SbEskFDqa7MrQuzWdkbrt_GKZOAB/view?usp=sharing" target="_blank">pdf</a></p>
+<p class="pub-meta"><em>Physical Chemistry Chemical Physics</em> &middot; 2022 &middot; <a href="https://drive.google.com/file/d/103y1SbEskFDqa7MrQuzWdkbrt_GKZOAB/view?usp=sharing" target="_blank">pdf</a> &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2022-anisotropic-thermal-transport-twisted-bilayer-graphene.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
@@ -67,47 +71,56 @@ author_profile: true
 
 <div class="pub-item">
 <p class="pub-title">Applications of Machine Learning in Computational Nanotechnology</p>
-<p class="pub-meta"><em>Nanotechnology</em> &middot; 2022 &middot; <a href="https://drive.google.com/file/d/11kVgmlZoAdcv5B4QQv3ypyRDAvrMspL2/view?usp=sharing" target="_blank">pdf</a></p>
+<p class="pub-meta"><em>Nanotechnology</em> &middot; 2022 &middot; <a href="https://drive.google.com/file/d/11kVgmlZoAdcv5B4QQv3ypyRDAvrMspL2/view?usp=sharing" target="_blank">pdf</a> &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2022-applications-ml-computational-nanotechnology.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title">Atomistic insights into dynamic growth of pentacene thin films on metal surfaces functionalized with self-assembled monolayers</p>
-<p class="pub-meta"><em>Applied Surface Science</em> &middot; 2022 &middot; <a href="https://drive.google.com/file/d/1qG2ANt7HqkCtuRKVIklhf_maoI1qu82Y/view?usp=sharing" target="_blank">pdf</a></p>
+<p class="pub-meta"><em>Applied Surface Science</em> &middot; 2022 &middot; <a href="https://drive.google.com/file/d/1qG2ANt7HqkCtuRKVIklhf_maoI1qu82Y/view?usp=sharing" target="_blank">pdf</a> &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2021-atomistic-insights-pentacene-thin-films.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title">Building an AI-ready RSE Workforce</p>
-<p class="pub-meta"><em>rse-hpc-2021</em> &middot; 2021 &middot; <a href="https://drive.google.com/file/d/1IjklU1u_ljwI2bPS1layoIgrZNkFdrjJ/view?usp=sharing" target="_blank">pdf</a></p>
+<p class="pub-meta"><em>rse-hpc-2021</em> &middot; 2021 &middot; <a href="https://drive.google.com/file/d/1IjklU1u_ljwI2bPS1layoIgrZNkFdrjJ/view?usp=sharing" target="_blank">pdf</a> &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2021-building-ai-ready-rse-workforce.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title">Thermal Transport in Organic Semiconductors</p>
-<p class="pub-meta"><em>Journal of Applied Physics</em> &middot; 2021 &middot; <a href="https://drive.google.com/file/d/1CE-Zwj3lQCKu9uoHOy0hr07lL9v2CNif/view?usp=sharing" target="_blank">pdf</a></p>
+<p class="pub-meta"><em>Journal of Applied Physics</em> &middot; 2021 &middot; <a href="https://drive.google.com/file/d/1CE-Zwj3lQCKu9uoHOy0hr07lL9v2CNif/view?usp=sharing" target="_blank">pdf</a> &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2021-thermal-transport-organic-semiconductors.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title">Application of Artificial Intelligence in Renewable Energy and Decarbonization</p>
-<p class="pub-meta"><em>ES Energy &amp; Environment</em> &middot; 2021 &middot; <a href="https://drive.google.com/file/d/1TG8zOVfC4qNf3Man-V8v_VVNavHCIwJS/view?usp=sharing" target="_blank">pdf</a></p>
+<p class="pub-meta"><em>ES Energy &amp; Environment</em> &middot; 2021 &middot; <a href="https://drive.google.com/file/d/1TG8zOVfC4qNf3Man-V8v_VVNavHCIwJS/view?usp=sharing" target="_blank">pdf</a> &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2021-ai-renewable-energy-decarbonization.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title">Molecular Dynamics and Machine Learning in Catalysts</p>
-<p class="pub-meta"><em>Catalysts</em> &middot; 2021 &middot; <a href="https://drive.google.com/file/d/1pE7umbHz1RcWlIz5YpAXUKgvnoxvTwlr/view?usp=sharing" target="_blank">pdf</a></p>
+<p class="pub-meta"><em>Catalysts</em> &middot; 2021 &middot; <a href="https://drive.google.com/file/d/1pE7umbHz1RcWlIz5YpAXUKgvnoxvTwlr/view?usp=sharing" target="_blank">pdf</a> &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2021-molecular-dynamics-ml-catalysts.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title">Full-Spectrum Thermal Analysis in Twisted Bilayer Graphene</p>
-<p class="pub-meta"><em>Physical Chemistry Chemical Physics</em> &middot; 2021 &middot; <a href="https://drive.google.com/file/d/1xoEcLagR_b5ma1jU5wFy3XmKVuj5Nilu/view?usp=sharing" target="_blank">pdf</a></p>
+<p class="pub-meta"><em>Physical Chemistry Chemical Physics</em> &middot; 2021 &middot; <a href="https://drive.google.com/file/d/1xoEcLagR_b5ma1jU5wFy3XmKVuj5Nilu/view?usp=sharing" target="_blank">pdf</a> &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2021-full-spectrum-thermal-twisted-bilayer-graphene.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title">Thermal Boundary Resistance at Graphene-Pentacene Interface Explored by A Data-Intensive Approach</p>
-<p class="pub-meta"><em>Nanotechnology</em> &middot; 2021 &middot; <a href="https://drive.google.com/file/d/1AcEVYFfYAEEPisRVgxOCoeWjl8AfNH-_/view?usp=sharing" target="_blank">pdf</a></p>
+<p class="pub-meta"><em>Nanotechnology</em> &middot; 2021 &middot; <a href="https://drive.google.com/file/d/1AcEVYFfYAEEPisRVgxOCoeWjl8AfNH-_/view?usp=sharing" target="_blank">pdf</a> &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2021-thermal-boundary-resistance-graphene-pentacene.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title">High-Throughput Computations of Cross-Plane Thermal Conductivity in Multilayer Stanene</p>
-<p class="pub-meta"><em>International Journal of Heat and Mass Transfer</em> &middot; 2021 &middot; <a href="https://drive.google.com/file/d/1pxm9_brr3WYJ8nxofIMnBJYjYlbDMldg/view?usp=sharing" target="_blank">pdf</a></p>
+<p class="pub-meta"><em>International Journal of Heat and Mass Transfer</em> &middot; 2021 &middot; <a href="https://drive.google.com/file/d/1pxm9_brr3WYJ8nxofIMnBJYjYlbDMldg/view?usp=sharing" target="_blank">pdf</a> &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2021-high-throughput-cross-plane-stanene.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
@@ -352,50 +365,60 @@ author_profile: true
 
 <div class="pub-item">
 <p class="pub-title">A comprehensive review on the molecular dynamics simulation of the novel thermal properties of graphene</p>
-<p class="pub-meta"><em>RSC Advances</em> &middot; 2015 &middot; <a href="https://drive.google.com/open?id=0B3Yj4QkZpI-dV2JIVlRIQ2dTNkk" target="_blank">pdf</a></p>
+<p class="pub-meta"><em>RSC Advances</em> &middot; 2015 &middot; <a href="https://drive.google.com/open?id=0B3Yj4QkZpI-dV2JIVlRIQ2dTNkk" target="_blank">pdf</a> &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2015-comprehensive-review-md-thermal-graphene.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title">Tuning thermal contact conductance at graphene-copper interface via surface nanoengineering</p>
-<p class="pub-meta"><em>Nanoscale</em> &middot; 2015 &middot; <a href="https://drive.google.com/open?id=0B3Yj4QkZpI-dcHJxLXU2TXlsczg" target="_blank">pdf</a></p>
+<p class="pub-meta"><em>Nanoscale</em> &middot; 2015 &middot; <a href="https://drive.google.com/open?id=0B3Yj4QkZpI-dcHJxLXU2TXlsczg" target="_blank">pdf</a> &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2015-tuning-thermal-conductance-graphene-copper.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title">Five orders of magnitude reduction in energy coupling across corrugated graphene/substrate interfaces</p>
-<p class="pub-meta"><em>ACS Applied Materials &amp; Interfaces</em> &middot; 2014 &middot; <a href="https://drive.google.com/open?id=0B3Yj4QkZpI-db2NRVE9JbWhGZEk" target="_blank">pdf</a></p>
+<p class="pub-meta"><em>ACS Applied Materials &amp; Interfaces</em> &middot; 2014 &middot; <a href="https://drive.google.com/open?id=0B3Yj4QkZpI-db2NRVE9JbWhGZEk" target="_blank">pdf</a> &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2014-five-orders-magnitude-energy-coupling-graphene.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title">Co-existing heat currents in opposite directions in graphene nanoribbons</p>
-<p class="pub-meta"><em>Physics Letters A</em> &middot; 2013 &middot; <a href="https://drive.google.com/open?id=0B3Yj4QkZpI-daHJmaEs1eE5WME0" target="_blank">pdf</a></p>
+<p class="pub-meta"><em>Physics Letters A</em> &middot; 2013 &middot; <a href="https://drive.google.com/open?id=0B3Yj4QkZpI-daHJmaEs1eE5WME0" target="_blank">pdf</a> &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2013-co-existing-heat-currents-graphene.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title">Phase change and stress wave in picosecond laser–material interaction with shock wave formation</p>
-<p class="pub-meta"><em>Applied Physics A</em> &middot; 2013 &middot; <a href="https://drive.google.com/open?id=0B3Yj4QkZpI-dYlNka1pNd0dVNFE" target="_blank">pdf</a></p>
+<p class="pub-meta"><em>Applied Physics A</em> &middot; 2013 &middot; <a href="https://drive.google.com/open?id=0B3Yj4QkZpI-dYlNka1pNd0dVNFE" target="_blank">pdf</a> &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2013-phase-change-stress-wave-picosecond-laser.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title">Phonon energy inversion in graphene during transient thermal transport</p>
-<p class="pub-meta"><em>Physics Letters A</em> &middot; 2013 &middot; <a href="https://drive.google.com/open?id=0B3Yj4QkZpI-dcnZRZzh0Qkt4QkE" target="_blank">pdf</a></p>
+<p class="pub-meta"><em>Physics Letters A</em> &middot; 2013 &middot; <a href="https://drive.google.com/open?id=0B3Yj4QkZpI-dcnZRZzh0Qkt4QkE" target="_blank">pdf</a> &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2013-phonon-energy-inversion-graphene.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title">Thermal transport in bent graphene nanoribbons</p>
-<p class="pub-meta"><em>Nanoscale</em> &middot; 2013 &middot; <a href="https://drive.google.com/open?id=0B3Yj4QkZpI-dbDZ5NWVHa1hLQlU" target="_blank">pdf</a></p>
+<p class="pub-meta"><em>Nanoscale</em> &middot; 2013 &middot; <a href="https://drive.google.com/open?id=0B3Yj4QkZpI-dbDZ5NWVHa1hLQlU" target="_blank">pdf</a> &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2013-thermal-transport-bent-graphene-nanoribbons.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title">Rough contact is not always bad for interfacial energy coupling</p>
-<p class="pub-meta"><em>Nanoscale</em> &middot; 2013 &middot; <a href="https://drive.google.com/open?id=0B3Yj4QkZpI-dWFl4c3N1US1hS2s" target="_blank">pdf</a></p>
+<p class="pub-meta"><em>Nanoscale</em> &middot; 2013 &middot; <a href="https://drive.google.com/open?id=0B3Yj4QkZpI-dWFl4c3N1US1hS2s" target="_blank">pdf</a> &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2013-rough-contact-interfacial-energy-coupling.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title">Micro/Nanoscale Spatial Resolution Temperature Probing for the Interfacial Thermal Characterization of Epitaxial Graphene on 4H-SiC</p>
-<p class="pub-meta"><em>Small</em> &middot; 2011 &middot; <a href="https://drive.google.com/open?id=0B3Yj4QkZpI-dUjE4dW54Q09rd0k" target="_blank">pdf</a></p>
+<p class="pub-meta"><em>Small</em> &middot; 2011 &middot; <a href="https://drive.google.com/open?id=0B3Yj4QkZpI-dUjE4dW54Q09rd0k" target="_blank">pdf</a> &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2011-micro-nanoscale-temperature-probing-graphene-sic.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title">Dynamic response of graphene to thermal impulse</p>
-<p class="pub-meta"><em>Physical Review B</em> &middot; 2011 &middot; <a href="https://drive.google.com/file/d/0B3Yj4QkZpI-dY1N1ekprMndvbnc/view?usp=sharing" target="_blank">pdf</a></p>
+<p class="pub-meta"><em>Physical Review B</em> &middot; 2011 &middot; <a href="https://drive.google.com/file/d/0B3Yj4QkZpI-dY1N1ekprMndvbnc/view?usp=sharing" target="_blank">pdf</a> &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2011-dynamic-response-graphene-thermal-impulse.mp3" type="audio/mpeg"></audio></div>
 </div>

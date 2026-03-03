@@ -1303,6 +1303,17 @@ body.layout--home {
       background: var(--color-primary);
     }
   }
+
+  a.audio-toggle {
+    background: #10b981;
+    &:hover { background: #059669; }
+    i { margin-right: 0.25em; }
+  }
+}
+
+.audio-player audio {
+  border-radius: 8px;
+  height: 36px;
 }
 
 
