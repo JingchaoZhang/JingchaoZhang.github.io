@@ -167,7 +167,7 @@ Consistent, with negligible variance (< 1%).
 I launched EUD simultaneously across all nodes while NCCL was running:
 
 ```bash
-parallel-ssh -h ~/hostfile -t 600 -i "sudo dcgmi diag -r eud"
+parallel-ssh -h ~/hostfile -t 0 -i "sudo dcgmi diag -r eud"
 ```
 
 The impact was dramatic:
