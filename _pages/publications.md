@@ -191,52 +191,62 @@ author_profile: true
 
 <div class="pub-item">
 <p class="pub-title"><a href="https://drive.google.com/file/d/16q70wkrm9svHOPWZ15tKFNlEOpV401yT/view?usp=sharing" target="_blank">Critical Fracture Properties in Puckered and Buckled Arsenene by Molecular Dynamics Simulation</a></p>
-<p class="pub-meta"><em>Physical Chemistry Chemical Physics</em> &middot; 2019</p>
+<p class="pub-meta"><em>Physical Chemistry Chemical Physics</em> &middot; 2019 &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2019-critical-fracture-puckered-buckled-arsenene.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title"><a href="https://drive.google.com/file/d/1fo4Xv6lQ9qKK6zh75B-HAhhURTNVDABZ/view?usp=sharing" target="_blank">Machine Learning Enabled Prediction of Mechanical Properties of Tungsten Disulfide Monolayer</a></p>
-<p class="pub-meta"><em>ACS Omega</em> &middot; 2019</p>
+<p class="pub-meta"><em>ACS Omega</em> &middot; 2019 &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2019-ml-mechanical-properties-tungsten-disulfide.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title"><a href="https://drive.google.com/file/d/12c0kijqGKKUxgNFdALvV62PjyUHDUj0R/view?usp=sharing" target="_blank">Mechanical Responses of WSe2 Monolayers: A Molecular Dynamics Study</a></p>
-<p class="pub-meta"><em>Materials Research Express</em> &middot; 2019</p>
+<p class="pub-meta"><em>Materials Research Express</em> &middot; 2019 &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2019-mechanical-responses-wse2-monolayers.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title"><a href="https://drive.google.com/file/d/14MZ9eGvzLXFkTjf9m713s-8ooDSlySMd/view?usp=sharing" target="_blank">Overview of Computational Simulations in Quantum Dots</a></p>
-<p class="pub-meta"><em>Israel Journal of Chemistry</em> &middot; 2019</p>
+<p class="pub-meta"><em>Israel Journal of Chemistry</em> &middot; 2019 &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2019-overview-computational-simulations-quantum-dots.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title"><a href="https://drive.google.com/file/d/135cjpy0XeG1xwKV36J-Po_XvT4CtbtMK/view?usp=sharing" target="_blank">Accelerated Discoveries of Mechanical Properties of Graphene Using Machine Learning and High-Throughput Computation</a></p>
-<p class="pub-meta"><em>Carbon</em> &middot; 2019</p>
+<p class="pub-meta"><em>Carbon</em> &middot; 2019 &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2019-accelerated-discoveries-mechanical-graphene.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title"><a href="https://drive.google.com/file/d/1205C1SydYCXIFLepqr-7IZ5TqufQvjko/view?usp=sharing" target="_blank">Mechanical Properties of Molybdenum Diselenide Revealed by Molecular Dynamics Simulation and Support Vector Machine</a></p>
-<p class="pub-meta"><em>Physical Chemistry Chemical Physics</em> &middot; 2019</p>
+<p class="pub-meta"><em>Physical Chemistry Chemical Physics</em> &middot; 2019 &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2019-mechanical-properties-molybdenum-diselenide.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title"><a href="https://drive.google.com/file/d/1hD--MZAkrm2w7zpOpH6ZmWK64A1WYhT3/view?usp=sharing" target="_blank">Toward Improved Thermal Conductance of Graphene-Polyethylene Composites via Surface Defect Engineering: A Molecular Dynamics Study</a></p>
-<p class="pub-meta"><em>Acta Physico-Chimica Sinica</em> &middot; 2019</p>
+<p class="pub-meta"><em>Acta Physico-Chimica Sinica</em> &middot; 2019 &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2019-improved-thermal-conductance-graphene-polyethylene.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title"><a href="https://drive.google.com/file/d/1vSOt9J_dsNnpZiDcBepsy5Imy1KedKyv/view?usp=sharing" target="_blank">Water Desalination through Rim Functionalized Carbon Nanotubes</a></p>
-<p class="pub-meta"><em>Journal of Materials Chemistry A</em> &middot; 2019</p>
+<p class="pub-meta"><em>Journal of Materials Chemistry A</em> &middot; 2019 &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2019-water-desalination-rim-functionalized-cnt.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title"><a href="https://drive.google.com/file/d/1NrZk_BFOK1-de00kWBua7Egqhpz31fYA/view?usp=sharing" target="_blank">Phonon thermal conduction in a graphene-C3N heterobilayer using molecular dynamics simulations</a></p>
-<p class="pub-meta"><em>Nanotechnology</em> &middot; 2018</p>
+<p class="pub-meta"><em>Nanotechnology</em> &middot; 2018 &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2018-phonon-thermal-conduction-graphene-c3n.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
 <p class="pub-title"><a href="https://drive.google.com/file/d/1-mUKthEzCdohvYXtTj_1QzqLwKe0oGZ5/view?usp=sharing" target="_blank">Machine Learning and Artificial Neural Network Prediction of Interfacial Thermal Resistance between Graphene and Hexagonal Boron Nitride</a></p>
-<p class="pub-meta"><em>Nanoscale</em> &middot; 2018</p>
+<p class="pub-meta"><em>Nanoscale</em> &middot; 2018 &middot; <a href="#" class="audio-toggle" onclick="event.preventDefault();var a=this.closest('.pub-item').querySelector('.audio-player');a.style.display=a.style.display==='none'?'block':'none';"><i class="fas fa-headphones"></i> audio summary</a></p>
+<div class="audio-player" style="display:none;"><audio controls preload="none" style="width:100%;margin-top:6px;"><source src="/assets/audio/2018-ml-ann-interfacial-thermal-resistance-graphene-hbn.mp3" type="audio/mpeg"></audio></div>
 </div>
 
 <div class="pub-item">
