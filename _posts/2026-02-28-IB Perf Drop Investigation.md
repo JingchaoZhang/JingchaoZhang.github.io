@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Debugging InfiniBand Performance Degradation Caused by Background GPU Stress Tests"
+title: "GPU Stress Tests Degraded InfiniBand Performance"
 author_profile: false
 ---
 
