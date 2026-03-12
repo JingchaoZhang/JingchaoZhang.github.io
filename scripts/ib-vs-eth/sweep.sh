@@ -1,7 +1,8 @@
 #!/bin/bash
 # Full IB vs Ethernet fine-tuning sweep
-# Runs: 2 models x 4 node counts x 2 IB modes = 16 experiments
-# Usage: bash sweep.sh
+# Runs: 2 models x node counts x 2 network modes
+# Uses NCCL_NET=Socket for true Ethernet mode (NCCL_IB_DISABLE alone doesn't work
+# with NCCL 2.28+ external RDMA plugin on Azure NDv5)
 #
 # Prerequisites:
 #   - /lustre/models/Qwen2.5-7B and /lustre/models/Qwen2.5-72B downloaded
@@ -9,18 +10,14 @@
 #   - ~/hostfile_good has >= 8 healthy nodes
 #   - PyTorch container pulled on all nodes
 
-set -e
-
 MODELS=("Qwen2.5-7B" "Qwen2.5-72B")
 NODE_COUNTS=(1 2 4 8)
-IB_MODES=(0 1)   # 0=IB enabled, 1=IB disabled (Ethernet)
+IB_MODES=(0 1)   # 0=RDMA (IB), 1=Socket (Ethernet via NCCL_NET=Socket)
 SEQ_LEN=2048
 STEPS=20
 
-# Adjust batch size per model (72B needs smaller BS to fit in memory)
 get_batch_size() {
     local model=$1
-    local nodes=$2
     if [[ "$model" == *"72B"* ]]; then
         echo 1
     else
@@ -35,10 +32,19 @@ echo "=== IB vs Ethernet Fine-tuning Sweep ===" | tee "$RESULTS_FILE"
 echo "Started at $(date)" | tee -a "$RESULTS_FILE"
 echo "Models: ${MODELS[*]}" | tee -a "$RESULTS_FILE"
 echo "Node counts: ${NODE_COUNTS[*]}" | tee -a "$RESULTS_FILE"
-echo "IB modes: 0=IB, 1=Ethernet" | tee -a "$RESULTS_FILE"
+echo "Modes: 0=RDMA(IB), 1=Socket(ETH via NCCL_NET=Socket)" | tee -a "$RESULTS_FILE"
 echo "" | tee -a "$RESULTS_FILE"
 
-TOTAL=$((${#MODELS[@]} * ${#NODE_COUNTS[@]} * ${#IB_MODES[@]}))
+TOTAL=0
+for MODEL in "${MODELS[@]}"; do
+    for NODES in "${NODE_COUNTS[@]}"; do
+        if [[ "$MODEL" == *"72B"* ]] && [ "$NODES" -eq 1 ]; then
+            continue
+        fi
+        TOTAL=$((TOTAL + ${#IB_MODES[@]}))
+    done
+done
+
 RUN=0
 
 for MODEL in "${MODELS[@]}"; do
@@ -49,7 +55,13 @@ for MODEL in "${MODELS[@]}"; do
     fi
 
     for NODES in "${NODE_COUNTS[@]}"; do
-        BS=$(get_batch_size "$MODEL" "$NODES")
+        # Skip 72B on 1 node — won't fit in 8 GPUs
+        if [[ "$MODEL" == *"72B"* ]] && [ "$NODES" -eq 1 ]; then
+            echo "Skipping ${MODEL} on 1 node (too large for 8 GPUs)" | tee -a "$RESULTS_FILE"
+            continue
+        fi
+
+        BS=$(get_batch_size "$MODEL")
 
         for IB_DISABLE in "${IB_MODES[@]}"; do
             RUN=$((RUN + 1))
@@ -59,10 +71,12 @@ for MODEL in "${MODELS[@]}"; do
             echo "[$RUN/$TOTAL] ${MODEL} | ${NODES} nodes | ${IB_LABEL}" | tee -a "$RESULTS_FILE"
             echo "========================================" | tee -a "$RESULTS_FILE"
 
-            # Run the benchmark
+            # Run the benchmark (don't exit on failure)
             bash /lustre/scripts/run_multinode.sh \
                 "$NODES" "$IB_DISABLE" "$MODEL_PATH" "$SEQ_LEN" "$BS" "$STEPS" \
-                2>&1 | tee -a "$RESULTS_FILE"
+                2>&1 | tee -a "$RESULTS_FILE" || {
+                echo "FAILED: ${MODEL} ${NODES}nodes ${IB_LABEL}" | tee -a "$RESULTS_FILE"
+            }
 
             # Extract key result
             LOGDIR="/lustre/results/${MODEL}_${NODES}nodes_${IB_LABEL}"
@@ -90,6 +104,9 @@ printf "%-15s %-6s %-5s %-15s %-15s\n" "-----" "-----" "----" "----------" "----
 
 for MODEL in "${MODELS[@]}"; do
     for NODES in "${NODE_COUNTS[@]}"; do
+        if [[ "$MODEL" == *"72B"* ]] && [ "$NODES" -eq 1 ]; then
+            continue
+        fi
         for IB_DISABLE in "${IB_MODES[@]}"; do
             IB_LABEL=$( [ "$IB_DISABLE" = "0" ] && echo "IB" || echo "ETH" )
             LOGDIR="/lustre/results/${MODEL}_${NODES}nodes_${IB_LABEL}"
