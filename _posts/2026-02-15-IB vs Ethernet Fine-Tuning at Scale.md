@@ -376,7 +376,7 @@ That said, the data does show that for teams fine-tuning 7B–13B models on a mo
 
 The cluster runs on Azure with 10× Standard_ND96isr_H100_v5 VMs in a VMSS, with an 8 TiB Azure Managed Lustre filesystem mounted at `/lustre` on every node. See [this post]({% post_url 2026-02-09-AMLFS with GPU VMSS %}) for the cluster setup.
 
-Scripts: [finetune_bench.py](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/main/scripts/ib-vs-eth/finetune_bench.py), [launch_node.sh](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/main/scripts/ib-vs-eth/launch_node.sh), [run_multinode.sh](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/main/scripts/ib-vs-eth/run_multinode.sh), [sweep.sh](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/main/scripts/ib-vs-eth/sweep.sh).
+Scripts: [finetune_bench.py](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/scripts/ib-vs-eth/finetune_bench.py), [launch_node.sh](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/scripts/ib-vs-eth/launch_node.sh), [run_multinode.sh](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/scripts/ib-vs-eth/run_multinode.sh), [sweep.sh](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/scripts/ib-vs-eth/sweep.sh).
 
 To run a single experiment:
 
