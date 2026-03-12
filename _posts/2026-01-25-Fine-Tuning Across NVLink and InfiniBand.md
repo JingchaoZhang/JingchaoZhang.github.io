@@ -6,7 +6,7 @@ author_profile: false
 
 ## Introduction
 
-In a [previous post]({% post_url 2026-03-09-LLM Inference Across NVLink and InfiniBand %}), I ran Qwen2.5-72B inference on Azure H100 nodes and showed how NVLink's 900 GB/s bandwidth dominates InfiniBand's 400 Gb/s once tensor parallelism crosses a node boundary. The takeaway was clear: for inference, stay within the NVLink domain when possible.
+In a [previous post]({% post_url 2026-01-19-LLM Inference Across NVLink and InfiniBand %}), I ran Qwen2.5-72B inference on Azure H100 nodes and showed how NVLink's 900 GB/s bandwidth dominates InfiniBand's 400 Gb/s once tensor parallelism crosses a node boundary. The takeaway was clear: for inference, stay within the NVLink domain when possible.
 
 Training changes the equation. Unlike inference — where a single request flows through the model once — training involves a forward pass, backward pass, gradient synchronization, and weight updates, all repeated thousands of times. The communication pattern is fundamentally different, and the choice of *how* to distribute model state across GPUs determines whether your inter-node fabric becomes a bottleneck or barely a factor.
 
@@ -14,7 +14,7 @@ In this post, I fine-tune **Qwen2.5-7B** on the same 3-node Azure H100 cluster u
 
 ## Test Environment
 
-The hardware is identical to the [previous post]({% post_url 2026-03-09-LLM Inference Across NVLink and InfiniBand %}); all three nodes passed Azure NHC and NCCL all-reduce baselines. I won't repeat the validation here — see the inference post for the full node health and NCCL results.
+The hardware is identical to the [previous post]({% post_url 2026-01-19-LLM Inference Across NVLink and InfiniBand %}); all three nodes passed Azure NHC and NCCL all-reduce baselines. I won't repeat the validation here — see the inference post for the full node health and NCCL results.
 
 | Component | Detail |
 |-----------|--------|
