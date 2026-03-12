@@ -1,6 +1,10 @@
 #!/bin/bash
 # Multi-node fine-tuning benchmark orchestrator for AMLFS cluster
 # Usage: bash run_multinode.sh <num_nodes> <ib_disable> <model_path> [seq_len] [batch_size] [steps]
+# Example: bash run_multinode.sh 2 0 /lustre/models/Qwen2.5-7B 2048 2 20
+#
+# Reads nodes from ~/hostfile_good (one hostname per line).
+# Head node (first in hostfile) is the master and runs rank 0.
 
 NUM_NODES=${1:?Usage: run_multinode.sh <num_nodes> <ib_disable> <model_path> [seq_len] [batch_size] [steps]}
 IB_DISABLE=${2:-0}
@@ -13,7 +17,7 @@ MASTER_PORT=29500
 # Read node list from hostfile
 mapfile -t ALL_NODES < ~/hostfile_good
 HEAD_NODE="${ALL_NODES[0]}"
-MASTER_ADDR=$(getent ahosts "$HEAD_NODE" | grep STREAM | head -1 | awk '{print $1}')
+MASTER_ADDR=$(getent ahostsv4 "$HEAD_NODE" | head -1 | awk '{print $1}')
 
 # Take first N nodes
 NODES=("${ALL_NODES[@]:0:$NUM_NODES}")
@@ -30,19 +34,17 @@ echo ""
 LOGDIR="/lustre/results/${MODEL_NAME}_${NUM_NODES}nodes_${IB_LABEL}"
 mkdir -p "$LOGDIR"
 
-# AGGRESSIVE PRE-CLEANUP: kill containers, processes, free port on ALL participating nodes
-echo "Pre-cleanup: killing stale containers and processes on all ${NUM_NODES} nodes..."
+# Pre-cleanup: remove any leftover containers on all nodes
+echo "Pre-cleanup: removing old containers..."
 for i in "${!NODES[@]}"; do
     NODE="${NODES[$i]}"
-    CLEANUP_CMD="sudo docker rm -f bench_node${i} 2>/dev/null; sudo pkill -f torchrun.*finetune_bench 2>/dev/null; sudo fuser -k ${MASTER_PORT}/tcp 2>/dev/null; true"
     if [ "$NODE" = "$(hostname)" ]; then
-        eval "$CLEANUP_CMD"
+        sudo docker rm -f bench_node${i} 2>/dev/null || true
     else
-        ssh -o ConnectTimeout=5 -o StrictHostKeyChecking=no "$NODE" "$CLEANUP_CMD" 2>/dev/null
+        ssh "$NODE" "sudo docker rm -f bench_node${i}" 2>/dev/null || true
     fi
 done
 sleep 2
-echo "Pre-cleanup done."
 
 # Launch workers (non-head nodes) in background
 for i in "${!NODES[@]}"; do
@@ -50,8 +52,7 @@ for i in "${!NODES[@]}"; do
     RANK=$i
     if [ "$NODE" != "$(hostname)" ]; then
         echo "Launching worker on ${NODE} (rank ${RANK})..."
-        ssh -o StrictHostKeyChecking=no "$NODE" \
-            "nohup bash /lustre/scripts/launch_node.sh $NUM_NODES $RANK $MASTER_ADDR $MASTER_PORT $IB_DISABLE $MODEL_PATH $SEQ_LEN $BATCH_SIZE $STEPS > ${LOGDIR}/node${RANK}.log 2>&1 &"
+        ssh "$NODE" "nohup bash /lustre/scripts/launch_node.sh $NUM_NODES $RANK $MASTER_ADDR $MASTER_PORT $IB_DISABLE $MODEL_PATH $SEQ_LEN $BATCH_SIZE $STEPS > ${LOGDIR}/node${RANK}.log 2>&1 &"
         sleep 2
     fi
 done
@@ -59,21 +60,28 @@ done
 # Launch head node (rank 0) in foreground
 echo "Launching head node $(hostname) (rank 0)..."
 bash /lustre/scripts/launch_node.sh $NUM_NODES 0 $MASTER_ADDR $MASTER_PORT $IB_DISABLE $MODEL_PATH $SEQ_LEN $BATCH_SIZE $STEPS 2>&1 | tee "${LOGDIR}/node0.log"
-HEAD_EXIT=$?
-
 echo ""
-echo "=== Head node finished (exit code: $HEAD_EXIT) ==="
+echo "=== Head node finished ==="
 
-# POST-CLEANUP: ensure containers are removed on all nodes
-echo "Post-cleanup: removing containers on all nodes..."
+# Collect worker logs
 for i in "${!NODES[@]}"; do
     NODE="${NODES[$i]}"
-    CLEANUP_CMD="sudo docker rm -f bench_node${i} 2>/dev/null; sudo fuser -k ${MASTER_PORT}/tcp 2>/dev/null; true"
-    if [ "$NODE" = "$(hostname)" ]; then
-        eval "$CLEANUP_CMD"
-    else
-        ssh -o ConnectTimeout=5 -o StrictHostKeyChecking=no "$NODE" "$CLEANUP_CMD" 2>/dev/null
+    if [ "$NODE" != "$(hostname)" ]; then
+        echo ""
+        echo "=== ${NODE} (rank ${i}) last 10 lines ==="
+        ssh "$NODE" "tail -10 ${LOGDIR}/node${i}.log" 2>/dev/null || echo "(no log)"
     fi
 done
-echo "Post-cleanup done."
-exit $HEAD_EXIT
+
+# Post-cleanup
+echo ""
+echo "Cleaning up containers..."
+for i in "${!NODES[@]}"; do
+    NODE="${NODES[$i]}"
+    if [ "$NODE" = "$(hostname)" ]; then
+        sudo docker rm -f bench_node${i} 2>/dev/null || true
+    else
+        ssh "$NODE" "sudo docker rm -f bench_node${i}" 2>/dev/null || true
+    fi
+done
+echo "Done. Logs in ${LOGDIR}/"
