@@ -351,7 +351,7 @@ The Azure ND H100 v5 VMs with 8× NDR InfiniBand are well-suited for multi-node 
 
 ## Reproducing These Results
 
-All code is available: the [benchmark script](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/main/scripts/fsdp-multinode/finetune_bench.py), [launch script](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/main/scripts/fsdp-multinode/launch_node.sh), and [orchestration script](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/main/scripts/fsdp-multinode/run_multinode.sh) work on any Azure ND H100 v5 VMSS cluster (or similar multi-node GPU setup with InfiniBand). The only requirements are:
+All code is available: the [benchmark script](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/scripts/fsdp-multinode/finetune_bench.py), [launch script](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/scripts/fsdp-multinode/launch_node.sh), and [orchestration script](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/scripts/fsdp-multinode/run_multinode.sh) work on any Azure ND H100 v5 VMSS cluster (or similar multi-node GPU setup with InfiniBand). The only requirements are:
 
 - Docker with NVIDIA runtime
 - Passwordless SSH between nodes
