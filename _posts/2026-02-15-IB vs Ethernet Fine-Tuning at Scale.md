@@ -34,28 +34,22 @@ In this post, I benchmark InfiniBand (RDMA) against genuine Ethernet (TCP socket
 | **Models** | Qwen2.5-7B (~14 GB), Qwen2.5-72B (~136 GB), Mixtral-8x7B-v0.1 (~87 GB) in bf16 |
 | **Framework** | PyTorch FSDP (`size_based_auto_wrap_policy` for dense, `transformer_auto_wrap_policy` for MoE) |
 
-### Why `NCCL_IB_DISABLE` Doesn't Work Here
+### Inter-Node Network Settings
 
-The standard way to disable InfiniBand in NCCL is `NCCL_IB_DISABLE=1`. This is documented in NCCL's official docs, used in Azure tutorials, and appears in countless blog posts and Stack Overflow answers. However, on Azure ND-series H100 VMs, **this flag has no effect.**
-
-These VMs use an **external RDMA network plugin** (`libnccl-net.so`) that registers with NCCL as a transport provider. NCCL 2.23.4 routes all inter-node traffic through this plugin regardless of the `NCCL_IB_DISABLE` setting — the flag only controls NCCL's *built-in* IB transport, not external plugins.
-
-I discovered this when my initial "Ethernet" benchmarks produced suspiciously identical results to InfiniBand. Verification with `nccl-tests all_reduce_perf` (1 GB payload, 2 nodes, 16 GPUs):
+Azure ND H100 v5 VMs ship with an **external RDMA network plugin** (`libnccl-net.so`) that registers with NCCL as a transport provider. The three relevant environment variable configurations — and their measured behaviour — are shown below (`nccl-tests all_reduce_perf`, 1 GB payload, 2 nodes, 16 GPUs):
 
 ```
-# NCCL_IB_DISABLE=0 (InfiniBand "enabled")
+# NCCL_IB_DISABLE=0 (default — InfiniBand enabled)
 #   busbw: ~78 GB/s per GPU → ~392 GB/s aggregate
 
-# NCCL_IB_DISABLE=1 (InfiniBand "disabled" — supposedly Ethernet)
-#   busbw: ~78 GB/s per GPU → IDENTICAL. Still using RDMA.
+# NCCL_IB_DISABLE=1 (intended to disable IB)
+#   busbw: ~78 GB/s per GPU → ~392 GB/s aggregate (unchanged)
 
-# NCCL_NET=Socket (the actual fix)
-#   busbw: ~0.64 GB/s per GPU → ~3.19 GB/s aggregate. Genuine TCP.
+# NCCL_NET=Socket (forces TCP sockets)
+#   busbw: ~0.64 GB/s per GPU → ~3.19 GB/s aggregate
 ```
 
-Both `NCCL_IB_DISABLE=0` and `NCCL_IB_DISABLE=1` produce identical ~78 GB/s per GPU — they're both running on RDMA. The environment variable is simply ignored when the external network plugin is loaded.
-
-**The solution:** `NCCL_NET=Socket` overrides all network plugins and forces NCCL to use the kernel's TCP stack. The measured bandwidth gap: **392 GB/s (RDMA) vs. 3.19 GB/s (TCP) — a 122× difference.**
+With the external plugin loaded, `NCCL_IB_DISABLE=0` and `NCCL_IB_DISABLE=1` produce identical results — both run over RDMA. The `NCCL_IB_DISABLE` flag controls only NCCL's *built-in* IB transport, not external plugins. To actually switch to TCP, `NCCL_NET=Socket` is required. This overrides all network plugins and forces NCCL to use the kernel's TCP stack. The measured bandwidth gap: **392 GB/s (RDMA) vs. 3.19 GB/s (TCP) — a 122× difference.**
 
 ### How the Two Modes Actually Differ
 
@@ -437,9 +431,9 @@ The slowdown doesn't creep in at large scale — it appears at **2 nodes** and s
 
 The 72B dense model shows 38–45× slowdown vs. the 7B's ~27×, and the Mixtral MoE model pushes it to **~57×**. Larger models mean more data per collective. MoE architectures are even worse — they communicate *all* expert parameters but compute with only a fraction, creating the worst compute-to-communication ratio. As LLMs trend toward both larger sizes and sparse MoE designs, InfiniBand's advantage will only grow.
 
-### 4. Verify Your Ethernet Mode
+### 4. Verify Your Network Mode
 
-If you're benchmarking IB vs. Ethernet on Azure ND-series VMs, **do not trust `NCCL_IB_DISABLE=1`**. Use `NCCL_NET=Socket` and verify with `nccl-tests` that bandwidth drops to TCP levels (~3 GB/s rather than ~392 GB/s). Without this verification, you may be unknowingly benchmarking IB against IB.
+On Azure ND-series VMs with an external RDMA network plugin, `NCCL_IB_DISABLE=1` alone does not switch traffic to TCP (see [Inter-Node Network Settings](#inter-node-network-settings)). Use `NCCL_NET=Socket` and verify with `nccl-tests` that bandwidth drops to TCP levels (~3 GB/s rather than ~392 GB/s). Without this verification, both modes may be running over RDMA.
 
 ### 5. Single-Node Fine-Tuning Is the Exception
 
