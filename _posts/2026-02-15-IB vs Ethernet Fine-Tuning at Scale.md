@@ -28,7 +28,6 @@ In this post, I benchmark InfiniBand (RDMA) against genuine Ethernet (TCP socket
 | **GPUs per node** | 8× NVIDIA H100 80 GB HBM3 |
 | **Intra-node** | NVLink 4th gen, 900 GB/s bisection |
 | **Inter-node (IB)** | 8× 400 Gb/s NDR InfiniBand (ConnectX-7) |
-| **Inter-node (ETH)** | TCP sockets over eth0, ~40–50 Gbps accelerated networking |
 | **Nodes** | 11 (up to 8 used per experiment) |
 | **Shared storage** | Azure Managed Lustre, 8 TiB, mounted at `/lustre` |
 | **Container** | `nvcr.io/nvidia/pytorch:24.12-py3` (PyTorch 2.6.0a0, CUDA 12.6, NCCL 2.23.4) |
@@ -62,7 +61,7 @@ Both `NCCL_IB_DISABLE=0` and `NCCL_IB_DISABLE=1` produce identical ~78 GB/s per 
 
 **InfiniBand mode** (`NCCL_IB_DISABLE=0`): NCCL uses RDMA over 8× 400 Gb/s InfiniBand links via the Azure RDMA network plugin. Data moves directly between GPU memory across nodes without CPU involvement. Measured aggregate bandwidth: ~392 GB/s between 2 nodes.
 
-**Ethernet mode** (`NCCL_NET=Socket`, `NCCL_IB_DISABLE=1`): NCCL bypasses all network plugins and uses plain TCP sockets over `eth0`. Data passes through the kernel's TCP stack and CPU. Measured aggregate bandwidth: ~3.19 GB/s. We set both flags as belt-and-suspenders — `NCCL_NET=Socket` is the operative one.
+**Ethernet mode** (`NCCL_NET=Socket`, `NCCL_IB_DISABLE=1`): NCCL bypasses all network plugins and uses plain TCP sockets over `eth0`. The front-end NIC supports [80 Gbps accelerated networking](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/gpu-accelerated/ndh100v5-series?tabs=sizenetworking), but NCCL over TCP sockets delivers only ~3.19 GB/s (~25.5 Gbps) aggregate due to kernel TCP stack overhead and CPU-mediated data movement. We set both flags as belt-and-suspenders — `NCCL_NET=Socket` is the operative one.
 
 Everything else — FSDP configuration, model, batch size, sequence length, number of training steps — is identical between the two modes. The only variable is the network transport.
 
