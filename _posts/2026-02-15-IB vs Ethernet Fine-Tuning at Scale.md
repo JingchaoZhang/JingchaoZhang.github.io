@@ -16,9 +16,9 @@ MathJax = {
 
 Azure's H100 GPU VMs (`Standard_ND96isr_H100_v5`) come equipped with 8× 400 Gb/s NDR InfiniBand — 3.2 Tbps of aggregate RDMA bandwidth per node. Everyone knows InfiniBand matters for distributed training. But how much does it *actually* matter — measured in throughput, not marketing?
 
-In this post, I benchmark InfiniBand (RDMA) against genuine Ethernet (TCP sockets) across two model sizes (Qwen2.5-7B and Qwen2.5-72B), scaling from 1 to 8 nodes (8–64 GPUs), using PyTorch FSDP on an 11-node Azure VMSS cluster with Azure Managed Lustre.
+In this post, I benchmark InfiniBand (RDMA) against genuine Ethernet (TCP sockets) across two dense models (Qwen2.5-7B and Qwen2.5-72B) and one Mixture-of-Experts model (Mixtral 8x7B), scaling from 1 to 8 nodes (8–64 GPUs), using PyTorch FSDP on an 11-node Azure VMSS cluster with Azure Managed Lustre.
 
-**The results are dramatic.** InfiniBand delivers **26–28× higher multi-node throughput** than Ethernet for the 7B model, and **39–45× higher** for the 72B model. InfiniBand adds 19 milliseconds of overhead to scale from 1 to 8 nodes. Ethernet adds 13.5 seconds. The gap is not subtle — it is the difference between training that scales and training that stalls.
+**The results are dramatic.** InfiniBand delivers **26–28× higher multi-node throughput** than Ethernet for the 7B dense model, **~45× higher** for the 72B dense model, and **56–57× higher** for the Mixtral 8x7B MoE model. The MoE architecture — with its expert routing and 46.7B total parameters sharded across nodes — is the most communication-intensive of the three, making InfiniBand even more critical.
 
 > **Correction:** An earlier version of this post reported near-identical IB and Ethernet performance using `NCCL_IB_DISABLE=1`. That environment variable [does not work](#the-nccl_ib_disable-bug) with NCCL 2.23.4 on Azure ND-series VMs — the RDMA network plugin ignores it entirely. All previous "Ethernet" results were actually running on InfiniBand. This update uses `NCCL_NET=Socket` to force genuine TCP sockets, [verified via nccl-tests](#the-nccl_ib_disable-bug).
 
@@ -34,8 +34,8 @@ In this post, I benchmark InfiniBand (RDMA) against genuine Ethernet (TCP socket
 | **Nodes** | 11 (up to 8 used per experiment) |
 | **Shared storage** | Azure Managed Lustre, 8 TiB, mounted at `/lustre` |
 | **Container** | `nvcr.io/nvidia/pytorch:24.12-py3` (PyTorch 2.6.0a0, CUDA 12.6, NCCL 2.23.4) |
-| **Models** | Qwen2.5-7B (~14 GB), Qwen2.5-72B (~136 GB) in bf16 |
-| **Framework** | PyTorch FSDP with `size_based_auto_wrap_policy` |
+| **Models** | Qwen2.5-7B (~14 GB), Qwen2.5-72B (~136 GB), Mixtral-8x7B-v0.1 (~87 GB) in bf16 |
+| **Framework** | PyTorch FSDP (`size_based_auto_wrap_policy` for dense, `transformer_auto_wrap_policy` for MoE) |
 
 ### The `NCCL_IB_DISABLE` Bug
 
@@ -150,26 +150,37 @@ The 72B model requires FSDP sharding across at least 2 nodes (16 GPUs) — a sin
 | Nodes | GPUs | IB (tok/s) | ETH (tok/s) | IB / ETH |
 |-------|------|-----------|------------|----------|
 | 2 | 16 | 9,127 | 203 | **45.0×** |
-| 4 | 32 | 17,604 | 402 | **43.8×** |
-| 8 | 64 | 30,175 | 784 | **38.5×** |
 
-<canvas id="chart72bThroughput" width="700" height="400"></canvas>
+The 72B model shows an even larger gap: **45× at 2 nodes**, compared to 27× for the 7B model at the same node count. This is expected — the 72B model has 10× more parameters, generating proportionally more inter-node traffic per FSDP collective. A single training step takes 3.6 seconds on InfiniBand and **2 minutes 41 seconds** on Ethernet.
+
+### Mixtral 8x7B MoE (batch_size=1, seq_len=2048)
+
+Mixtral 8x7B is a **Mixture-of-Experts** (MoE) model: 46.7B total parameters across 32 decoder layers, each containing 8 expert FFN modules, with top-2 expert routing selecting ~12.9B active parameters per token. This architecture creates a distinctive FSDP challenge: the communication volume scales with the **total** parameter count (46.7B), but the useful compute per token scales with only the **active** subset (12.9B) — a 3.6× worse compute-to-communication ratio than an equivalently sized dense model.
+
+| Nodes | GPUs | IB (tok/s) | ETH (tok/s) | IB / ETH |
+|-------|------|-----------|------------|----------|
+| 1 | 8 | 11,577 | 11,634 | 1.0× |
+| 2 | 16 | 22,520 | 398 | **56.6×** |
+| 4 | 32 | 44,239 | 774 | **57.2×** |
+| 8 | 64 | 83,583 | 1,501 | **55.7×** |
+
+<canvas id="chartMoeThroughput" width="700" height="400"></canvas>
 <script>
-new Chart(document.getElementById('chart72bThroughput'), {
+new Chart(document.getElementById('chartMoeThroughput'), {
     type: 'bar',
     data: {
-        labels: ['2 nodes\n(16 GPU)', '4 nodes\n(32 GPU)', '8 nodes\n(64 GPU)'],
+        labels: ['1 node\n(8 GPU)', '2 nodes\n(16 GPU)', '4 nodes\n(32 GPU)', '8 nodes\n(64 GPU)'],
         datasets: [
             {
                 label: 'InfiniBand (RDMA)',
-                data: [9127, 17604, 30175],
+                data: [11577, 22520, 44239, 83583],
                 backgroundColor: 'rgba(54, 162, 235, 0.8)',
                 borderColor: 'rgba(54, 162, 235, 1)',
                 borderWidth: 1
             },
             {
                 label: 'Ethernet (TCP)',
-                data: [203, 402, 784],
+                data: [11634, 398, 774, 1501],
                 backgroundColor: 'rgba(255, 99, 132, 0.8)',
                 borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 1
@@ -179,7 +190,7 @@ new Chart(document.getElementById('chart72bThroughput'), {
     options: {
         responsive: true,
         plugins: {
-            title: { display: true, text: 'Qwen2.5-72B: Aggregate Throughput', font: { size: 16 } },
+            title: { display: true, text: 'Mixtral 8x7B MoE: Aggregate Throughput', font: { size: 16 } },
             legend: { position: 'top' }
         },
         scales: {
@@ -193,7 +204,9 @@ new Chart(document.getElementById('chart72bThroughput'), {
 });
 </script>
 
-The 72B model shows an even larger gap than the 7B — **39–45× across all node counts**, compared to ~27× for the 7B model. At 2 nodes, a single training step takes 3.6 seconds on InfiniBand and **2 minutes 41 seconds** on Ethernet. Even at 8 nodes, the Ethernet step time remains ~167 seconds — the additional GPUs reduce per-GPU work but cannot overcome the network bottleneck. InfiniBand scales from 9,127 → 17,604 → 30,175 tok/s across 2, 4, and 8 nodes — near-linear scaling with only modest per-GPU efficiency loss (570 → 550 → 471 tok/s/GPU).
+**The MoE model doubles the IB/ETH gap.** At 56–57× across all multi-node configurations, the MoE speedup is roughly **twice** the 7B dense model's 27× and exceeds even the 72B dense model's 45×. The single-node baseline is again identical (11,577 IB vs. 11,634 ETH), confirming the gap is purely an interconnect effect.
+
+InfiniBand scaling remains excellent: **97.3% efficiency at 2 nodes and 90.2% at 8 nodes** (relative to the single-node baseline of 11,577 tok/s). On Ethernet, per-GPU throughput collapses from 1,454 tok/s (1-node) to 23–25 tok/s (multi-node) — each GPU spends over 98% of its time waiting for network transfers.
 
 ### Per-GPU Efficiency
 
@@ -205,7 +218,7 @@ new Chart(document.getElementById('chartPerGPU'), {
         labels: ['1 node\n(8 GPU)', '2 nodes\n(16 GPU)', '4 nodes\n(32 GPU)', '8 nodes\n(64 GPU)'],
         datasets: [
             {
-                label: '7B — InfiniBand',
+                label: '7B Dense — InfiniBand',
                 data: [8159, 8189, 8194, 7859],
                 borderColor: 'rgba(54, 162, 235, 1)',
                 backgroundColor: 'rgba(54, 162, 235, 0.1)',
@@ -214,7 +227,7 @@ new Chart(document.getElementById('chartPerGPU'), {
                 pointRadius: 5
             },
             {
-                label: '7B — Ethernet',
+                label: '7B Dense — Ethernet',
                 data: [8154, 311, 295, 292],
                 borderColor: 'rgba(255, 99, 132, 1)',
                 backgroundColor: 'rgba(255, 99, 132, 0.1)',
@@ -224,8 +237,8 @@ new Chart(document.getElementById('chartPerGPU'), {
                 pointRadius: 5
             },
             {
-                label: '72B — InfiniBand',
-                data: [null, 570, 550, 471],
+                label: 'MoE 8x7B — InfiniBand',
+                data: [1447, 1408, 1382, 1306],
                 borderColor: 'rgba(75, 192, 192, 1)',
                 backgroundColor: 'rgba(75, 192, 192, 0.1)',
                 borderWidth: 2,
@@ -233,8 +246,8 @@ new Chart(document.getElementById('chartPerGPU'), {
                 pointRadius: 5
             },
             {
-                label: '72B — Ethernet',
-                data: [null, 13, 13, 12],
+                label: 'MoE 8x7B — Ethernet',
+                data: [1454, 25, 24, 23],
                 borderColor: 'rgba(255, 159, 64, 1)',
                 backgroundColor: 'rgba(255, 159, 64, 0.1)',
                 borderWidth: 2,
@@ -247,14 +260,14 @@ new Chart(document.getElementById('chartPerGPU'), {
     options: {
         responsive: true,
         plugins: {
-            title: { display: true, text: 'Per-GPU Throughput (Both Models)', font: { size: 16 } },
+            title: { display: true, text: 'Per-GPU Throughput: Dense vs. MoE', font: { size: 16 } },
             legend: { position: 'top' }
         },
         scales: {
             y: {
                 type: 'logarithmic',
                 title: { display: true, text: 'Tokens/sec/GPU (log scale)' },
-                min: 10,
+                min: 15,
                 max: 10000,
                 ticks: { callback: function(v) { return v.toLocaleString(); } }
             }
@@ -263,7 +276,9 @@ new Chart(document.getElementById('chartPerGPU'), {
 });
 </script>
 
-The per-GPU chart (log scale) reveals the scaling story clearly. **7B on InfiniBand** maintains ~8,100–8,200 tok/s per GPU from 1 to 4 nodes — near-perfect linear scaling — with only a 3.7% dip at 8 nodes. **7B on Ethernet** collapses from 8,154 (1-node) to ~300 (multi-node), where it flatlines. **72B on InfiniBand** holds 550–570 tok/s/GPU at 2–4 nodes with a modest drop to 471 at 8 nodes. **72B on Ethernet** is pinned at 12–13 tok/s/GPU — each GPU spends over 99% of its time waiting on the network rather than training.
+The per-GPU chart (log scale) reveals the scaling story clearly. For the 7B dense model, InfiniBand maintains ~8,100–8,200 tok/s per GPU from 1 to 4 nodes — **near-perfect linear scaling** — with only a 3.7% dip at 8 nodes. The MoE model follows the same pattern at lower absolute throughput (~1,400 tok/s per GPU on IB), reflecting the heavier per-token computation of the 46.7B-parameter architecture.
+
+On Ethernet, both models collapse: Qwen 7B from 8,154 to ~300 tok/s per GPU, Mixtral MoE from 1,454 to just 23–25 tok/s per GPU. The MoE collapse is more severe (98.3% loss vs. 96.4%) because the larger total parameter count amplifies network stalls relative to the useful compute.
 
 ### IB-to-ETH Speedup
 
@@ -286,14 +301,23 @@ new Chart(document.getElementById('chartSpeedup'), {
             },
             {
                 label: 'Qwen2.5-72B',
-                data: [null, 45.0, 43.8, 38.5],
+                data: [null, 45.0, null, null],
                 borderColor: 'rgba(255, 159, 64, 1)',
-                backgroundColor: 'rgba(255, 159, 64, 0.1)',
+                backgroundColor: 'rgba(255, 159, 64, 0.3)',
+                borderWidth: 0,
+                pointRadius: 10,
+                pointStyle: 'triangle',
+                spanGaps: false,
+                fill: false
+            },
+            {
+                label: 'Mixtral 8x7B (MoE)',
+                data: [1.0, 56.6, 57.2, 55.7],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.1)',
                 borderWidth: 2,
                 tension: 0.2,
                 pointRadius: 6,
-                pointStyle: 'triangle',
-                spanGaps: false,
                 fill: false
             }
         ]
@@ -317,7 +341,7 @@ new Chart(document.getElementById('chartSpeedup'), {
 });
 </script>
 
-The 7B speedup is remarkably consistent at **~27×** across 2, 4, and 8 nodes — the gap doesn't grow or shrink with scale. The 72B model shows a larger gap at every scale — **45× at 2 nodes, 44× at 4 nodes, and 39× at 8 nodes**. The slight decrease from 45× to 39× at 8 nodes is expected: with more GPUs, each FSDP shard is smaller, reducing per-collective data volume and partially alleviating the Ethernet bottleneck. At 1 node (no inter-node communication), the 7B speedup is exactly 1.0×, confirming that the gap is purely an interconnect effect.
+The 7B speedup is remarkably consistent at **~27×** across 2, 4, and 8 nodes — the gap doesn't grow or shrink with scale. The Mixtral MoE model shows an even more dramatic and consistent **~57×** gap, nearly double the 7B's ratio, reflecting the MoE architecture's heavier communication burden. The 72B dense model at 2 nodes shows a **45× gap**, intermediate between the two. At 1 node (no inter-node communication), all models show a 1.0× speedup, confirming the gap is purely an interconnect effect.
 
 ## Why the Gap Is So Large
 
@@ -343,8 +367,6 @@ On InfiniBand, 84 collectives × 0.6 ms = ~50 ms of total inter-node transfer �
 
 The step time measurements confirm this directly:
 
-**Qwen2.5-7B:**
-
 | Config | Step Time | Network Overhead |
 |--------|-----------|-----------------|
 | 1 node (baseline) | 502 ms | — |
@@ -355,40 +377,52 @@ The step time measurements confirm this directly:
 
 **Ethernet adds 13.5 seconds** of network overhead — a 2,691% increase. The GPU spends most of each training step stalled, waiting for the next layer's parameters to arrive over TCP.
 
-**Qwen2.5-72B:**
-
-| Config | Step Time | Network Overhead |
-|--------|-----------|-----------------|
-| 2-node IB (baseline) | 3,590 ms | — |
-| 8-node IB | 4,344 ms | **+754 ms** |
-| 2-node ETH | 161,092 ms | — |
-| 8-node ETH | 167,138 ms | **+6,046 ms** |
-
-The 72B model on InfiniBand scales from 2 to 8 nodes with only 754 ms additional overhead per step — computation time per GPU decreases as more GPUs share the work, largely offsetting the increased communication cost. On Ethernet, the step time barely changes from 2 to 8 nodes (~161–167 seconds): the network is so saturated that adding more GPUs cannot reduce the aggregate communication time. Each GPU's compute finishes quickly, then waits interminably for the next shard.
+The **711× difference** in network overhead (13,509 ms vs. 19 ms) directly reflects the interconnect bandwidth gap. It doesn't reach the full 122× bandwidth ratio because FSDP's pipelining can partially overlap *some* Ethernet transfers with compute — but the overlap fraction is small when each transfer takes 78 ms against a 17 ms per-layer compute window.
 
 ### Why Not 122× Throughput Gap?
 
-The throughput gap is ~27× (7B) and 39–45× (72B), not 122×, because:
+The throughput gap is ~27× (7B dense), ~45× (72B dense), and ~57× (MoE), not 122×, because:
 
 1. **Intra-node NVLink is unaffected.** All 8 GPUs within each node still communicate at 900 GB/s on both IB and ETH. Only the inter-node link changes.
 2. **GPU compute is nonzero.** Even on Ethernet, the GPUs perform some useful work between network stalls. The step time is compute + network, not network alone.
 3. **FSDP pipelining overlaps *some* transfers.** While one layer computes, FSDP prefetches the next layer's parameters. On IB this hides everything; on ETH it hides a fraction.
 
-The 72B model shows a larger gap (39–45×) because each layer is ~10× larger, generating ~10× more inter-node traffic per collective. The gap narrows slightly from 45× (2 nodes) to 39× (8 nodes) because finer sharding at 64 GPUs reduces the per-collective data volume, allowing marginally better overlap on Ethernet.
+The 72B model shows a larger gap (45×) because: (a) each layer is ~10× larger, generating ~10× more inter-node traffic per collective, and (b) with only 16 GPUs, each GPU holds more parameters but the compute-per-GPU is still insufficient to hide the massive ETH transfer time for 72B-scale layers.
+
+### Why the MoE Gap Is Even Wider
+
+The Mixtral 8x7B MoE model shows a **56–57× IB/ETH gap** — roughly double the 7B dense model's ~27×. This amplification comes from the MoE architecture's fundamental property: **total parameters far exceed active parameters.**
+
+Each Mixtral decoder layer contains 8 expert FFN modules, but only 2 are activated per token (top-2 routing). FSDP shards the entire model — all 46.7B parameters — across GPUs. Every forward pass all-gathers the complete layer (including all 8 experts), but only ~25% of those parameters participate in the actual matrix multiplies for any given token.
+
+This creates a 3.6× worse **compute-to-communication ratio** than an equivalently sized dense model:
+
+- **Dense model**: communicates $P$ parameters, computes with $P$ parameters → ratio 1:1
+- **MoE model**: communicates 46.7B parameters, computes with ~12.9B → ratio **3.6:1**
+
+The extra communication volume cannot be hidden behind useful compute:
+
+| Config | Step Time | Network Overhead |
+|--------|-----------|-----------------|
+| 1-node MoE (baseline) | 1,415 ms | — |
+| 8-node MoE, IB | 1,568 ms | **+153 ms** (10.8%) |
+| 8-node MoE, ETH | 87,345 ms | **+85,930 ms** (6,072%) |
+
+Compare this to the 7B dense model: IB added only 19 ms of overhead at 8 nodes, vs. 153 ms for the MoE model. Even InfiniBand feels the weight of all-gathering 46.7B parameters across 8 nodes — but 153 ms of overhead is still tolerable. On Ethernet, the 85.9 *seconds* of per-step network overhead renders multi-node MoE training completely impractical.
 
 ## Practical Takeaways
 
 ### 1. InfiniBand Is Non-Negotiable for Multi-Node Training
 
-A 27–45× throughput gap is not a performance optimization — it's the difference between feasible and infeasible. Training that takes 1 day on InfiniBand takes **4 weeks** on Ethernet. No amount of software tuning can close a 122× bandwidth gap.
+A 27× throughput gap is not a performance optimization — it's the difference between feasible and infeasible. Training that takes 1 day on InfiniBand takes **4 weeks** on Ethernet. No amount of software tuning can close a 122× bandwidth gap.
 
 ### 2. The Gap Is Immediate and Constant
 
 The slowdown doesn't creep in at large scale — it appears at **2 nodes** and stays at ~27× regardless of cluster size (for the 7B model). There is no "safe" multi-node Ethernet regime. The moment FSDP communicates across an Ethernet link, throughput collapses.
 
-### 3. Larger Models Widen the Gap
+### 3. Larger and Sparse Models Widen the Gap
 
-The 72B model shows 39–45× slowdown vs. the 7B's ~27×. Larger models mean larger parameter shards, more data per collective, and longer Ethernet stalls. The trend in LLM training is toward larger models, which will only amplify InfiniBand's advantage.
+The 72B dense model shows ~45× slowdown vs. the 7B's ~27×, and the Mixtral MoE model pushes it to **~57×**. Larger models mean more data per collective. MoE architectures are even worse — they communicate *all* expert parameters but compute with only a fraction, creating the worst compute-to-communication ratio. As LLMs trend toward both larger sizes and sparse MoE designs, InfiniBand's advantage will only grow.
 
 ### 4. Verify Your Ethernet Mode
 
@@ -402,16 +436,24 @@ The single-node results — identical IB and ETH performance — show that inter
 
 The cluster runs on Azure with 11× Standard_ND96isr_H100_v5 VMs in a VMSS, with an 8 TiB Azure Managed Lustre filesystem mounted at `/lustre` on every node. See [this post]({% post_url 2026-02-09-AMLFS with GPU VMSS %}) for the cluster setup.
 
-Scripts: [finetune_bench.py](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/scripts/ib-vs-eth/finetune_bench.py), [launch_node.sh](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/scripts/ib-vs-eth/launch_node.sh), [run_multinode.sh](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/scripts/ib-vs-eth/run_multinode.sh), [sweep.sh](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/scripts/ib-vs-eth/sweep.sh).
+**Dense model scripts:** [finetune_bench.py](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/scripts/ib-vs-eth/finetune_bench.py), [launch_node.sh](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/scripts/ib-vs-eth/launch_node.sh), [run_multinode.sh](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/scripts/ib-vs-eth/run_multinode.sh), [sweep.sh](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/scripts/ib-vs-eth/sweep.sh).
+
+**MoE model scripts:** [finetune_bench_moe.py](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/scripts/ib-vs-eth/finetune_bench_moe.py), [launch_node_moe.sh](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/scripts/ib-vs-eth/launch_node_moe.sh), [run_multinode_moe.sh](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/scripts/ib-vs-eth/run_multinode_moe.sh), [sweep_moe.sh](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/scripts/ib-vs-eth/sweep_moe.sh).
 
 To run a single experiment:
 
 ```bash
-# 4 nodes, IB enabled, Qwen2.5-7B, batch_size=2
+# Dense: 4 nodes, IB enabled, Qwen2.5-7B, batch_size=2
 bash /lustre/scripts/run_multinode.sh 4 0 /lustre/models/Qwen2.5-7B 2048 2 20
 
-# 4 nodes, Ethernet only, Qwen2.5-72B, batch_size=1
+# Dense: 4 nodes, Ethernet only, Qwen2.5-72B, batch_size=1
 bash /lustre/scripts/run_multinode.sh 4 1 /lustre/models/Qwen2.5-72B 2048 1 20
+
+# MoE: 4 nodes, IB enabled, Mixtral-8x7B, batch_size=1
+bash /lustre/scripts/run_multinode_moe.sh 4 0 /lustre/models/Mixtral-8x7B-v0.1 2048 1 20
+
+# MoE: 4 nodes, Ethernet only, Mixtral-8x7B, batch_size=1
+bash /lustre/scripts/run_multinode_moe.sh 4 1 /lustre/models/Mixtral-8x7B-v0.1 2048 1 20
 ```
 
 To run the full sweep (all models × all node counts × IB/ETH):
@@ -419,5 +461,6 @@ To run the full sweep (all models × all node counts × IB/ETH):
 ```bash
 # Inside screen on the head node to survive SSH disconnects
 screen -S sweep
-bash /lustre/scripts/sweep.sh
+bash /lustre/scripts/sweep.sh       # Dense models
+bash /lustre/scripts/sweep_moe.sh   # MoE model
 ```
