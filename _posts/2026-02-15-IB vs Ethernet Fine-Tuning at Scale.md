@@ -18,7 +18,7 @@ Azure's H100 GPU VMs (`Standard_ND96isr_H100_v5`) come equipped with 8× 400 Gb/
 
 In this post, I benchmark InfiniBand (RDMA) against genuine Ethernet (TCP sockets) across two model sizes (Qwen2.5-7B and Qwen2.5-72B), scaling from 1 to 8 nodes (8–64 GPUs), using PyTorch FSDP on an 11-node Azure VMSS cluster with Azure Managed Lustre.
 
-**The results are dramatic.** InfiniBand delivers **26–28× higher multi-node throughput** than Ethernet for the 7B model, and **~45× higher** for the 72B model. InfiniBand adds 19 milliseconds of overhead to scale from 1 to 8 nodes. Ethernet adds 13.5 seconds. The gap is not subtle — it is the difference between training that scales and training that stalls.
+**The results are dramatic.** InfiniBand delivers **26–28× higher multi-node throughput** than Ethernet for the 7B model, and **39–45× higher** for the 72B model. InfiniBand adds 19 milliseconds of overhead to scale from 1 to 8 nodes. Ethernet adds 13.5 seconds. The gap is not subtle — it is the difference between training that scales and training that stalls.
 
 > **Correction:** An earlier version of this post reported near-identical IB and Ethernet performance using `NCCL_IB_DISABLE=1`. That environment variable [does not work](#the-nccl_ib_disable-bug) with NCCL 2.23.4 on Azure ND-series VMs — the RDMA network plugin ignores it entirely. All previous "Ethernet" results were actually running on InfiniBand. This update uses `NCCL_NET=Socket` to force genuine TCP sockets, [verified via nccl-tests](#the-nccl_ib_disable-bug).
 
@@ -150,8 +150,50 @@ The 72B model requires FSDP sharding across at least 2 nodes (16 GPUs) — a sin
 | Nodes | GPUs | IB (tok/s) | ETH (tok/s) | IB / ETH |
 |-------|------|-----------|------------|----------|
 | 2 | 16 | 9,127 | 203 | **45.0×** |
+| 4 | 32 | 17,604 | 402 | **43.8×** |
+| 8 | 64 | 30,175 | 784 | **38.5×** |
 
-The 72B model shows an even larger gap: **45× at 2 nodes**, compared to 27× for the 7B model at the same node count. This is expected — the 72B model has 10× more parameters, generating proportionally more inter-node traffic per FSDP collective. A single training step takes 3.6 seconds on InfiniBand and **2 minutes 41 seconds** on Ethernet.
+<canvas id="chart72bThroughput" width="700" height="400"></canvas>
+<script>
+new Chart(document.getElementById('chart72bThroughput'), {
+    type: 'bar',
+    data: {
+        labels: ['2 nodes\n(16 GPU)', '4 nodes\n(32 GPU)', '8 nodes\n(64 GPU)'],
+        datasets: [
+            {
+                label: 'InfiniBand (RDMA)',
+                data: [9127, 17604, 30175],
+                backgroundColor: 'rgba(54, 162, 235, 0.8)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            },
+            {
+                label: 'Ethernet (TCP)',
+                data: [203, 402, 784],
+                backgroundColor: 'rgba(255, 99, 132, 0.8)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            title: { display: true, text: 'Qwen2.5-72B: Aggregate Throughput', font: { size: 16 } },
+            legend: { position: 'top' }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                title: { display: true, text: 'Tokens/sec' },
+                ticks: { callback: function(v) { return v.toLocaleString(); } }
+            }
+        }
+    }
+});
+</script>
+
+The 72B model shows an even larger gap than the 7B — **39–45× across all node counts**, compared to ~27× for the 7B model. At 2 nodes, a single training step takes 3.6 seconds on InfiniBand and **2 minutes 41 seconds** on Ethernet. Even at 8 nodes, the Ethernet step time remains ~167 seconds — the additional GPUs reduce per-GPU work but cannot overcome the network bottleneck. InfiniBand scales from 9,127 → 17,604 → 30,175 tok/s across 2, 4, and 8 nodes — near-linear scaling with only modest per-GPU efficiency loss (570 → 550 → 471 tok/s/GPU).
 
 ### Per-GPU Efficiency
 
@@ -180,20 +222,39 @@ new Chart(document.getElementById('chartPerGPU'), {
                 borderDash: [5, 5],
                 tension: 0.2,
                 pointRadius: 5
+            },
+            {
+                label: '72B — InfiniBand',
+                data: [null, 570, 550, 471],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.1)',
+                borderWidth: 2,
+                tension: 0.2,
+                pointRadius: 5
+            },
+            {
+                label: '72B — Ethernet',
+                data: [null, 13, 13, 12],
+                borderColor: 'rgba(255, 159, 64, 1)',
+                backgroundColor: 'rgba(255, 159, 64, 0.1)',
+                borderWidth: 2,
+                borderDash: [5, 5],
+                tension: 0.2,
+                pointRadius: 5
             }
         ]
     },
     options: {
         responsive: true,
         plugins: {
-            title: { display: true, text: 'Qwen2.5-7B: Per-GPU Throughput', font: { size: 16 } },
+            title: { display: true, text: 'Per-GPU Throughput (Both Models)', font: { size: 16 } },
             legend: { position: 'top' }
         },
         scales: {
             y: {
                 type: 'logarithmic',
                 title: { display: true, text: 'Tokens/sec/GPU (log scale)' },
-                min: 200,
+                min: 10,
                 max: 10000,
                 ticks: { callback: function(v) { return v.toLocaleString(); } }
             }
@@ -202,7 +263,7 @@ new Chart(document.getElementById('chartPerGPU'), {
 });
 </script>
 
-The per-GPU chart (log scale) reveals the scaling story clearly. InfiniBand maintains ~8,100–8,200 tok/s per GPU from 1 to 4 nodes — **near-perfect linear scaling** — with only a 3.7% dip at 8 nodes. On Ethernet, per-GPU throughput collapses from 8,154 (1-node) to ~300 (multi-node), where it flatlines. Each GPU added to an Ethernet cluster spends over 96% of its time waiting on the network rather than training.
+The per-GPU chart (log scale) reveals the scaling story clearly. **7B on InfiniBand** maintains ~8,100–8,200 tok/s per GPU from 1 to 4 nodes — near-perfect linear scaling — with only a 3.7% dip at 8 nodes. **7B on Ethernet** collapses from 8,154 (1-node) to ~300 (multi-node), where it flatlines. **72B on InfiniBand** holds 550–570 tok/s/GPU at 2–4 nodes with a modest drop to 471 at 8 nodes. **72B on Ethernet** is pinned at 12–13 tok/s/GPU — each GPU spends over 99% of its time waiting on the network rather than training.
 
 ### IB-to-ETH Speedup
 
@@ -225,11 +286,12 @@ new Chart(document.getElementById('chartSpeedup'), {
             },
             {
                 label: 'Qwen2.5-72B',
-                data: [null, 45.0, null, null],
+                data: [null, 45.0, 43.8, 38.5],
                 borderColor: 'rgba(255, 159, 64, 1)',
-                backgroundColor: 'rgba(255, 159, 64, 0.3)',
-                borderWidth: 0,
-                pointRadius: 10,
+                backgroundColor: 'rgba(255, 159, 64, 0.1)',
+                borderWidth: 2,
+                tension: 0.2,
+                pointRadius: 6,
                 pointStyle: 'triangle',
                 spanGaps: false,
                 fill: false
@@ -255,7 +317,7 @@ new Chart(document.getElementById('chartSpeedup'), {
 });
 </script>
 
-The 7B speedup is remarkably consistent at **~27×** across 2, 4, and 8 nodes — the gap doesn't grow or shrink with scale. The 72B model at 2 nodes already shows a **45× gap**, reflecting the heavier communication load. At 1 node (no inter-node communication), the speedup is exactly 1.0×, confirming that the gap is purely an interconnect effect.
+The 7B speedup is remarkably consistent at **~27×** across 2, 4, and 8 nodes — the gap doesn't grow or shrink with scale. The 72B model shows a larger gap at every scale — **45× at 2 nodes, 44× at 4 nodes, and 39× at 8 nodes**. The slight decrease from 45× to 39× at 8 nodes is expected: with more GPUs, each FSDP shard is smaller, reducing per-collective data volume and partially alleviating the Ethernet bottleneck. At 1 node (no inter-node communication), the 7B speedup is exactly 1.0×, confirming that the gap is purely an interconnect effect.
 
 ## Why the Gap Is So Large
 
@@ -281,6 +343,8 @@ On InfiniBand, 84 collectives × 0.6 ms = ~50 ms of total inter-node transfer �
 
 The step time measurements confirm this directly:
 
+**Qwen2.5-7B:**
+
 | Config | Step Time | Network Overhead |
 |--------|-----------|-----------------|
 | 1 node (baseline) | 502 ms | — |
@@ -291,23 +355,32 @@ The step time measurements confirm this directly:
 
 **Ethernet adds 13.5 seconds** of network overhead — a 2,691% increase. The GPU spends most of each training step stalled, waiting for the next layer's parameters to arrive over TCP.
 
-The **711× difference** in network overhead (13,509 ms vs. 19 ms) directly reflects the interconnect bandwidth gap. It doesn't reach the full 122× bandwidth ratio because FSDP's pipelining can partially overlap *some* Ethernet transfers with compute — but the overlap fraction is small when each transfer takes 78 ms against a 17 ms per-layer compute window.
+**Qwen2.5-72B:**
+
+| Config | Step Time | Network Overhead |
+|--------|-----------|-----------------|
+| 2-node IB (baseline) | 3,590 ms | — |
+| 8-node IB | 4,344 ms | **+754 ms** |
+| 2-node ETH | 161,092 ms | — |
+| 8-node ETH | 167,138 ms | **+6,046 ms** |
+
+The 72B model on InfiniBand scales from 2 to 8 nodes with only 754 ms additional overhead per step — computation time per GPU decreases as more GPUs share the work, largely offsetting the increased communication cost. On Ethernet, the step time barely changes from 2 to 8 nodes (~161–167 seconds): the network is so saturated that adding more GPUs cannot reduce the aggregate communication time. Each GPU's compute finishes quickly, then waits interminably for the next shard.
 
 ### Why Not 122× Throughput Gap?
 
-The throughput gap is ~27× (7B) and ~45× (72B), not 122×, because:
+The throughput gap is ~27× (7B) and 39–45× (72B), not 122×, because:
 
 1. **Intra-node NVLink is unaffected.** All 8 GPUs within each node still communicate at 900 GB/s on both IB and ETH. Only the inter-node link changes.
 2. **GPU compute is nonzero.** Even on Ethernet, the GPUs perform some useful work between network stalls. The step time is compute + network, not network alone.
 3. **FSDP pipelining overlaps *some* transfers.** While one layer computes, FSDP prefetches the next layer's parameters. On IB this hides everything; on ETH it hides a fraction.
 
-The 72B model shows a larger gap (45×) because: (a) each layer is ~10× larger, generating ~10× more inter-node traffic per collective, and (b) with only 16 GPUs, each GPU holds more parameters but the compute-per-GPU is still insufficient to hide the massive ETH transfer time for 72B-scale layers.
+The 72B model shows a larger gap (39–45×) because each layer is ~10× larger, generating ~10× more inter-node traffic per collective. The gap narrows slightly from 45× (2 nodes) to 39× (8 nodes) because finer sharding at 64 GPUs reduces the per-collective data volume, allowing marginally better overlap on Ethernet.
 
 ## Practical Takeaways
 
 ### 1. InfiniBand Is Non-Negotiable for Multi-Node Training
 
-A 27× throughput gap is not a performance optimization — it's the difference between feasible and infeasible. Training that takes 1 day on InfiniBand takes **4 weeks** on Ethernet. No amount of software tuning can close a 122× bandwidth gap.
+A 27–45× throughput gap is not a performance optimization — it's the difference between feasible and infeasible. Training that takes 1 day on InfiniBand takes **4 weeks** on Ethernet. No amount of software tuning can close a 122× bandwidth gap.
 
 ### 2. The Gap Is Immediate and Constant
 
@@ -315,7 +388,7 @@ The slowdown doesn't creep in at large scale — it appears at **2 nodes** and s
 
 ### 3. Larger Models Widen the Gap
 
-The 72B model shows ~45× slowdown vs. the 7B's ~27×. Larger models mean larger parameter shards, more data per collective, and longer Ethernet stalls. The trend in LLM training is toward larger models, which will only amplify InfiniBand's advantage.
+The 72B model shows 39–45× slowdown vs. the 7B's ~27×. Larger models mean larger parameter shards, more data per collective, and longer Ethernet stalls. The trend in LLM training is toward larger models, which will only amplify InfiniBand's advantage.
 
 ### 4. Verify Your Ethernet Mode
 
