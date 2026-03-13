@@ -415,7 +415,7 @@ The extra communication volume cannot be hidden behind useful compute:
 | 8-node MoE, IB | 1,568 ms | **+153 ms** (10.8%) |
 | 8-node MoE, ETH | 87,345 ms | **+85,930 ms** (6,072%) |
 
-Compare this to the 7B dense model: IB added only 19 ms of overhead at 8 nodes, vs. 153 ms for the MoE model. Even InfiniBand feels the weight of all-gathering 46.7B parameters across 8 nodes — but 153 ms of overhead is still tolerable. On Ethernet, the 85.9 *seconds* of per-step network overhead renders multi-node MoE training completely impractical.
+The 7B dense model added only 19 ms of IB overhead at 8 nodes; here the overhead is 153 ms — roughly 8× more, which tracks with the ~6.7× larger total parameter count (46.7B vs. 7B). The higher overhead is a model-size effect, not an MoE-specific one — a hypothetical 46.7B dense model would incur similar communication volume. What MoE *does* change is the compute time available to hide that communication: with only 12.9B active parameters per token, there is 3.6× less useful compute per step than a 46.7B dense model would provide. Still, 153 ms of IB overhead against 1,415 ms of compute remains tolerable (10.8%). On Ethernet, the 85.9 *seconds* of per-step network overhead renders multi-node MoE training completely impractical.
 
 ## Practical Takeaways
 
