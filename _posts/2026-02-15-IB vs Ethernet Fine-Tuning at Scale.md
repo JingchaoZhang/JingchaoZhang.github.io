@@ -20,8 +20,6 @@ In this post, I benchmark InfiniBand (RDMA) against genuine Ethernet (TCP socket
 
 **The results are dramatic.** InfiniBand delivers **26–28× higher multi-node throughput** than Ethernet for the 7B dense model, **38–45× higher** for the 72B dense model, and **56–57× higher** for the Mixtral 8x7B MoE model. The MoE architecture — with its expert routing and 46.7B total parameters sharded across nodes — is the most communication-intensive of the three, making InfiniBand even more critical.
 
-> **Correction:** An earlier version of this post reported near-identical IB and Ethernet performance using `NCCL_IB_DISABLE=1`. That environment variable [does not work](#the-nccl_ib_disable-bug) with NCCL 2.23.4 on Azure ND-series VMs — the RDMA network plugin ignores it entirely. All previous "Ethernet" results were actually running on InfiniBand. This update uses `NCCL_NET=Socket` to force genuine TCP sockets, [verified via nccl-tests](#the-nccl_ib_disable-bug).
-
 ## Test Environment
 
 | Component | Detail |
@@ -37,9 +35,9 @@ In this post, I benchmark InfiniBand (RDMA) against genuine Ethernet (TCP socket
 | **Models** | Qwen2.5-7B (~14 GB), Qwen2.5-72B (~136 GB), Mixtral-8x7B-v0.1 (~87 GB) in bf16 |
 | **Framework** | PyTorch FSDP (`size_based_auto_wrap_policy` for dense, `transformer_auto_wrap_policy` for MoE) |
 
-### The `NCCL_IB_DISABLE` Bug
+### Why `NCCL_IB_DISABLE` Doesn't Work Here
 
-The standard way to disable InfiniBand in NCCL is `NCCL_IB_DISABLE=1`. This is documented in NCCL's official docs, used in Azure tutorials, and appears in countless blog posts and Stack Overflow answers. But on Azure ND-series H100 VMs, **it doesn't work.**
+The standard way to disable InfiniBand in NCCL is `NCCL_IB_DISABLE=1`. This is documented in NCCL's official docs, used in Azure tutorials, and appears in countless blog posts and Stack Overflow answers. However, on Azure ND-series H100 VMs, **this flag has no effect.**
 
 These VMs use an **external RDMA network plugin** (`libnccl-net.so`) that registers with NCCL as a transport provider. NCCL 2.23.4 routes all inter-node traffic through this plugin regardless of the `NCCL_IB_DISABLE` setting — the flag only controls NCCL's *built-in* IB transport, not external plugins.
 
@@ -58,7 +56,7 @@ I discovered this when my initial "Ethernet" benchmarks produced suspiciously id
 
 Both `NCCL_IB_DISABLE=0` and `NCCL_IB_DISABLE=1` produce identical ~78 GB/s per GPU — they're both running on RDMA. The environment variable is simply ignored when the external network plugin is loaded.
 
-**The fix:** `NCCL_NET=Socket` overrides all network plugins and forces NCCL to use the kernel's TCP stack. The measured bandwidth gap: **392 GB/s (RDMA) vs. 3.19 GB/s (TCP) — a 122× difference.**
+**The solution:** `NCCL_NET=Socket` overrides all network plugins and forces NCCL to use the kernel's TCP stack. The measured bandwidth gap: **392 GB/s (RDMA) vs. 3.19 GB/s (TCP) — a 122× difference.**
 
 ### How the Two Modes Actually Differ
 
@@ -90,6 +88,81 @@ The full scripts are in the [Reproducing These Results](#reproducing-these-resul
 
 ## Results
 
+<canvas id="chartAllThroughput" width="700" height="450"></canvas>
+<script>
+new Chart(document.getElementById('chartAllThroughput'), {
+    type: 'bar',
+    data: {
+        labels: ['1 node\n(8 GPU)', '2 nodes\n(16 GPU)', '4 nodes\n(32 GPU)', '8 nodes\n(64 GPU)'],
+        datasets: [
+            {
+                label: '7B — IB',
+                data: [65274, 131018, 262201, 502991],
+                backgroundColor: 'rgba(54, 162, 235, 0.85)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            },
+            {
+                label: '7B — ETH',
+                data: [65230, 4968, 9439, 18710],
+                backgroundColor: 'rgba(54, 162, 235, 0.3)',
+                borderColor: 'rgba(54, 162, 235, 0.8)',
+                borderWidth: 1
+            },
+            {
+                label: '72B — IB',
+                data: [null, 9127, 17604, 30175],
+                backgroundColor: 'rgba(153, 102, 255, 0.85)',
+                borderColor: 'rgba(153, 102, 255, 1)',
+                borderWidth: 1
+            },
+            {
+                label: '72B — ETH',
+                data: [null, 203, 402, 784],
+                backgroundColor: 'rgba(153, 102, 255, 0.3)',
+                borderColor: 'rgba(153, 102, 255, 0.8)',
+                borderWidth: 1
+            },
+            {
+                label: 'MoE 8x7B — IB',
+                data: [11577, 22520, 44239, 83583],
+                backgroundColor: 'rgba(75, 192, 192, 0.85)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            },
+            {
+                label: 'MoE 8x7B — ETH',
+                data: [11634, 398, 774, 1501],
+                backgroundColor: 'rgba(75, 192, 192, 0.3)',
+                borderColor: 'rgba(75, 192, 192, 0.8)',
+                borderWidth: 1
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            title: { display: true, text: 'Aggregate Throughput: All Models (Log Scale)', font: { size: 16 } },
+            legend: { position: 'top' },
+            tooltip: {
+                callbacks: {
+                    label: function(ctx) { return ctx.dataset.label + ': ' + ctx.parsed.y.toLocaleString() + ' tok/s'; }
+                }
+            }
+        },
+        scales: {
+            y: {
+                type: 'logarithmic',
+                title: { display: true, text: 'Tokens/sec (log scale)' },
+                min: 100,
+                max: 600000,
+                ticks: { callback: function(v) { return v.toLocaleString(); } }
+            }
+        }
+    }
+});
+</script>
+
 ### Qwen2.5-7B (batch_size=2, seq_len=2048)
 
 | Nodes | GPUs | IB (tok/s) | ETH (tok/s) | IB / ETH |
@@ -98,46 +171,6 @@ The full scripts are in the [Reproducing These Results](#reproducing-these-resul
 | 2 | 16 | 131,018 | 4,968 | **26.4×** |
 | 4 | 32 | 262,201 | 9,439 | **27.8×** |
 | 8 | 64 | 502,991 | 18,710 | **26.9×** |
-
-<canvas id="chart7bThroughput" width="700" height="400"></canvas>
-<script>
-new Chart(document.getElementById('chart7bThroughput'), {
-    type: 'bar',
-    data: {
-        labels: ['1 node\n(8 GPU)', '2 nodes\n(16 GPU)', '4 nodes\n(32 GPU)', '8 nodes\n(64 GPU)'],
-        datasets: [
-            {
-                label: 'InfiniBand (RDMA)',
-                data: [65274, 131018, 262201, 502991],
-                backgroundColor: 'rgba(54, 162, 235, 0.8)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1
-            },
-            {
-                label: 'Ethernet (TCP)',
-                data: [65230, 4968, 9439, 18710],
-                backgroundColor: 'rgba(255, 99, 132, 0.8)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 1
-            }
-        ]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            title: { display: true, text: 'Qwen2.5-7B: Aggregate Throughput', font: { size: 16 } },
-            legend: { position: 'top' }
-        },
-        scales: {
-            y: {
-                beginAtZero: true,
-                title: { display: true, text: 'Tokens/sec' },
-                ticks: { callback: function(v) { return v.toLocaleString(); } }
-            }
-        }
-    }
-});
-</script>
 
 **The single-node baseline is identical** — 65,274 (IB) vs. 65,230 (ETH) tok/s. No communication crosses the inter-node link, so the interconnect is irrelevant. This confirms the test is fair.
 
@@ -153,46 +186,6 @@ The 72B model requires FSDP sharding across at least 2 nodes (16 GPUs) — a sin
 | 4 | 32 | 17,604 | 402 | **43.8×** |
 | 8 | 64 | 30,175 | 784 | **38.5×** |
 
-<canvas id="chart72bThroughput" width="700" height="400"></canvas>
-<script>
-new Chart(document.getElementById('chart72bThroughput'), {
-    type: 'bar',
-    data: {
-        labels: ['2 nodes\n(16 GPU)', '4 nodes\n(32 GPU)', '8 nodes\n(64 GPU)'],
-        datasets: [
-            {
-                label: 'InfiniBand (RDMA)',
-                data: [9127, 17604, 30175],
-                backgroundColor: 'rgba(54, 162, 235, 0.8)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1
-            },
-            {
-                label: 'Ethernet (TCP)',
-                data: [203, 402, 784],
-                backgroundColor: 'rgba(255, 99, 132, 0.8)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 1
-            }
-        ]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            title: { display: true, text: 'Qwen2.5-72B: Aggregate Throughput', font: { size: 16 } },
-            legend: { position: 'top' }
-        },
-        scales: {
-            y: {
-                beginAtZero: true,
-                title: { display: true, text: 'Tokens/sec' },
-                ticks: { callback: function(v) { return v.toLocaleString(); } }
-            }
-        }
-    }
-});
-</script>
-
 The 72B model shows a consistently larger gap than the 7B: **45× at 2 nodes, 44× at 4 nodes, and 39× at 8 nodes**. The 72B has 10× more parameters, generating proportionally more inter-node traffic per FSDP collective. InfiniBand scaling remains solid — 9,127 → 17,604 → 30,175 tok/s — though per-GPU efficiency drops from 571 to 472 tok/s (17%) as the massive collectives begin to saturate even the RDMA fabric. On Ethernet, each step takes over **2.5 minutes** regardless of scale, confirming completely network-dominated execution. The slight decrease in speedup ratio at 8 nodes reflects InfiniBand's growing (but still tolerable) communication overhead, while Ethernet is already so saturated that adding nodes barely changes per-GPU throughput.
 
 ### Mixtral 8x7B MoE (batch_size=1, seq_len=2048)
@@ -205,46 +198,6 @@ Mixtral 8x7B is a **Mixture-of-Experts** (MoE) model: 46.7B total parameters acr
 | 2 | 16 | 22,520 | 398 | **56.6×** |
 | 4 | 32 | 44,239 | 774 | **57.2×** |
 | 8 | 64 | 83,583 | 1,501 | **55.7×** |
-
-<canvas id="chartMoeThroughput" width="700" height="400"></canvas>
-<script>
-new Chart(document.getElementById('chartMoeThroughput'), {
-    type: 'bar',
-    data: {
-        labels: ['1 node\n(8 GPU)', '2 nodes\n(16 GPU)', '4 nodes\n(32 GPU)', '8 nodes\n(64 GPU)'],
-        datasets: [
-            {
-                label: 'InfiniBand (RDMA)',
-                data: [11577, 22520, 44239, 83583],
-                backgroundColor: 'rgba(54, 162, 235, 0.8)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1
-            },
-            {
-                label: 'Ethernet (TCP)',
-                data: [11634, 398, 774, 1501],
-                backgroundColor: 'rgba(255, 99, 132, 0.8)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 1
-            }
-        ]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            title: { display: true, text: 'Mixtral 8x7B MoE: Aggregate Throughput', font: { size: 16 } },
-            legend: { position: 'top' }
-        },
-        scales: {
-            y: {
-                beginAtZero: true,
-                title: { display: true, text: 'Tokens/sec' },
-                ticks: { callback: function(v) { return v.toLocaleString(); } }
-            }
-        }
-    }
-});
-</script>
 
 **The MoE model doubles the IB/ETH gap.** At 56–57× across all multi-node configurations, the MoE speedup is roughly **twice** the 7B dense model's 27× and exceeds even the 72B dense model's 38–45×. The single-node baseline is again identical (11,577 IB vs. 11,634 ETH), confirming the gap is purely an interconnect effect.
 
