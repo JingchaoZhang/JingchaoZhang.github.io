@@ -68,29 +68,6 @@ Both results now match the published benchmarks. The 2.4× performance loss was 
 
 **Always run health checks before benchmarking.** At 10 nodes, 20% of the cluster had thermal issues. At scale, failing nodes are not exceptions — they're the norm. Tools like [Azure NHC](https://github.com/Azure/azurehpc-health-checks) and [Moneo](https://github.com/Azure/Moneo) can catch these before you waste hours debugging "slow training."
 
-## Monitoring Setup: Moneo Worker Mode
-
-Each node runs [Moneo](https://github.com/Azure/Moneo) in **worker mode**, which deploys four exporters:
-
-| Exporter | Port | Metrics |
-|----------|------|---------|
-| `net_exporter` | 8001 | IB port counters (xmit/rcv bytes, errors) |
-| `node_exporter` | 8002 | CPU, memory utilization |
-| `nvidia_exporter` | 8003 | Historical GPU counters via sysfs |
-| `dcgm_exporter` | — | GPU utilization, memory, power, temp, NVLink (via DCGM) |
-
-A local Prometheus instance on each node scrapes all exporters at **1-second intervals**. This gives per-second resolution for both IB throughput and GPU utilization — granular enough to see individual FSDP collective operations.
-
-### Important: The net_exporter Reports Deltas
-
-Moneo's `net_exporter` reads InfiniBand hardware counters from `/sys/class/infiniband/mlx5_ib*/ports/*/counters/` and reports **delta values** (bytes/sec) as Prometheus gauges — not cumulative counters. This means:
-
-- **Do NOT apply `rate()` or `irate()`** on these metrics — they are already rates.
-- Query the raw gauge directly: `ib_port_xmit_data{ib_port="mlx5_ib0:1"}` gives bytes/sec for that port.
-- The value is zero when there is no active IB traffic, which is correct behavior.
-
-I initially applied `rate()` thinking these were cumulative counters, which returned all zeros. The raw gauge displays correctly.
-
 ## IB and GPU Patterns: Dense vs MoE
 
 ### Aggregate View
