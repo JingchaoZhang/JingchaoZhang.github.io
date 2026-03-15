@@ -72,7 +72,7 @@ Both results now match the published benchmarks. The 2.4× performance loss was 
 
 ### Aggregate View
 
-![Dense vs MoE IB and GPU patterns](/assets/2026-03-15/dense_vs_moe_patterns.png)
+![Dense vs MoE IB and GPU patterns](/assets/2026-03-06/dense_vs_moe_patterns.png)
 
 The difference is immediately visible. Let me break down the numbers:
 
@@ -106,7 +106,7 @@ That's a **6.1× ratio** in raw parameter count. The measured 2.2× IB ratio is 
 
 ### Computation vs Communication Overlap
 
-![IB vs GPU correlation](/assets/2026-03-15/dense_vs_moe_overlay.png)
+![IB vs GPU correlation](/assets/2026-03-06/dense_vs_moe_overlay.png)
 
 The overlay view reveals the key architectural difference:
 
@@ -125,7 +125,7 @@ The overlap analysis confirms this:
 
 ### Per-Port IB Breakdown
 
-![Per-port IB breakdown](/assets/2026-03-15/dense_vs_moe_perport.png)
+![Per-port IB breakdown](/assets/2026-03-06/dense_vs_moe_perport.png)
 
 Each Azure ND H100 v5 node has 8 InfiniBand HCAs (`mlx5_ib0` through `mlx5_ib7`). The per-port view shows:
 
@@ -162,7 +162,7 @@ Mixtral's 56× IB/ETH gap isn't just because it's a bigger model — it's becaus
 
 ### Scripts
 
-All scripts are available in the [replication directory](/assets/2026-03-15/replication/):
+All scripts are available in the [replication directory](/assets/2026-03-06/replication/):
 
 **Dense (Qwen 7B) benchmark:**
 - `finetune_bench.py` — FSDP training loop with synthetic data
@@ -233,5 +233,5 @@ Note: Each node's Prometheus only scrapes its own exporters. To get cluster-wide
 ## Related Posts
 
 - [InfiniBand vs Ethernet for Multi-Node LLM Fine-Tuning]({% post_url 2026-02-15-IB vs Ethernet Fine-Tuning at Scale %}) — the throughput benchmarks that motivated this analysis
-- [Monitoring IB Counters with Prometheus and Grafana]({% post_url 2026-03-13-Monitoring InfiniBand Health on Azure H100 Clusters %}) — the monitoring pipeline used to collect this data
+- [Monitoring IB Counters with Prometheus and Grafana]({% post_url 2026-03-02-Monitoring InfiniBand Health on Azure H100 Clusters %}) — the monitoring pipeline used to collect this data
 - [AMLFS with GPU VMSS]({% post_url 2026-02-09-AMLFS with GPU VMSS %}) — setting up Azure Managed Lustre for shared model storage
