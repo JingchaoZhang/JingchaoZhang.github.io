@@ -162,7 +162,7 @@ Mixtral's 56× IB/ETH gap isn't just because it's a bigger model — it's becaus
 
 ### Scripts
 
-All scripts are available in the [replication directory](/assets/2026-03-06/replication/):
+All scripts are available in the [replication directory](https://github.com/JingchaoZhang/JingchaoZhang.github.io/tree/master/assets/2026-03-06/replication):
 
 **Dense (Qwen 7B) benchmark:**
 - `finetune_bench.py` — FSDP training loop with synthetic data
