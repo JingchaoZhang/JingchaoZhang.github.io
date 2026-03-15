@@ -95,7 +95,7 @@ I initially applied `rate()` thinking these were cumulative counters, which retu
 
 ### Aggregate View
 
-![Dense vs MoE IB and GPU patterns](2026-03-15-figures/dense_vs_moe_patterns.png)
+![Dense vs MoE IB and GPU patterns](/assets/2026-03-15/dense_vs_moe_patterns.png)
 
 The difference is immediately visible. Let me break down the numbers:
 
@@ -129,7 +129,7 @@ That's a **6.1× ratio** in raw parameter count. The measured 2.2× IB ratio is 
 
 ### Computation vs Communication Overlap
 
-![IB vs GPU correlation](2026-03-15-figures/dense_vs_moe_overlay.png)
+![IB vs GPU correlation](/assets/2026-03-15/dense_vs_moe_overlay.png)
 
 The overlay view reveals the key architectural difference:
 
@@ -148,7 +148,7 @@ The overlap analysis confirms this:
 
 ### Per-Port IB Breakdown
 
-![Per-port IB breakdown](2026-03-15-figures/dense_vs_moe_perport.png)
+![Per-port IB breakdown](/assets/2026-03-15/dense_vs_moe_perport.png)
 
 Each Azure ND H100 v5 node has 8 InfiniBand HCAs (`mlx5_ib0` through `mlx5_ib7`). The per-port view shows:
 
