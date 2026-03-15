@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "One Bad GPU Is All It Takes: Thermal Throttling in Multi-Node Training"
+title: "Impact of GPU Thermal Throttling on LLM Training"
 author_profile: false
 ---
 
@@ -135,33 +135,6 @@ Thermal throttling is insidious because:
 4. **Monitor GPU temperature in production.** Tools like DCGM, Prometheus exporters, or Azure Monitor can alert when GPU junction temperatures approach throttling thresholds (~83°C for H100).
 
 5. **Report failures to your cloud provider.** Thermal issues are typically hardware problems (failed fans, degraded thermal interface material) that require physical intervention.
-
-## Reproducing These Results
-
-The benchmark uses a modified `finetune_bench_thermal.py` that adds per-step `torch.cuda.synchronize()` and individual step timing. The orchestration script (`run_thermal.sh`) accepts a custom hostfile to select specific node combinations.
-
-Key difference from standard benchmarks:
-
-```python
-for step in range(args.steps):
-    torch.cuda.synchronize()
-    t_start = time.perf_counter()
-
-    outputs = model(input_ids=input_ids, labels=labels)
-    loss = outputs.loss
-    loss.backward()
-    optimizer.step()
-    optimizer.zero_grad()
-
-    torch.cuda.synchronize()
-    t_end = time.perf_counter()
-
-    step_time = t_end - t_start
-    tps = tokens_per_step / step_time
-    print(f"STEP|{step+1}|{step_time:.6f}|{tps:.0f}|{loss.item():.4f}")
-```
-
-The `torch.cuda.synchronize()` before and after each step ensures we measure actual GPU execution time, not just kernel launch time.
 
 ## Key Takeaways
 
