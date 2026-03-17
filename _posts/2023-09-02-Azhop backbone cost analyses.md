@@ -16,7 +16,7 @@ The objective is to arm decision-makers and technical experts with concrete insi
 ## Azure Files (4TB)
 The experiment was conducted over the period from September 2nd to September 4th. Cost data for both the starting day, September 2nd, and the concluding day, September 4th, are partial and therefore lower than the figures from September 3rd. In contrast, the data for September 3rd represents a complete 24-hour cycle.   
   
-![Figure_1](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-09-02-figures/AF-daily.png)  
+![Figure_1](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-09-02-figures/AF-daily.png)  
   
 Let's break down the cost for 09/03 in the table below:  
   
@@ -35,7 +35,7 @@ The primary cost components for running AzHOP include `Virtual Machines` and `Az
 ## Azure Netapp Files (4TB Premium)
 Analogous to the previous experiment, the cost data for both September 2nd and September 4th are partial and not representative of a full 24-hour cycle. In contrast, the data from September 3rd is complete and spans an entire 24-hour period.  
   
-![Figure_3](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-09-02-figures/ANF-daily.png)  
+![Figure_3](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-09-02-figures/ANF-daily.png)  
   
 Here is a table breakdown for 09/03:  
   

@@ -17,29 +17,29 @@ Note: This solution is currently portal based. Many of the following steps can b
 
 ## Create a new StorageAccount with DL v2
 ### Create the resource group
-![Figure_1](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-10-figures/1.png) 
+![Figure_1](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-10-10-figures/1.png) 
 
 In the `Basics` and `Advanced` tabs, follow the setting below. Leave the rest values as default. 
 
-![Figure_2](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-10-figures/2.png) 
+![Figure_2](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-10-10-figures/2.png) 
 
-![Figure_3](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-10-figures/3.png) 
+![Figure_3](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-10-10-figures/3.png) 
 
 ### Create a subnet for AMLFS
 Select vnet from the resource group. Select `Subnets` and create a submit following the instructions below:
 
-![Figure_4](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-10-figures/4.png) 
+![Figure_4](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-10-10-figures/4.png) 
 
-![Figure_5](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-10-figures/5.png) 
+![Figure_5](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-10-10-figures/5.png) 
 
-![Figure_6](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-10-figures/6.png) 
+![Figure_6](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-10-10-figures/6.png) 
 
-![Figure_7](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-10-figures/7.png) 
+![Figure_7](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-10-10-figures/7.png) 
 
 ### Change storage account networking
 Change storage account networking from `Allow access from: Selected networks` to `Allow access from: All networks`. 
 
-![Figure_9](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-10-figures/9.png) 
+![Figure_9](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-10-10-figures/9.png) 
 
 ### Add storage account roles
 - **NOTE:** A storage account owner must add these roles `Storage Account Contributor` and `Storage Blob Data Contributor` before creating the file system.   
@@ -50,53 +50,53 @@ Change storage account networking from `Allow access from: Selected networks` to
   5. Then add the HPC Cache Resource Provider (search for storagecache) to that role.
   6. Repeat steps 3 and 4 for to add each role.
  
-![Figure_14](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-10-figures/14.png) 
+![Figure_14](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-10-10-figures/14.png) 
 
-![Figure_15](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-10-figures/15.png) 
+![Figure_15](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-10-10-figures/15.png) 
 
-![Figure_16](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-10-figures/16.png) 
+![Figure_16](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-10-10-figures/16.png) 
 
-![Figure_17](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-10-figures/17.png) 
+![Figure_17](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-10-10-figures/17.png) 
 
-![Figure_18](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-10-figures/18.png) 
+![Figure_18](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-10-10-figures/18.png) 
 
 ### Add two containers in the storage account
 - Create a container named `home`
 - Create a container named `log`
 
-![Figure_26](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-10-figures/26.png) 
+![Figure_26](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-10-10-figures/26.png) 
 
-![Figure_27](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-10-figures/27.png) 
+![Figure_27](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-10-10-figures/27.png) 
 
 
 ## Create vnet peering
 Navigate to the vnet in the storage account, click on `Peering` -> `Add`
-![Figure_21](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-10-figures/21.png) 
+![Figure_21](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-10-10-figures/21.png) 
 
 Fill out the filling as shown below. You can find the Resource ID from your AzHOP vnet page.
-![Figure_24](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-10-figures/24.png) 
+![Figure_24](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-10-10-figures/24.png) 
 
-![Figure_22](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-10-figures/22.png) 
+![Figure_22](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-10-10-figures/22.png) 
 
-![Figure_23](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-10-figures/23.png) 
+![Figure_23](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-10-10-figures/23.png) 
 
 ## Create AMLFS
 Fill out the `Basics` and `Advanced` tabs as below. Leave the rest as default. 
 
-![Figure_25](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-10-figures/25.png) 
+![Figure_25](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-10-10-figures/25.png) 
 
-![Figure_28](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-10-figures/28.png) 
+![Figure_28](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-10-10-figures/28.png) 
 
 The AMLFS creation could take 10-15 minutes. After creation, you can find the mounting instructions like below:
 
-![Figure_29](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-10-figures/29.png) 
+![Figure_29](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-10-10-figures/29.png) 
 
 ## Update azhop network security group
 In AzHOP, we need to change NSG 3100 rules from deny to allow for both inbound and outbound networks.
 
-![Figure_30](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-10-figures/30.png) 
+![Figure_30](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-10-10-figures/30.png) 
 
-![Figure_30](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-10-10-figures/31.png) 
+![Figure_30](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-10-10-figures/31.png) 
 
 
 ## Mount AMLFS

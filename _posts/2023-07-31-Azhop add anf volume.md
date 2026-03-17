@@ -6,25 +6,25 @@ author_profile: false
 
 ### Network topology
 When create AZHOP without NetApp volumes, a subnet for ANF will still be created as shown in figure below:  
-![Figure_1](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-07-31-2-figures/1.png)  
+![Figure_1](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-07-31-2-figures/1.png)  
 You can manually add a ANF volume to the existing AZHOP cluster, which will change the network topology as below:  
-![Figure_1](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-07-31-2-figures/1_1.png)  
+![Figure_1](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-07-31-2-figures/1_1.png)  
 
 ### Create Azure Netapp Files
 1. Select ANF service from MarketPlace  
-![Figure_2](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-07-31-2-figures/2.png)  
+![Figure_2](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-07-31-2-figures/2.png)  
 2. Create NetApp account  
-![Figure_3](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-07-31-2-figures/3.png)  
+![Figure_3](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-07-31-2-figures/3.png)  
 3. Create ANF capacity pool  
-![Figure_4](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-07-31-2-figures/4.png)  
-![Figure_5](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-07-31-2-figures/5.png)  
-![Figure_6](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-07-31-2-figures/6.png)  
+![Figure_4](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-07-31-2-figures/4.png)  
+![Figure_5](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-07-31-2-figures/5.png)  
+![Figure_6](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-07-31-2-figures/6.png)  
 4. Create ANF volume  
-![Figure_7](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-07-31-2-figures/7.png)  
-![Figure_8](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-07-31-2-figures/8.png)  
+![Figure_7](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-07-31-2-figures/7.png)  
+![Figure_8](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-07-31-2-figures/8.png)  
 5. Find the mounting instructions from the volume page  
-![Figure_9](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-07-31-2-figures/9.png)  
-![Figure_10](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/_posts/2023-07-31-2-figures/10.png)  
+![Figure_9](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-07-31-2-figures/9.png)  
+![Figure_10](https://raw.githubusercontent.com/JingchaoZhang/JingchaoZhang.github.io/master/assets/images/2023-07-31-2-figures/10.png)  
 
 ### Mount ANF to the ondemand node
 ```bash
