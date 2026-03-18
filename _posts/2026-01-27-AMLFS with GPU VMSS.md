@@ -241,3 +241,7 @@ Deploying AMLFS with a GPU VMSS cluster requires:
 3. **Cloud-init** that installs the Lustre client and mounts the file system at boot
 
 Once it's up, every node in the cluster shares a high-throughput POSIX file system — no file copying, no NFS bottleneck, no manual syncing. For multi-node GPU training at scale, it eliminates one of the most annoying operational headaches.
+
+---
+
+*This is a personal blog. Opinions and recommendations are my own, not Microsoft's.*

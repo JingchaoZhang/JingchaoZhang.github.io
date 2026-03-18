@@ -309,3 +309,7 @@ The TTFT impact is equally telling: 58.5ms vs 19ms for Config B — a 3x increas
 4. **For models that fit in one node, stay in one node.** The Qwen2.5-72B model (140 GB in FP16) fits across 8x H100 80GB GPUs. The right answer for latency-optimized serving is TP=8 on a single node — full stop. Both 16-GPU configs were slower than the 8-GPU config.
 
 5. **More GPUs ≠ more speed.** Config B (8 GPUs) → 99.5 tok/s. Config C (16 GPUs) → 67.5 tok/s. Config D (16 GPUs) → 34.3 tok/s. Doubling the GPU count while crossing the NVLink boundary made things *worse*. Multi-node scaling adds value for throughput at the *system* level (serving more concurrent requests), not for single-request latency.
+
+---
+
+*This is a personal blog. Opinions and recommendations are my own, not Microsoft's.*

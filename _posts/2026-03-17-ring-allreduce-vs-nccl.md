@@ -274,3 +274,7 @@ torchrun --nnodes=2 --nproc_per_node=8 --node_rank=0 \
 ---
 
 *Experiments run on Azure ND H100 v5 (Standard_ND96isr_H100_v5) with NCCL 2.28.9 and 400 Gbps InfiniBand. All measurements are from actual GPU runs, not estimates.*
+
+---
+
+*This is a personal blog. Opinions and recommendations are my own, not Microsoft's.*

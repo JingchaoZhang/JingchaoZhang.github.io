@@ -208,3 +208,7 @@ The pattern appears random because EUD's internal test phases are not synchroniz
 2. **The synchronous nature of collectives amplifies the impact.** Even a single GPU being held by a stress test on one node will stall the entire `all_reduce` across all participating GPUs, making the degradation cluster-wide.
 
 3. **Always check for background GPU processes** when investigating intermittent performance regressions on GPU clusters — particularly processes that are "always on" and assumed to be benign.
+
+---
+
+*This is a personal blog. Opinions and recommendations are my own, not Microsoft's.*

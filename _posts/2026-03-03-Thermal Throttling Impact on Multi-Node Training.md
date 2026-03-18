@@ -149,3 +149,7 @@ Thermal throttling is insidious because:
 - [Dense vs MoE: IB and GPU Communication Patterns]({% post_url 2026-02-26-Dense vs MoE Communication Patterns on Azure H100 %})
 - [IB vs Ethernet Fine-Tuning at Scale]({% post_url 2026-02-04-IB vs Ethernet Fine-Tuning at Scale %})
 - [Monitoring InfiniBand Health on Azure H100 Clusters]({% post_url 2026-02-19-Monitoring InfiniBand Health on Azure H100 Clusters %})
+
+---
+
+*This is a personal blog. Opinions and recommendations are my own, not Microsoft's.*

@@ -471,3 +471,7 @@ screen -S sweep
 bash /lustre/scripts/sweep.sh       # Dense models
 bash /lustre/scripts/sweep_moe.sh   # MoE model
 ```
+
+---
+
+*This is a personal blog. Opinions and recommendations are my own, not Microsoft's.*

@@ -282,3 +282,7 @@ The IB **hardware counters** (`/sys/class/infiniband/*/ports/*/hw_counters/`) co
 What **is** specific to Azure's HPC image is Moneo — the pre-installed monitoring framework that configures the Prometheus exporters and container. If you're using a custom image, you'd need to install Moneo or set up equivalent exporters yourself.
 
 
+
+---
+
+*This is a personal blog. Opinions and recommendations are my own, not Microsoft's.*

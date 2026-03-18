@@ -183,3 +183,7 @@ python /workspace/kv_exp/exp5_token_by_token.py
 ---
 
 *Experiments run on Azure ND H100 v5 (Standard_ND96isr_H100_v5) with Qwen2.5-7B in FP16. All measurements are from actual GPU runs, not estimates.*
+
+---
+
+*This is a personal blog. Opinions and recommendations are my own, not Microsoft's.*

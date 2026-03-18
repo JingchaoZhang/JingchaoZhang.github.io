@@ -195,3 +195,7 @@ Run `terraform plan` and look for `-/+ must be replaced` before every apply.
 | `delete-machines` | Exact node you specify |
 
 Cordoning a node before scaling down does reliably select it for deletion — both via CLI and Terraform. But for production use, `az aks nodepool delete-machines` is the safer, documented, and deterministic approach.
+
+---
+
+*This is a personal blog. Opinions and recommendations are my own, not Microsoft's.*

@@ -288,3 +288,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "gpu" {
 ```
 
 These are common best practices for GPU/HPC deployments on Azure. Consider applying them at VMSS creation time to reduce allocation friction.
+
+---
+
+*This is a personal blog. Opinions and recommendations are my own, not Microsoft's.*

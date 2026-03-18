@@ -235,3 +235,7 @@ Note: Each node's Prometheus only scrapes its own exporters. To get cluster-wide
 - [InfiniBand vs Ethernet for Multi-Node LLM Fine-Tuning]({% post_url 2026-02-04-IB vs Ethernet Fine-Tuning at Scale %}) — the throughput benchmarks that motivated this analysis
 - [Monitoring IB Counters with Prometheus and Grafana]({% post_url 2026-02-19-Monitoring InfiniBand Health on Azure H100 Clusters %}) — the monitoring pipeline used to collect this data
 - [AMLFS with GPU VMSS]({% post_url 2026-01-27-AMLFS with GPU VMSS %}) — setting up Azure Managed Lustre for shared model storage
+
+---
+
+*This is a personal blog. Opinions and recommendations are my own, not Microsoft's.*

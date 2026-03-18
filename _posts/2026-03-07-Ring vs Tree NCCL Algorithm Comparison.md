@@ -156,3 +156,7 @@ Training scripts, sweep automation, and monitoring setup are available in the co
 3. **MoE models are algorithm-insensitive** — all three algorithms performed within 3% for Mixtral at every node count.
 4. **Scaling efficiency matters more.** Mixtral's 91.7% efficiency vs Qwen's 77.5% dwarfs any algorithm-level difference.
 5. **Don't tune NCCL_ALGO.** Spend engineering effort on model parallelism strategy, batch size, and activation checkpointing instead.
+
+---
+
+*This is a personal blog. Opinions and recommendations are my own, not Microsoft's.*

@@ -369,3 +369,7 @@ bash run_multinode.sh 2 "headnode,worker1" hybrid
 # 3 nodes, FULL_SHARD (if you want to see the pain)
 bash run_multinode.sh 3 "headnode,worker1,worker2" full
 ```
+
+---
+
+*This is a personal blog. Opinions and recommendations are my own, not Microsoft's.*
