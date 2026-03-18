@@ -61,12 +61,12 @@ Everything else — FSDP configuration, model, batch size, sequence length, numb
 
 ## Why Lustre Matters
 
-In my [previous post]({% post_url 2026-01-25-Fine-Tuning Across NVLink and InfiniBand %}), I used a 3-node cluster without shared storage. Each node needed a local copy of the model, distributed via `rsync`. This was manageable at 3 nodes with a 7B model (14 GB per copy), but doesn't scale:
+In my [previous post]({% post_url 2026-01-18-Fine-Tuning Across NVLink and InfiniBand %}), I used a 3-node cluster without shared storage. Each node needed a local copy of the model, distributed via `rsync`. This was manageable at 3 nodes with a 7B model (14 GB per copy), but doesn't scale:
 
 - **7B model × 10 nodes** = 140 GB of redundant copies
 - **72B model × 10 nodes** = 1.36 TB, requiring ~10 minutes of `rsync` per node
 
-With [Azure Managed Lustre]({% post_url 2026-02-09-AMLFS with GPU VMSS %}), every node mounts `/lustre` — a shared POSIX filesystem. Models are downloaded once and accessible everywhere. This eliminated the distribution bottleneck and enabled painless scaling to 11 nodes.
+With [Azure Managed Lustre]({% post_url 2026-01-27-AMLFS with GPU VMSS %}), every node mounts `/lustre` — a shared POSIX filesystem. Models are downloaded once and accessible everywhere. This eliminated the distribution bottleneck and enabled painless scaling to 11 nodes.
 
 ## The Benchmark Script
 
@@ -441,7 +441,7 @@ The single-node results — identical IB and ETH performance — show that inter
 
 ## Reproducing These Results
 
-The cluster runs on Azure with 11× Standard_ND96isr_H100_v5 VMs in a VMSS, with an 8 TiB Azure Managed Lustre filesystem mounted at `/lustre` on every node. See [this post]({% post_url 2026-02-09-AMLFS with GPU VMSS %}) for the cluster setup.
+The cluster runs on Azure with 11× Standard_ND96isr_H100_v5 VMs in a VMSS, with an 8 TiB Azure Managed Lustre filesystem mounted at `/lustre` on every node. See [this post]({% post_url 2026-01-27-AMLFS with GPU VMSS %}) for the cluster setup.
 
 **Dense model scripts:** [finetune_bench.py](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/scripts/ib-vs-eth/finetune_bench.py), [launch_node.sh](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/scripts/ib-vs-eth/launch_node.sh), [run_multinode.sh](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/scripts/ib-vs-eth/run_multinode.sh), [sweep.sh](https://github.com/JingchaoZhang/JingchaoZhang.github.io/blob/master/scripts/ib-vs-eth/sweep.sh).
 

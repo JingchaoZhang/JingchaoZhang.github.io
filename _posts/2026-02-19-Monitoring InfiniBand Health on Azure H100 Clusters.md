@@ -6,7 +6,7 @@ author_profile: false
 
 ## Introduction
 
-In my [previous post]({% post_url 2026-02-15-IB vs Ethernet Fine-Tuning at Scale %}), I showed that InfiniBand delivers 27–57× higher multi-node throughput than Ethernet for LLM fine-tuning on Azure H100 clusters. But having fast interconnect is only half the story — you also need to know when it's degrading. A single faulty IB port can silently cripple a multi-node training run, and without monitoring, the symptom looks like "training is slow" rather than "port 3 on node 7 has 50,000 packet sequence errors."
+In my [previous post]({% post_url 2026-02-04-IB vs Ethernet Fine-Tuning at Scale %}), I showed that InfiniBand delivers 27–57× higher multi-node throughput than Ethernet for LLM fine-tuning on Azure H100 clusters. But having fast interconnect is only half the story — you also need to know when it's degrading. A single faulty IB port can silently cripple a multi-node training run, and without monitoring, the symptom looks like "training is slow" rather than "port 3 on node 7 has 50,000 packet sequence errors."
 
 This post describes a complete monitoring pipeline for InfiniBand health on Azure `Standard_ND96isr_H100_v5` VMSS clusters: what counters exist, where they come from, how to export them to Azure Managed Prometheus, and how to visualize them in Grafana. The entire setup deploys automatically as part of VMSS provisioning — no manual SSH required.
 

@@ -59,7 +59,7 @@ Each configuration ran at 1, 2, 4, and 8 nodes. Single-node runs used Default on
 
 *Throughput in tokens/sec. Δ = % change vs Default.*
 
-![Qwen 7B bar chart](/assets/2026-03-15/qwen_ring_vs_tree.png)
+![Qwen 7B bar chart](/assets/2026-03-07/qwen_ring_vs_tree.png)
 
 **Observation:** We saw some variation across scales — for example, Tree measured 8.2% higher at 4 nodes but 1.6% lower at 8 nodes. However, since each configuration was only run once (N=1), these differences could reflect normal run-to-run variance rather than a real algorithmic advantage. The key takeaway is that no forced algorithm consistently beat Default.
 
@@ -72,13 +72,13 @@ Each configuration ran at 1, 2, 4, and 8 nodes. Single-node runs used Default on
 | 4 | 32 | 12,506 | 12,530 | +0.2% | 12,710 | +1.6% |
 | 8 | 64 | 24,482 | 23,662 | −3.3% | 24,342 | −0.6% |
 
-![Mixtral 8x7B bar chart](/assets/2026-03-15/mixtral_ring_vs_tree.png)
+![Mixtral 8x7B bar chart](/assets/2026-03-07/mixtral_ring_vs_tree.png)
 
 For MoE, the differences were small across the board — under 3% at most scales. With only a single run per configuration, none of these gaps are statistically meaningful. Default performed well throughout.
 
 ### Percentage Change Heatmap
 
-![Heatmap](/assets/2026-03-15/heatmap_ring_vs_tree.png)
+![Heatmap](/assets/2026-03-07/heatmap_ring_vs_tree.png)
 
 The heatmap visualizes the percentage differences. While some cells appear green or red, keep in mind that each data point is a single run — the observed variation is likely within normal noise margins.
 
@@ -93,13 +93,13 @@ How well does each model scale from 1 to 8 nodes?
 | Qwen 7B | 2,388 | 1,850 | **77.5%** |
 | Mixtral 8x7B | 417 | 383 | **91.7%** |
 
-![Scaling curves](/assets/2026-03-15/scaling_ring_vs_tree.png)
+![Scaling curves](/assets/2026-03-07/scaling_ring_vs_tree.png)
 
 Mixtral scales remarkably well — 91.7% efficiency from 1 to 8 nodes (7.33× on 8× hardware). The MoE architecture's smaller per-expert parameter count means each collective operation moves less data, leaving the InfiniBand fabric less congested.
 
 Qwen's 77.5% efficiency is still respectable for FSDP FULL_SHARD across 64 GPUs, where every forward/backward pass triggers allgather and reduce-scatter operations across all nodes.
 
-![Per-GPU efficiency](/assets/2026-03-15/per_gpu_efficiency.png)
+![Per-GPU efficiency](/assets/2026-03-07/per_gpu_efficiency.png)
 
 ---
 

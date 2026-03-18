@@ -83,7 +83,7 @@ The key modification from a standard benchmark: I log timing for **every individ
 
 ### Per-Step Throughput
 
-![Thermal Throttling Impact on Training Performance](/assets/2026-03-06/thermal_degradation.png)
+![Thermal Throttling Impact on Training Performance](/assets/2026-02-26/thermal_degradation.png)
 
 The degradation follows a clear three-phase pattern on the thermal nodes:
 
@@ -146,6 +146,6 @@ Thermal throttling is insidious because:
 
 ## Related Posts
 
-- [Dense vs MoE: IB and GPU Communication Patterns]({% post_url 2026-03-06-Dense vs MoE Communication Patterns on Azure H100 %})
-- [IB vs Ethernet Fine-Tuning at Scale]({% post_url 2026-02-15-IB vs Ethernet Fine-Tuning at Scale %})
-- [Monitoring InfiniBand Health on Azure H100 Clusters]({% post_url 2026-03-02-Monitoring InfiniBand Health on Azure H100 Clusters %})
+- [Dense vs MoE: IB and GPU Communication Patterns]({% post_url 2026-02-26-Dense vs MoE Communication Patterns on Azure H100 %})
+- [IB vs Ethernet Fine-Tuning at Scale]({% post_url 2026-02-04-IB vs Ethernet Fine-Tuning at Scale %})
+- [Monitoring InfiniBand Health on Azure H100 Clusters]({% post_url 2026-02-19-Monitoring InfiniBand Health on Azure H100 Clusters %})

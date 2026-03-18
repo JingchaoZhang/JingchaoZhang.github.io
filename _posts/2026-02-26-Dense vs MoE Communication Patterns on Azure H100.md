@@ -6,7 +6,7 @@ author_profile: false
 
 ## Introduction
 
-In my [previous post]({% post_url 2026-02-15-IB vs Ethernet Fine-Tuning at Scale %}), I showed that Mixtral 8x7B (MoE) requires **56× more effective interconnect bandwidth** than its throughput ratio would suggest, compared to a dense model of similar active size. But *why*? What does the communication fabric actually look like during training — and how does it differ between dense and MoE architectures?
+In my [previous post]({% post_url 2026-02-04-IB vs Ethernet Fine-Tuning at Scale %}), I showed that Mixtral 8x7B (MoE) requires **56× more effective interconnect bandwidth** than its throughput ratio would suggest, compared to a dense model of similar active size. But *why*? What does the communication fabric actually look like during training — and how does it differ between dense and MoE architectures?
 
 In this post, I capture **1-second resolution InfiniBand and GPU utilization** on an Azure ND H100 v5 cluster during 2-node FSDP fine-tuning of Qwen2.5-7B (dense) and Mixtral-8x7B (MoE). The data reveals strikingly different communication patterns that explain the IB sensitivity gap. Along the way, I hit thermal throttling on 2 out of 10 nodes — a real-world reminder that monitoring matters even for short benchmarks.
 
@@ -26,7 +26,7 @@ In this post, I capture **1-second resolution InfiniBand and GPU utilization** o
 
 ## Thermal Throttling: The First Surprise
 
-Before collecting any communication patterns, I ran 2-node Qwen2.5-7B benchmarks using the first two nodes from the VMSS hostfile. The result: **53,995 tokens/sec** — barely half the expected ~131,000 tok/s from my [earlier tests]({% post_url 2026-02-15-IB vs Ethernet Fine-Tuning at Scale %}).
+Before collecting any communication patterns, I ran 2-node Qwen2.5-7B benchmarks using the first two nodes from the VMSS hostfile. The result: **53,995 tokens/sec** — barely half the expected ~131,000 tok/s from my [earlier tests]({% post_url 2026-02-04-IB vs Ethernet Fine-Tuning at Scale %}).
 
 ### Diagnosis
 
@@ -72,7 +72,7 @@ Both results now match the published benchmarks. The 2.4× performance loss was 
 
 ### Aggregate View
 
-![Dense vs MoE IB and GPU patterns](/assets/2026-03-06/dense_vs_moe_patterns.png)
+![Dense vs MoE IB and GPU patterns](/assets/2026-02-26/dense_vs_moe_patterns.png)
 
 The difference is immediately visible. Let me break down the numbers:
 
@@ -106,7 +106,7 @@ That's a **6.1× ratio** in raw parameter count. The measured 2.2× IB ratio is 
 
 ### Computation vs Communication Overlap
 
-![IB vs GPU correlation](/assets/2026-03-06/dense_vs_moe_overlay.png)
+![IB vs GPU correlation](/assets/2026-02-26/dense_vs_moe_overlay.png)
 
 The overlay view reveals the key architectural difference:
 
@@ -125,7 +125,7 @@ The overlap analysis confirms this:
 
 ### Per-Port IB Breakdown
 
-![Per-port IB breakdown](/assets/2026-03-06/dense_vs_moe_perport.png)
+![Per-port IB breakdown](/assets/2026-02-26/dense_vs_moe_perport.png)
 
 Each Azure ND H100 v5 node has 8 InfiniBand HCAs (`mlx5_ib0` through `mlx5_ib7`). The per-port view shows:
 
@@ -156,13 +156,13 @@ Mixtral's 56× IB/ETH gap isn't just because it's a bigger model — it's becaus
 ### Prerequisites
 
 - Azure VMSS with `Standard_ND96isr_H100_v5` nodes (minimum 2 nodes)
-- [Azure Managed Lustre]({% post_url 2026-02-09-AMLFS with GPU VMSS %}) mounted at `/lustre`
+- [Azure Managed Lustre]({% post_url 2026-01-27-AMLFS with GPU VMSS %}) mounted at `/lustre`
 - [Moneo](https://github.com/Azure/Moneo) deployed in worker mode for monitoring
 - Models downloaded to `/lustre/models/`
 
 ### Scripts
 
-All scripts are available in the [replication directory](https://github.com/JingchaoZhang/JingchaoZhang.github.io/tree/master/assets/2026-03-06/replication):
+All scripts are available in the [replication directory](https://github.com/JingchaoZhang/JingchaoZhang.github.io/tree/master/assets/2026-02-26/replication):
 
 **Dense (Qwen 7B) benchmark:**
 - `finetune_bench.py` — FSDP training loop with synthetic data
@@ -232,6 +232,6 @@ Note: Each node's Prometheus only scrapes its own exporters. To get cluster-wide
 
 ## Related Posts
 
-- [InfiniBand vs Ethernet for Multi-Node LLM Fine-Tuning]({% post_url 2026-02-15-IB vs Ethernet Fine-Tuning at Scale %}) — the throughput benchmarks that motivated this analysis
-- [Monitoring IB Counters with Prometheus and Grafana]({% post_url 2026-03-02-Monitoring InfiniBand Health on Azure H100 Clusters %}) — the monitoring pipeline used to collect this data
-- [AMLFS with GPU VMSS]({% post_url 2026-02-09-AMLFS with GPU VMSS %}) — setting up Azure Managed Lustre for shared model storage
+- [InfiniBand vs Ethernet for Multi-Node LLM Fine-Tuning]({% post_url 2026-02-04-IB vs Ethernet Fine-Tuning at Scale %}) — the throughput benchmarks that motivated this analysis
+- [Monitoring IB Counters with Prometheus and Grafana]({% post_url 2026-02-19-Monitoring InfiniBand Health on Azure H100 Clusters %}) — the monitoring pipeline used to collect this data
+- [AMLFS with GPU VMSS]({% post_url 2026-01-27-AMLFS with GPU VMSS %}) — setting up Azure Managed Lustre for shared model storage
