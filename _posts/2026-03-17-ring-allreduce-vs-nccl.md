@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Implementing Ring AllReduce from Scratch and Benchmarking Against NCCL"
+title: "Experiments on NCCL Ring vs Tree"
 author_profile: false
 ---
 
