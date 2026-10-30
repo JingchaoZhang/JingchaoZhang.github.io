@@ -84,7 +84,7 @@ social:
 analytics:
   provider               : "google-gtag" #false # false (default), "google", "google-universal", "google-gtag", "custom"
   google:
-    tracking_id          : G-22BBJWWKY4
+    tracking_id          : G-JCM0VZQ1H0
 
 
 # Site Author
